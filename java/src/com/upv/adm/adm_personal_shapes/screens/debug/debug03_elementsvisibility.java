@@ -18,7 +18,7 @@ public class debug03_elementsvisibility extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.debug03_elementsvisibility);
 		GlobalContext.setContext(getApplicationContext());
-		SQLite.staticInitialization(getApplicationContext());
+		SQLite.staticInitialization();
 
 		ArrayList<BeanShape> visible_places = SQLite.getVisiblePlaces();
 		ArrayList<BeanShape> visible_plots = SQLite.getVisiblePlots();
