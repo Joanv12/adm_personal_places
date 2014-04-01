@@ -70,13 +70,12 @@ public class CustomActionBarActivity extends ActionBarActivity implements IActiv
 		
 		drawerList.setOnItemClickListener(new OnItemClickListener() {
 			@Override
-			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
 				switch (position) {
-				
 					case 0:
 						Intent in03 = new Intent(getApplicationContext(), screen03.class);
+						in03.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 						startActivity(in03);
 						break;
 					case 1:

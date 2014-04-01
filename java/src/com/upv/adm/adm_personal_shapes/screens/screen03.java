@@ -24,6 +24,10 @@ public class screen03 extends CustomActionBarActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState, R.layout.screen03);
+		GlobalContext.setContext(getApplicationContext());
+
+
+
 		initControls();
 	}
 	private void initControls() {
@@ -39,6 +43,7 @@ public class screen03 extends CustomActionBarActivity {
 		button_profile.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				startActivity(new Intent(getApplicationContext(), screen02.class));
+
 			}
 		});
 

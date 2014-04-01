@@ -70,7 +70,7 @@ public class screen19 extends CustomActionBarActivity {
 		
 		button_searchplaces.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) { 
-				//searchPlaceClick(); 
+				//searchshapeClick(edittext_search); 
 			} // por cambiar
 		});
 		
@@ -81,15 +81,10 @@ public class screen19 extends CustomActionBarActivity {
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 					long arg3) {
 				
-				long id = list.get(arg2).getId();
-				String name = list.get(arg2).getName();
-				String description = list.get(arg2).getDescription();
+				
 
 				Intent in = new Intent(getApplicationContext(), screen05.class);
 
-				in.putExtra("id", id);
-				in.putExtra("name", name);
-				in.putExtra("description", description);
 
 				startActivity(in);
 

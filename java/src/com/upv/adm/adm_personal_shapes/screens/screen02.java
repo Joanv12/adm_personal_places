@@ -70,9 +70,14 @@ public class screen02 extends CustomActionBarActivity implements OnClickListener
 		edittext_phone.setText("678123444");
 	}
 
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState, R.layout.screen02);
+		GlobalContext.setContext(getApplicationContext());
+		GlobalContext.screen02 = this;
+
 		initControls();
 	}
 
@@ -123,6 +128,7 @@ public class screen02 extends CustomActionBarActivity implements OnClickListener
 		spinner_genders.setAdapter(arrayAdapter_genders);
 
 		load_data_debug();
+
 	}
 
 	private void selectImage() {

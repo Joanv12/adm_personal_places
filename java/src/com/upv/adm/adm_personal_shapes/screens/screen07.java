@@ -14,6 +14,7 @@ import android.webkit.WebViewClient;
 import android.widget.ArrayAdapter;
 import android.widget.CheckedTextView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.upv.adm.adm_personal_shapes.R;
 import com.upv.adm.adm_personal_shapes.classes.BeanShape;
@@ -88,8 +89,16 @@ public class screen07 extends CustomActionBarActivity {
 			builder_places.setTitle("Lugares");
 			builder_places.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 		           public void onClick(DialogInterface dialog, int id) {
-		        		ArrayList<String> type_places = Utils.getSelectedKeys(list_places);	
-		        		//UtilsSetVisiblePlaceTypes(type_places)
+		        		ArrayList<String> places_type = Utils.getSelectedKeys(list_places);
+		        		
+		        		for (int i = 0; i < places_type.size(); i++){
+		        			
+		        			String place_type = places_type.get(i);
+
+		        		}
+
+		        				
+		        		//SQLite.setPlaceTypeVisibility(place_type, visible)
 		        		//UtilsUpdateMap(webview_map); // WebView webview_map
 		        		//llamar también a la función anterior en el momento de carga de esta activity para que
 		        		//al usuario se le muestre su mapa de la forma en que él lo tenía configurado de antes
@@ -98,7 +107,6 @@ public class screen07 extends CustomActionBarActivity {
 		       });
 			//builder_places.setMultiChoiceItems(type_places, selections_placetypes, new DialogSelectionClickHandler());
     		
-			
 			list_places = new ListView(this);
 			
 			ArrayAdapter<CustomListItem> arrayAdapter_places = new ArrayAdapter<CustomListItem>(this, android.R.layout.simple_list_item_multiple_choice, options_places);
@@ -118,6 +126,7 @@ public class screen07 extends CustomActionBarActivity {
 		           public void onClick(DialogInterface dialog, int id) {
 		        		//ArrayList<BeanShape> plots = Utils.getSelectedKeys(list_plots);
 		        		//a cambiar
+		        	   
 		           }
 		       });
 			
@@ -140,7 +149,11 @@ public class screen07 extends CustomActionBarActivity {
 			builder_layers.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 		           public void onClick(DialogInterface dialog, int id) {
 		        		ArrayList<String> layers = Utils.getSelectedKeys(list_layers);	
-		        		
+		        		for (int i = 0; i < layers.size(); i++){
+		        			
+		        			String layer = layers.get(i);
+
+		        		}
 		           }
 		       });
 			

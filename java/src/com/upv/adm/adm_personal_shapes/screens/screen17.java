@@ -73,7 +73,9 @@ public class screen17 extends CustomActionBarActivity {
 		listview_users = (ListView) findViewById(R.id.list_searchfriends);
 
 		button_searchfriends.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) { searchFriendsClick(); }
+			public void onClick(View v) { 
+				searchFriendsClick(); //  SQLite.searchFriends(edittext_name);
+			}
 		});
 
 		button_addfriends.setOnClickListener(new OnClickListener() {
@@ -86,6 +88,7 @@ public class screen17 extends CustomActionBarActivity {
 
 	}
 
+	//a borrar metodo
 	public void searchFriendsClick() {
 		
 	}
