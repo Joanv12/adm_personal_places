@@ -170,4 +170,11 @@ public class Utils {
 	public static ArrayList<String[]> getTypes(Context context) {
 		return getArrayListFromXMLData(context, "types.xml");		
 	}
+	
+	public static boolean isKeyInsideArrayList(ArrayList<String[]> arraylist, String key) {
+		for (int i = 0; i < arraylist.size(); i++)
+			if (arraylist.get(i)[0].equals(key))
+				return true;
+		return false;
+	}
 }

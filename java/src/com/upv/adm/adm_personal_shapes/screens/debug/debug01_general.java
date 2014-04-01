@@ -23,7 +23,13 @@ public class debug01_general extends Activity {
 		GlobalContext.setContext(getApplicationContext());
 		SQLite.staticInitialization(getApplicationContext());
 		
-		String type = Utils.parsePlaceType(getApplicationContext(), "t01");
+
+		ArrayList<String[]> array = new ArrayList<String[]>();
+		array.add(new String[]{"t01", "Casa"});
+		array.add(new String[]{"t02", "Banco"});
+		array.add(new String[]{"t03", "Gimnasio"});
+		
+		boolean inside = Utils.isKeyInsideArrayList(array, "t14");
 		
 		System.out.println("hello world");
 
