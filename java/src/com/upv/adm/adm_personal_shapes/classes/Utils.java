@@ -7,7 +7,6 @@ import java.util.Properties;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import android.content.Context;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
 import android.util.SparseBooleanArray;
@@ -43,10 +42,10 @@ public class Utils {
 
 	}
 	
-	private static String getXML(Context context, String path) {
+	private static String getXML(String path) {
 
 		String xmlString = null;
-		AssetManager am = context.getAssets();
+		AssetManager am = GlobalContext.getContext().getAssets();
 		try {
 			InputStream is = am.open(path);
 			int length = is.available();
@@ -60,9 +59,9 @@ public class Utils {
 		return xmlString;
 	}
 	
-	public static ArrayList<String[]> getArrayListFromXMLData(Context context, String xmlFileName) {
+	public static ArrayList<String[]> getArrayListFromXMLData(String xmlFileName) {
 		XMLParser parser = new XMLParser();
-		String XMLContent = Utils.getXML(context, xmlFileName);
+		String XMLContent = Utils.getXML(xmlFileName);
 		Document doc = parser.getDomElement(XMLContent);
 		NodeList nl = doc.getFirstChild().getChildNodes();
 		ArrayList<String[]> result = new ArrayList<String[]>();
@@ -77,8 +76,8 @@ public class Utils {
 		return result;
 	}
 	
-	public static CustomListItem[] getListViewItemsFromXMLData(Context context, String xmlFileName) {
-		ArrayList<String[]> data = getArrayListFromXMLData(context, xmlFileName);
+	public static CustomListItem[] getListViewItemsFromXMLData(String xmlFileName) {
+		ArrayList<String[]> data = getArrayListFromXMLData(xmlFileName);
 		CustomListItem[] result = new CustomListItem[data.size()];
 		for (int i = 0; i < data.size(); i++)
 			result[i] = new CustomListItem(data.get(i)[0], data.get(i)[1]);
@@ -115,8 +114,8 @@ public class Utils {
 		return result;
 	}
 	
-	public static String parsePlaceType(Context context, String type) {
-		ArrayList<String[]> types = getTypes(context);
+	public static String parsePlaceType(String type) {
+		ArrayList<String[]> types = getTypes();
 		for (int i = 0; i < types.size(); i++)
 			if (types.get(i)[0].equals(type))
 				return types.get(i)[1];
@@ -127,7 +126,7 @@ public class Utils {
 		String url = String.format("javascript: add_layer('%s')", layer);
 		webview.loadUrl(url);
 	}
-	public static void addBeanPlaceToMap(Context context, BeanShape place, WebView webview) {
+	public static void addBeanPlaceToMap(BeanShape place, WebView webview) {
 		String coords = place.getCoords();
 		coords = coords.replaceAll("\\s+","");
 		String[] coordsArr = coords.split(",");
@@ -135,7 +134,7 @@ public class Utils {
 		String type = place.getType();
 		String description = place.getDescription();
 		
-		type = Utils.parsePlaceType(context, type);
+		type = Utils.parsePlaceType(type);
 		
 		String url = String.format("javascript: add_place(%s, %s, '%s', '%s', '%s')",
 				coordsArr[0],
@@ -167,12 +166,12 @@ public class Utils {
 		webview.loadUrl("javascript: initialize_map()");		
 	}
 	
-	public static ArrayList<String[]> getTypes(Context context) {
-		return getArrayListFromXMLData(context, "types.xml");		
+	public static ArrayList<String[]> getTypes() {
+		return getArrayListFromXMLData("types.xml");		
 	}
 	
-	public static ArrayList<String[]> getLayers(Context context) {
-		return getArrayListFromXMLData(context, "layers.xml");		
+	public static ArrayList<String[]> getLayers() {
+		return getArrayListFromXMLData("layers.xml");		
 	}
 	
 	public static boolean isKeyInsideArrayList(ArrayList<String[]> arraylist, String key) {

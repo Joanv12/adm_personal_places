@@ -10,7 +10,6 @@ package com.upv.adm.adm_personal_shapes.classes;
 
 import java.util.ArrayList;
 import android.content.ContentValues;
-import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -48,9 +47,9 @@ public class SQLite {
 			FIELD_DESCRIPTION + " TEXT, " + FIELD_PLACETYPE + " CHAR(3), " +
 			FIELD_COORDS + " TEXT, " + FIELD_PHOTO + " TEXT, " + FIELD_VISIBLE + " INTEGER)";
 
-	public static void staticInitialization(Context context) {
+	public static void staticInitialization() {
 		if (SQLite.db == null) {
-			SQLiteOpenHelper openHelper = new SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
+			SQLiteOpenHelper openHelper = new SQLiteOpenHelper(GlobalContext.getContext(), DATABASE_NAME, null, DATABASE_VERSION) {
 				@Override
 				public void onCreate(SQLiteDatabase db) {
 					createDatabase(db);

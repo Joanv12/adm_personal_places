@@ -48,7 +48,7 @@ public class screen01 extends Activity implements IActivityGiver {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.screen01);
 		GlobalContext.setContext(getApplicationContext());
-		SQLite.staticInitialization(getApplicationContext());
+		SQLite.staticInitialization();
 		
 		// guardarmos la screen01 en el contexto porque luego de que el usuario se haya logueado
 		// no nos interesará más volver a a ella, y querremos invocar su método: finish().

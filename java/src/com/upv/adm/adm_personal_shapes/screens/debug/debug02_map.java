@@ -29,7 +29,7 @@ public class debug02_map extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.debug02_map);
 		GlobalContext.setContext(getApplicationContext());
-		SQLite.staticInitialization(getApplicationContext());
+		SQLite.staticInitialization();
 
 		String url = "http://www.angeltools.tk/map.php";
 		//String url = "http://google-developers.appspot.com/maps/documentation/javascript/examples/full/marker-simple";
@@ -60,7 +60,7 @@ public class debug02_map extends Activity {
 						"39.47169,-0.34711",
 						"photoUri1"
 				);
-				Utils.addBeanPlaceToMap(getApplicationContext(), place, webview_map);
+				Utils.addBeanPlaceToMap(place, webview_map);
 			}
 		});
 

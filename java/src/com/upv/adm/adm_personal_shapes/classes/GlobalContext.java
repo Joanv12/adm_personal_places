@@ -22,6 +22,7 @@ public class GlobalContext {
 	private static CustomListItem[] countriesListviewItems = null;
 	private static CustomListItem[] gendersListviewItems = null;
 	private static CustomListItem[] typesData = null;
+	private static CustomListItem[] layersData = null;
 
 	public static class PREF {
 
@@ -50,7 +51,7 @@ public class GlobalContext {
 		if (preferences == null)
 			preferences = getPreferences();
 		preferences.put(key, value);
-		savePreference(context, key, value);
+		savePreference(key, value);
 	}
 	
 	/**
@@ -62,7 +63,7 @@ public class GlobalContext {
 		return preferences.get(key);
 	}
 
-	private static void savePreference(Context context, String key, String value) {
+	private static void savePreference(String key, String value) {
 		SharedPreferences preferences = context.getSharedPreferences("preferences", Context.MODE_PRIVATE);
 		Editor editor = preferences.edit();
 		editor.putString(key, value);
@@ -70,7 +71,6 @@ public class GlobalContext {
 	}
 
 	private static Hashtable<String, String> getPreferences() {
-		Context context = GlobalContext.getContext();
 		Hashtable<String, String> result = new Hashtable<String, String>();
 		SharedPreferences preferences = context.getSharedPreferences("preferences", Context.MODE_PRIVATE);
 		if (preferences != null) {
@@ -83,19 +83,25 @@ public class GlobalContext {
 
 	public static CustomListItem[] getCountriesListviewItems() {
 		if (countriesListviewItems == null)
-			countriesListviewItems = Utils.getListViewItemsFromXMLData(context, "countries.xml");
+			countriesListviewItems = Utils.getListViewItemsFromXMLData("countries.xml");
 		return countriesListviewItems;
 	}
 	
 	public static CustomListItem[] getGendersListviewItems() {
 		if (gendersListviewItems == null)
-			gendersListviewItems = Utils.getListViewItemsFromXMLData(context, "genders.xml");
+			gendersListviewItems = Utils.getListViewItemsFromXMLData("genders.xml");
 		return gendersListviewItems;
 	}
 	
 	public static CustomListItem[] getTypesData() {
 		if (typesData == null)
-			typesData = Utils.getListViewItemsFromXMLData(context, "types.xml");
+			typesData = Utils.getListViewItemsFromXMLData("types.xml");
 		return typesData;
+	}
+	
+	public static CustomListItem[] getLayersData() {
+		if (layersData == null)
+			layersData = Utils.getListViewItemsFromXMLData("layers.xml");
+		return layersData;
 	}
 }
