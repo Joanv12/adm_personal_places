@@ -125,21 +125,13 @@ public class SQLite {
 				"SELECT * FROM " + TABLE_SHAPES + " "
 				+ condition + " ORDER BY " + FIELD_NAME + " ASC";
 		Cursor c = db.rawQuery(selectQuery, null);
-		if (c.moveToFirst()) {
-			do {
-				BeanShape shape = new BeanShape(
-						c.getLong(0), c.getString(1),
-						c.getString(2),	c.getString(3),
-						c.getString(4), c.getString(5)
-				);
-				shape.setId(c.getLong((c.getColumnIndex(FIELD_ID))));
-				shape.setName(c.getString(c.getColumnIndex(FIELD_NAME)));
-				shape.setDescription(c.getString(c.getColumnIndex(FIELD_DESCRIPTION)));
-				shape.setType(c.getString(c.getColumnIndex(FIELD_PLACETYPE)));
-				shape.setCoords(c.getString(c.getColumnIndex(FIELD_COORDS)));
-				shape.setPhoto(c.getString(c.getColumnIndex(FIELD_PHOTO)));
-				shapes.add(shape);
-			} while (c.moveToNext());
+		while (c.moveToNext()) {
+			BeanShape shape = new BeanShape(
+					c.getLong(0), c.getString(1),
+					c.getString(2),	c.getString(3),
+					c.getString(4), c.getString(5)
+			);
+			shapes.add(shape);
 		}
 		return shapes;
 	}
@@ -165,6 +157,15 @@ public class SQLite {
 
 	public static ArrayList<BeanShape> getVisiblePlaces() {
 		return getShapes("SELECT * FROM shapes INNER JOIN visible_placetypes ON shapes.place_type = visible_placetypes.place_type ORDER BY name ASC", null);
+	}
+	
+	public static ArrayList<String> getVisiblePlaceTypes() {
+		ArrayList<String> result = new ArrayList<String>();
+		String selectQuery = "SELECT * FROM " + TABLE_VISIBLE_PLACETYPES + " ORDER BY " + FIELD_PLACETYPE + " ASC";
+		Cursor c = db.rawQuery(selectQuery, null);
+		while (c.moveToNext())
+			result.add(c.getString(0));
+		return result;
 	}
 	
 	public static ArrayList<BeanShape> getPlots() {
