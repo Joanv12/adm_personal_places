@@ -87,26 +87,17 @@ public class screen07 extends CustomActionBarActivity {
 			
 			AlertDialog.Builder builder_places = new AlertDialog.Builder(this);
 			builder_places.setTitle("Lugares");
+			
 			builder_places.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 		           public void onClick(DialogInterface dialog, int id) {
-		        	   
 		        	   	ArrayList<String[]> all_types = Utils.getTypes(getApplicationContext());
-		        	   	
-						ArrayList<String> places_type = Utils.getSelectedKeys(list_places);
-						
-						
+						ArrayList<String> selected_types = Utils.getSelectedKeys(list_places);
 						for (int i = 0; i < all_types.size(); i++) { 
-							
-							
+							if (selected_types.contains(all_types.get(i)[0]))
+								SQLite.setPlaceTypeVisibility(all_types.get(i)[0], true);
+							else
+								SQLite.setPlaceTypeVisibility(all_types.get(i)[0], false);
 		           		}
-						
-						for (int i = 0; i < places_type.size(); i++){
-							
-							String place_type = places_type.get(i);
-						
-						}
-						
-								
 						//SQLite.setPlaceTypeVisibility(place_type, visible)
 						//UtilsUpdateMap(webview_map); // WebView webview_map
 						//llamar también a la función anterior en el momento de carga de esta activity para que
@@ -122,6 +113,17 @@ public class screen07 extends CustomActionBarActivity {
 			list_places.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 			
 			list_places.setAdapter(arrayAdapter_places);
+			
+			
+			
+			ArrayList<String> visible_types = new ArrayList<String>();
+			visible_types.add("t01");
+			visible_types.add("t04");
+			visible_types.add("t05");			
+			
+
+			
+			
 			builder_places.setView(list_places);
 			Dialog dialog_places = builder_places.create();
 			dialog_places.show();
