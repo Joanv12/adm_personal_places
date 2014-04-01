@@ -60,7 +60,7 @@ public class debug02_map extends Activity {
 						"39.47169,-0.34711",
 						"photoUri1"
 				);
-				Utils.addBeanPlaceToMap(place, webview_map);
+				Utils.addBeanPlaceToMap(getApplicationContext(), place, webview_map);
 			}
 		});
 

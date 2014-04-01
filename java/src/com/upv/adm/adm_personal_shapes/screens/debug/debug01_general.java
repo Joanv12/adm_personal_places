@@ -23,7 +23,7 @@ public class debug01_general extends Activity {
 		GlobalContext.setContext(getApplicationContext());
 		SQLite.staticInitialization(getApplicationContext());
 		
-		ArrayList<String[]> types = Utils.getTypes(getApplicationContext());
+		String type = Utils.parsePlaceType(getApplicationContext(), "t01");
 		
 		System.out.println("hello world");
 

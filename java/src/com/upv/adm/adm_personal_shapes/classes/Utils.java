@@ -3,9 +3,6 @@ package com.upv.adm.adm_personal_shapes.classes;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.Hashtable;
-import java.util.Iterator;
 import java.util.Properties;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
@@ -118,21 +115,19 @@ public class Utils {
 		return result;
 	}
 	
-	public static String parsePlaceType(String type) {
-		Hashtable<String, String> types = new Hashtable<String, String>();
-		types.put("t01", "Restaurante");
-		types.put("t02", "Bar");
-		types.put("t03", "Biblioteca");
-		types.put("t04", "Parque");
-		types.put("t05", "Gimnasio");
-		return types.get(type);
+	public static String parsePlaceType(Context context, String type) {
+		ArrayList<String[]> types = getTypes(context);
+		for (int i = 0; i < types.size(); i++)
+			if (types.get(i)[0].equals(type))
+				return types.get(i)[1];
+		return null;
 	}
 
 	public static void addLayerToMap(String layer, WebView webview) {
 		String url = String.format("javascript: add_layer('%s')", layer);
 		webview.loadUrl(url);
 	}
-	public static void addBeanPlaceToMap(BeanShape place, WebView webview) {
+	public static void addBeanPlaceToMap(Context context, BeanShape place, WebView webview) {
 		String coords = place.getCoords();
 		coords = coords.replaceAll("\\s+","");
 		String[] coordsArr = coords.split(",");
@@ -140,7 +135,7 @@ public class Utils {
 		String type = place.getType();
 		String description = place.getDescription();
 		
-		type = Utils.parsePlaceType(type);
+		type = Utils.parsePlaceType(context, type);
 		
 		String url = String.format("javascript: add_place(%s, %s, '%s', '%s', '%s')",
 				coordsArr[0],
