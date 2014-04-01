@@ -171,6 +171,10 @@ public class Utils {
 		return getArrayListFromXMLData(context, "types.xml");		
 	}
 	
+	public static ArrayList<String[]> getLayers(Context context) {
+		return getArrayListFromXMLData(context, "layers.xml");		
+	}
+	
 	public static boolean isKeyInsideArrayList(ArrayList<String[]> arraylist, String key) {
 		for (int i = 0; i < arraylist.size(); i++)
 			if (arraylist.get(i)[0].equals(key))

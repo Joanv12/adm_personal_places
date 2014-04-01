@@ -15,7 +15,7 @@
             android:id="@+id/Label"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="hola" />
+            android:text="Hello World, this is a debug screen!" />
     </LinearLayout>
 
 </ScrollView>
