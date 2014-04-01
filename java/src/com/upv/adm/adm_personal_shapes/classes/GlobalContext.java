@@ -1,5 +1,6 @@
 package com.upv.adm.adm_personal_shapes.classes;
 
+import java.util.ArrayList;
 import java.util.Hashtable;
 import android.app.Activity;
 import android.content.Context;
@@ -21,8 +22,9 @@ public class GlobalContext {
 	
 	private static CustomListItem[] countriesListviewItems = null;
 	private static CustomListItem[] gendersListviewItems = null;
-	private static CustomListItem[] typesData = null;
 	private static CustomListItem[] layersData = null;
+	private static CustomListItem[] typesData = null;
+	private static CustomListItem[] plotsData = null;
 
 	public static class PREF {
 
@@ -93,15 +95,26 @@ public class GlobalContext {
 		return gendersListviewItems;
 	}
 	
+	public static CustomListItem[] getLayersData() {
+		if (layersData == null)
+			layersData = Utils.getListViewItemsFromXMLData("layers.xml");
+		return layersData;
+	}
+	
+	public static CustomListItem[] getPlotsData() {
+		if (plotsData == null) {
+			ArrayList<BeanShape> plots = SQLite.getPlots();
+			plotsData = new CustomListItem[plots.size()];
+			for (int i = 0; i < plots.size(); i++)
+				plotsData[i] = new CustomListItem(String.valueOf(plots.get(i).getId()), plots.get(i).getName());
+		}
+		return plotsData;
+	}
+	
 	public static CustomListItem[] getTypesData() {
 		if (typesData == null)
 			typesData = Utils.getListViewItemsFromXMLData("types.xml");
 		return typesData;
 	}
 	
-	public static CustomListItem[] getLayersData() {
-		if (layersData == null)
-			layersData = Utils.getListViewItemsFromXMLData("layers.xml");
-		return layersData;
-	}
 }
