@@ -24,9 +24,9 @@ public class debug01_general extends Activity {
 		SQLite.staticInitialization(getApplicationContext());
 		
 
-		ArrayList<String> visible_types = SQLite.getVisiblePlaceTypes();		
+		ArrayList<String[]> layers = Utils.getLayers(getApplicationContext());
 		
-		System.out.println("hello world");
+		System.out.println("Nothing to show.");
 
 	}
 }
