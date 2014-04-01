@@ -27,6 +27,9 @@ public class screen21 extends CustomActionBarActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState,R.layout.screen21);
+		GlobalContext.setContext(getApplicationContext());
+		SQLite.staticInitialization();
+
 		initControls();
 		fillFields ();
 	}

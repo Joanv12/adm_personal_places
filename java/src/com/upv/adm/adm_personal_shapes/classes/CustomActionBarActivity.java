@@ -44,7 +44,7 @@ public class CustomActionBarActivity extends ActionBarActivity implements IActiv
 		super.onCreate(savedInstanceState);
 		setContentView(layout);
 		GlobalContext.setContext(getApplicationContext());
-		SQLite.staticInitialization(getApplicationContext());
+		SQLite.staticInitialization();
 		
 		menuOptions = new String[] {
 				"Inicio",

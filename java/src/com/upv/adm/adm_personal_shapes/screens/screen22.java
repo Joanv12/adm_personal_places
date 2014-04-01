@@ -7,6 +7,8 @@ import android.widget.Button;
 
 import com.upv.adm.adm_personal_shapes.R;
 import com.upv.adm.adm_personal_shapes.classes.CustomActionBarActivity;
+import com.upv.adm.adm_personal_shapes.classes.GlobalContext;
+import com.upv.adm.adm_personal_shapes.classes.SQLite;
 
 public class screen22 extends CustomActionBarActivity{
 
@@ -20,6 +22,8 @@ public class screen22 extends CustomActionBarActivity{
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState, R.layout.screen22);
+		GlobalContext.setContext(getApplicationContext());
+		SQLite.staticInitialization();
 		
 		//Utils.addBeanPlotToMap(plot,webview_map);
 		initControls();

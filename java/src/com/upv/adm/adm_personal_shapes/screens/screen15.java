@@ -14,6 +14,8 @@ import android.widget.TimePicker;
 
 import com.upv.adm.adm_personal_shapes.R;
 import com.upv.adm.adm_personal_shapes.classes.CustomActionBarActivity;
+import com.upv.adm.adm_personal_shapes.classes.GlobalContext;
+import com.upv.adm.adm_personal_shapes.classes.SQLite;
 
 public class screen15 extends CustomActionBarActivity {
 
@@ -60,6 +62,9 @@ public class screen15 extends CustomActionBarActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState,R.layout.screen15);
+		GlobalContext.setContext(getApplicationContext());
+		SQLite.staticInitialization();
+
 		initControls();
 	}
 	

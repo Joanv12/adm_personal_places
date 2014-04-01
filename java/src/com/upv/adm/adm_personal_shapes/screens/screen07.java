@@ -32,9 +32,10 @@ public class screen07 extends CustomActionBarActivity {
 				list_plots,
 				list_layers;
 	
-	private CustomListItem[] options_places;
-	private ArrayList<BeanShape> options_plots;
-	private CustomListItem[] options_layers;
+	private CustomListItem[] 
+			options_places,
+			options_plots,
+			options_layers;
 
 	private WebView webview_map;
 	
@@ -50,6 +51,9 @@ public class screen07 extends CustomActionBarActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState, R.layout.screen07);
+		GlobalContext.setContext(getApplicationContext());
+		SQLite.staticInitialization();
+
 		initControls();
 		//UtilsUpdateMap(webview_map); 
 	}
@@ -68,8 +72,8 @@ public class screen07 extends CustomActionBarActivity {
 	public void checkVisiblePlots() {
 		ArrayList<BeanShape> visible_plots = SQLite.getVisiblePlots();
 		for (int i = 0; i < list_plots.getCount(); i++) {
-			BeanShape item = (BeanShape)list_plots.getItemAtPosition(i);
-			if (visible_plots.contains(item.getId()))
+			CustomListItem item = (CustomListItem)list_plots.getItemAtPosition(i);
+			if (visible_plots.contains(item.getKey()))
 				list_plots.setItemChecked(i, true);
 			else
 				list_plots.setItemChecked(i, false);
@@ -87,15 +91,12 @@ public class screen07 extends CustomActionBarActivity {
 		}
 	}
 	
-	
-	
 	public void initControls() {
 		
 		options_places = GlobalContext.getTypesData();
-		options_layers = GlobalContext.getTypesData(); // a cambiar
-	
-		options_plots = (ArrayList<BeanShape>) SQLite.getPlots();
-	
+		options_plots = GlobalContext.getTypesData();
+		options_layers = GlobalContext.getLayersData();
+
 		webview_map = (WebView) findViewById(R.id.webview_map);
 		webview_map.getSettings().setJavaScriptEnabled(true);
 		 
@@ -110,7 +111,7 @@ public class screen07 extends CustomActionBarActivity {
 		list_places.setAdapter(arrayAdapter_places);
 		
 		list_plots = new ListView(this);
-		ArrayAdapter<BeanShape> arrayAdapter_plots = new ArrayAdapter<BeanShape>(this, android.R.layout.simple_list_item_multiple_choice, options_plots);
+		ArrayAdapter<CustomListItem> arrayAdapter_plots = new ArrayAdapter<CustomListItem>(this, android.R.layout.simple_list_item_multiple_choice, options_plots);
 		list_plots.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 		list_plots.setAdapter(arrayAdapter_plots);
 		
@@ -143,7 +144,7 @@ public class screen07 extends CustomActionBarActivity {
 				builder_places.setTitle("Lugares");
 				builder_places.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 			           public void onClick(DialogInterface dialog, int id) {
-			        	   	ArrayList<String[]> all_types = Utils.getTypes(getApplicationContext());
+			        	   	ArrayList<String[]> all_types = Utils.getTypes();
 							ArrayList<String> selected_types = Utils.getSelectedKeys(list_places);
 							for (int i = 0; i < all_types.size(); i++) { 
 								if (selected_types.contains(all_types.get(i)[0]))
@@ -169,7 +170,7 @@ public class screen07 extends CustomActionBarActivity {
 				builder_plots.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int id) {
 						
-						ArrayList<String[]> all_plots = Utils.getTypes(getApplicationContext());
+						ArrayList<String[]> all_plots = Utils.getTypes();
 						
 			        	ArrayList<String> selected_plots = Utils.getSelectedKeys(list_plots);
 			        	
@@ -193,7 +194,7 @@ public class screen07 extends CustomActionBarActivity {
 				builder_layers.setTitle("Capas");
 				builder_layers.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 			        public void onClick(DialogInterface dialog, int id) {
-						ArrayList<String[]> all_layers = Utils.getLayers(getApplicationContext()); // a cambiar
+						ArrayList<String[]> all_layers = Utils.getLayers(); // a cambiar
 						ArrayList<String> selected_layers = Utils.getSelectedKeys(list_layers);
 							for (int i = 0; i < all_layers.size(); i++) { 
 								if (selected_layers.contains(all_layers.get(i)[0]))

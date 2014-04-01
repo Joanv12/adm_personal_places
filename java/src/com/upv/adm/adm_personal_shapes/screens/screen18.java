@@ -13,6 +13,8 @@ import android.widget.ListView;
 import com.upv.adm.adm_personal_shapes.R;
 import com.upv.adm.adm_personal_shapes.classes.CustomActionBarActivity;
 import com.upv.adm.adm_personal_shapes.classes.CustomListItem;
+import com.upv.adm.adm_personal_shapes.classes.GlobalContext;
+import com.upv.adm.adm_personal_shapes.classes.SQLite;
 import com.upv.adm.adm_personal_shapes.classes.Utils;
 
 public class screen18 extends CustomActionBarActivity {
@@ -31,6 +33,9 @@ public class screen18 extends CustomActionBarActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState, R.layout.screen18);
+		GlobalContext.setContext(getApplicationContext());
+		SQLite.staticInitialization();
+
 		initControls();
 	}
 	

@@ -9,6 +9,7 @@ import android.widget.Button;
 import com.upv.adm.adm_personal_shapes.R;
 import com.upv.adm.adm_personal_shapes.classes.CustomActionBarActivity;
 import com.upv.adm.adm_personal_shapes.classes.GlobalContext;
+import com.upv.adm.adm_personal_shapes.classes.SQLite;
 
 public class screen03 extends CustomActionBarActivity {
 
@@ -25,8 +26,7 @@ public class screen03 extends CustomActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState, R.layout.screen03);
 		GlobalContext.setContext(getApplicationContext());
-
-
+		SQLite.staticInitialization();
 
 		initControls();
 	}

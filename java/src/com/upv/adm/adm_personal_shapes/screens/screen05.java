@@ -138,6 +138,9 @@ public class screen05 extends CustomActionBarActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState, R.layout.screen05);
+		GlobalContext.setContext(getApplicationContext());
+		SQLite.staticInitialization();
+
 		initControls();
 		if (GlobalContext.shape_id != null) {
 			fillFields();

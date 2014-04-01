@@ -19,6 +19,8 @@ import android.widget.TextView;
 import com.upv.adm.adm_personal_shapes.R;
 import com.upv.adm.adm_personal_shapes.classes.BeanUser;
 import com.upv.adm.adm_personal_shapes.classes.CustomActionBarActivity;
+import com.upv.adm.adm_personal_shapes.classes.GlobalContext;
+import com.upv.adm.adm_personal_shapes.classes.SQLite;
 import com.upv.adm.adm_personal_shapes.classes.Utils;
 
 public class screen13 extends CustomActionBarActivity implements OnTouchListener {
@@ -37,6 +39,9 @@ public class screen13 extends CustomActionBarActivity implements OnTouchListener
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState, R.layout.screen13);
+		GlobalContext.setContext(getApplicationContext());
+		SQLite.staticInitialization();
+
 		initControls();
 	}
 	
