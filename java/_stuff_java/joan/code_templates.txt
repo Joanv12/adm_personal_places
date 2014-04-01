@@ -1,0 +1,4 @@
+SELECT * FROM `personal_shapes` WHERE `name` = 'pepe1'
+---
+SELECT * FROM `personal_shapes` WHERE `name` LIKE '%ep%'
+---

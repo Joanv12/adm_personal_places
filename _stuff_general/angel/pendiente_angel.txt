@@ -1,0 +1,6 @@
+estoy trabajando en el: screen02.java / protected void onPostExecute(String[] result)
+---
+he acabado de implementar el Alert para cuando hay un error en el registro
+screen02.java / line: 157
+---
+

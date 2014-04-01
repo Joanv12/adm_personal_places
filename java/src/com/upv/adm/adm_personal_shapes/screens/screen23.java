@@ -1,0 +1,23 @@
+package com.upv.adm.adm_personal_shapes.screens;
+
+import com.upv.adm.adm_personal_shapes.R;
+import com.upv.adm.adm_personal_shapes.classes.CustomActionBarActivity;
+
+import android.os.Bundle;
+
+//solicitudes pendientes de eventos
+
+public class screen23 extends CustomActionBarActivity {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+
+		super.onCreate(savedInstanceState, R.layout.screen23);
+		initControls();
+	}
+
+	public void initControls() {
+
+	}
+
+}

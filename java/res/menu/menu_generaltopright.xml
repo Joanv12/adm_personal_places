@@ -1,0 +1,39 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:sgoliver="http://schemas.android.com/apk/res-auto" >
+
+    <item
+        android:id="@+id/menu_new"
+        android:icon="@drawable/abc_ic_menu_moreoverflow_normal_holo_dark"
+        android:title="@string/options"
+        sgoliver:showAsAction="ifRoom">
+        <menu>
+            <item
+                android:id="@+id/SubMnuOpc1"
+                android:title="@string/SubMnuOpc1"/>
+            <item
+                android:id="@+id/SubMnuOpc2"
+                android:title="@string/SubMnuOpc2"/>
+            <item
+                android:id="@+id/SubMnuOpc3"
+                android:title="@string/SubMnuOpc3"/>
+        </menu>
+    </item>
+
+    <group android:id="@+id/group1" >
+        <item
+            android:id="@+id/itemOpciones"
+            android:title="@string/options">
+        </item>
+        <item
+            android:id="@+id/itemAyuda"
+            android:title="@string/help">
+        </item>
+    </group>
+
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:title="@string/label_settings"
+        sgoliver:showAsAction="never"/>
+
+</menu>

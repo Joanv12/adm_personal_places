@@ -1,0 +1,45 @@
+// los métodos onPreExecute() y onPostExecute() no son necesarios pero a veces
+// es muy conveniente usarlos 
+(new AsyncTask<Hashtable<String, String>, Void, String[]>() {
+	@Override
+	protected void onPreExecute() {
+	}
+	@Override
+	protected String[] doInBackground(Hashtable<String, String>... data) {
+	}
+	@Override
+	protected void onPostExecute(String[] result) {
+	}
+}).execute(data);
+--------------------------------
+pd = new ProgressDialog(getCurrentActivity());
+pd.setTitle("Comunicando con el servidor");
+pd.setMessage("Por favor, espere mientras procesamos su registro");
+pd.setCancelable(false);
+pd.setIndeterminate(true);
+pd.show();
+---
+if (pd!=null)
+	pd.dismiss();						
+--------------------------------
+AlertDialog ad = new AlertDialog.Builder(getCurrentActivity()).create();  
+ad.setCancelable(false);  
+ad.setMessage(
+		"No ha sido posible procesar su registro. El servidor ha devuelto el siguiente código de error:\n\n" +
+		result[1]
+);  
+ad.setButton(DialogInterface.BUTTON_NEUTRAL, "OK", new DialogInterface.OnClickListener() {  
+    @Override  
+    public void onClick(DialogInterface dialog, int which) {  
+        // whatever                      
+    }  
+});  
+ad.show();  
+--------------------------------
+try {
+	// the code here...
+}
+catch (Exception e) {
+	e.printStackTrace();
+}
+--------------------------------

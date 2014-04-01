@@ -1,0 +1,4 @@
+php_value date.timezone "Europe/Madrid"
+
+RewriteEngine on
+RewriteRule ^test_posts\.html$ test_posts.php

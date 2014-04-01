@@ -1,0 +1,70 @@
+no era necesario establecer ids en los xml usando como prefijo la pantalla actual
+porque el método: "findViewById" es un método de instancia y busca ids que estén
+dentro del View al que se le invoca el método, es por esto que también se puede
+llamar al método: "findViewById" anidadamente. Más adelante si hay tiempo pues
+quitar estos nombres de pantallas como prefijos
+---
+dentro del paquete screen sólo van archivos: screenXX.java, las cosas de depuración
+van en un paquete aparte con el prefijo o sufijo: debug
+---
+dentro del package: "com.upv.adm.adm_personal_shapes.screens" pueden haber:
+{screenXX.java}
+---
+dentro del package: "com.upv.adm.adm_personal_shapes.screens.debug" pueden haber:
+{debugXX.java, debugXX_<pequeña_descripción>.java, screenXX.java}
+---
+---
+en la carpeta "layout" pueden haber:
+{screenXX.xml, debugXX_screenXX.xml, debugXX_<pequeña_descripción>.xml, comp_<pequeña_descripción>.xml}
+"comp" significa: component
+Importante: fijarse que dentro de layout sólo hay tres tipos de cosas {screens, debugs y components}
+---
+en la carpeta "menu" peuden haber:
+{
+ - menu_screenXX.xml (si el menú pertenece a una pantalla en específico)
+ - menu_<pequeña_descripción>.xml (si el menú es común a múltiples pantallas)
+ - lo mismo que en los dos casos anteriores con el prefijo: "debug_"
+}
+---
+es muy importante que el mockflow sea un reflejo de la aplicación y viceversa
+---
+tener siempre abierto y a mano el archivo: code_templates.txt
+---
+Siempre recordar que para añadir una nueva pantalla y que sea del tipo: CustomActionBarActivity
+hay que usar la siguiente estructura XML (mantenerlo tal cual sino puede haber un caos que puede ser
+muy difícil de resolver)
+###
+---
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true" >
+
+	<!-- your custom layout here -->
+
+    </ScrollView>
+
+    <ListView
+        android:id="@+id/left_drawer"
+        android:layout_width="200dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="#111"
+        android:choiceMode="singleChoice"
+        android:paddingLeft="10dp" />
+
+</android.support.v4.widget.DrawerLayout>
+---
+###
+###
+---
+El uso de los strings se dejará para el final, mientras se especificará el texto manualmente,
+así todo es más cómodo y uno no desvía la atención cuando necesita estar concentrado
+---

@@ -1,0 +1,14 @@
+<types>
+	<type value="t01">Banco</type>
+	<type value="t02">Bar</type>
+	<type value="t03">Biblioteca</type>
+	<type value="t04">Cabina telefónica</type>
+	<type value="t05">Cine</type>
+	<type value="t06">Farmacia</type>
+	<type value="t07">Peluqueria</type>
+	<type value="t08">Restaurante</type>
+	<type value="t09">Supermercado</type>
+	<type value="t10">Universidad</type>
+	<type value="t11">Videoclub</type>
+	<type value="t12">Wifi gratis</type>
+</types>

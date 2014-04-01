@@ -1,0 +1,96 @@
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/edittext_profile_text" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="vertical" >
+
+			<Button
+				android:id="@+id/button_profile"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="5dp"
+				style="@style/mainButton"
+				android:drawableLeft="@drawable/icon_profile"
+				android:text="@string/button_profile"/>
+            
+			<Button
+				android:id="@+id/button_create"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="5dp"
+				style="@style/mainButton"
+				android:drawableLeft="@drawable/icon_create"
+				android:text="@string/button_create"/>
+            
+			<Button
+				android:id="@+id/button_list"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="5dp"
+				style="@style/mainButton"
+				android:drawableLeft="@drawable/icon_list"
+				android:text="@string/button_list"/>
+            
+			<Button
+				android:id="@+id/button_map"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="5dp"
+				style="@style/mainButton"
+				android:drawableLeft="@drawable/icon_map"
+				android:text="@string/button_map"/>
+            
+			<Button
+				android:id="@+id/button_friends"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="5dp"
+				style="@style/mainButton"
+				android:drawableLeft="@drawable/icon_friends"
+				android:text="@string/button_friends"/>
+            
+			<Button
+				android:id="@+id/button_events"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="5dp"
+				style="@style/mainButton"
+				android:drawableLeft="@drawable/icon_events"
+				android:text="@string/button_events"/>
+            
+			<Button
+				android:id="@+id/button_search"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="5dp"
+				style="@style/mainButton"
+				android:drawableLeft="@drawable/icon_search"
+				android:text="@string/button_search"/>
+            
+			</LinearLayout>
+    </ScrollView>
+    <!-- Menú Lateral -->
+
+    <ListView
+        android:id="@+id/left_drawer"
+        android:layout_width="200dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="#111"
+        android:paddingLeft="10dp"
+        android:choiceMode="singleChoice" />
+
+</android.support.v4.widget.DrawerLayout>

@@ -1,0 +1,96 @@
+//comentario//un lugar en la web se almacena solo si se comparte, sino no.
+
+
+-----
+una funcion que recibe un String y guarde ese texto 
+GlobalContext.saveTextCoordenates(edittext);
+----
+
+una funcion que permita solamente guardar las coordenadas con 7 decimales de una pantalla a otra; 
+tiene que leer latitud;longitud salto de linea latitud;longitud
+ejemplo:
+
+40.2455453;0.4536434
+40.2485343;0.4455343
+
+
+-----
+una funcion que recibe un BeanShape place y guarde un lugar en local a traves de un BeanShape place
+SQLite.SaveShape(BeanShape place)
+
+una funcion que recibe un BeanShape plot y guarde una parcela en local a traves de un BeanShape plot
+SQLite.SaveShape(BeanShape plot)
+-----
+
+-----
+una funcion que recibe el id del usuario logeado y devuelva un arraylist (list_friends) muestre una lista de amigos ordenados alfabeticamente de ese usuario en la web
+BeanUser.seeFriends(Integer id, ArrayList <BeanUsers> list_friends);
+
+una funcion en SQLite que devuelva una arraylist (list_places) de lugares ordenados alfabeticamente en local
+SQLite.seePlaces();
+
+una funcion en SQLite que devuelva una arraylist (list_plots) de parcelas ordenados alfabeticamente en local
+SQLite.seePlaces();
+-----
+
+
+-----
+una funcion que recibe un String de busqueda y devuelve un arraylist (list_users) de los amigos de un usuario logeado almacenados en la base de datos web
+BeanUser.searchUsers(String);
+
+una funcion que recibe un String de busqueda y devuelve un arraylist (list_shapes) de los lugares y parcelas almacenados en la base de datos local
+SQLite.searchShapes(String);
+-----
+
+-----
+una funcion que recibe un arraylist de ids de usuarios y elimine los amigos de un usuario logeado almacenados en la base de datos web
+BeanUser.removeUsers(list_removefriends);
+
+una funcion que recibe un integer id de la base de datos y elimine un lugar personal en local
+BeanSQLite.removePlace(remove_place);
+
+una funcion que recibe un integer id de la base de datos y elimine una parcela en local
+BeanSQLite.removePlot(remove_plot);
+-----
+
+-----
+una función que reciba un lugar o una parcela y la muestre en un webview:
+Utils.addBeanPlotToMap(BeahShape plot, WebView webview_map);
+-----
+ArrayList<String[]> Utils.getLayers();
+{
+["l01", "Fuentes Bebedero"],
+["l02", "Valenbisi"],
+}
+SQLite.setVisible(BeanShape shape);
+SQLite.setVisible(String layer);
+
+onCreate 7
+ArrayList<BeanShape> SQLite.getVisiblePlaces()
+ArrayList<BeanShape> SQLite.getVisiblePlots()
+ArrayList<BeanShape> SQLite.getVisibleLayers()
+
+por cada uno hacer un loop con algo parecido a: Utils.addBeanPlotToMap(BeahShape plot, WebView webview_map);
+-----
+
+"Compartir" - una funcion que recibe un ArrayList Hashtable (data) (lista de campos) de un lugar y lo guarda en la web 
+		DatabaseProxy.save_place(data[0]);
+
+"Compartir" - una funcion que recibe un ArrayList Hashtable (data) (lista de campos) de una parcela y lo guarda en la web  
+		DatabaseProxy.save_place(data[0]);
+
+
+una funcion que recibe un ArrayList Hashtable (data) (lista de campos) para crear y enviar un codigo QR de un lugar o parcela seleccionado en la web 
+BeanShape.createFillQR(data[0]);
+---
+una funcion que recibe una lista de BeanShape y muestre en un mapa esa lista las capas seleccionadas
+public void Utils.displayShapesAndLayersInMap(Webview webview, ArrayList<BeanShape> shapes, ArrayList<String> layerscodes) {
+
+}
+---
+una funcion que recibe un String y devuelve unas coordenadas para que lo centro y busque en un mapa el nombre de un lugar o una parcela en concreto
+BeanMap.searchShape(name);
+
+
+
+
