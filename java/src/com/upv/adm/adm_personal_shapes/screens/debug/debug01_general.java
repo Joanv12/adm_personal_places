@@ -1,11 +1,16 @@
 package com.upv.adm.adm_personal_shapes.screens.debug;
 
+import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.List;
 
 import com.upv.adm.adm_personal_shapes.R;
 import com.upv.adm.adm_personal_shapes.classes.BeanShape;
+import com.upv.adm.adm_personal_shapes.classes.CustomListItem;
 import com.upv.adm.adm_personal_shapes.classes.GlobalContext;
 import com.upv.adm.adm_personal_shapes.classes.SQLite;
+import com.upv.adm.adm_personal_shapes.classes.Utils;
+
 import android.app.Activity;
 import android.os.Bundle;
 
@@ -18,11 +23,7 @@ public class debug01_general extends Activity {
 		GlobalContext.setContext(getApplicationContext());
 		SQLite.staticInitialization(getApplicationContext());
 		
-		//BeanShape shape = new BeanShape((long) 15, "Cantina Mariachi Modificado", "Tapas y más tapas", "t01", "0.1234, 5.6789", null);
-		//long result = SQLite.saveShape(shape);
-		
-		List<BeanShape> shapes = SQLite.getShapes("WHERE `id` > 10");
-		
+		ArrayList<String[]> types = Utils.getTypes(getApplicationContext());
 		
 		System.out.println("hello world");
 

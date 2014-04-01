@@ -41,15 +41,10 @@
         <activity
             android:name="com.upv.adm.adm_personal_shapes.screens.screen05"
             android:label="@string/title_screen05" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name="com.upv.adm.adm_personal_shapes.screens.screen07"
             android:label="@string/title_screen07" > 
-            
         </activity>
         <activity
             android:name="com.upv.adm.adm_personal_shapes.screens.screen12"
@@ -82,7 +77,6 @@
         <activity
             android:name="com.upv.adm.adm_personal_shapes.screens.screen22"
             android:label="@string/title_screen22" >
-            
         </activity>
         <activity
             android:name="com.upv.adm.adm_personal_shapes.screens.screen23"
@@ -91,6 +85,10 @@
         <activity
             android:name="com.upv.adm.adm_personal_shapes.screens.debug.debug01_general"
             android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name="com.upv.adm.adm_personal_shapes.screens.debug.debug02_map"
@@ -99,10 +97,6 @@
         <activity
             android:name="com.upv.adm.adm_personal_shapes.screens.debug.debug03_elementsvisibility"
             android:label="@string/app_name" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

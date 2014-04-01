@@ -83,19 +83,19 @@ public class GlobalContext {
 
 	public static CustomListItem[] getCountriesListviewItems() {
 		if (countriesListviewItems == null)
-			countriesListviewItems = Utils.getListViewItemsFromXMLData(context, "countries.xml", "country");
+			countriesListviewItems = Utils.getListViewItemsFromXMLData(context, "countries.xml");
 		return countriesListviewItems;
 	}
 	
 	public static CustomListItem[] getGendersListviewItems() {
 		if (gendersListviewItems == null)
-			gendersListviewItems = Utils.getListViewItemsFromXMLData(context, "genders.xml", "gender");
+			gendersListviewItems = Utils.getListViewItemsFromXMLData(context, "genders.xml");
 		return gendersListviewItems;
 	}
 	
 	public static CustomListItem[] getTypesData() {
 		if (typesData == null)
-			typesData = Utils.getListViewItemsFromXMLData(context, "types.xml", "type");
+			typesData = Utils.getListViewItemsFromXMLData(context, "types.xml");
 		return typesData;
 	}
 }

@@ -3,7 +3,9 @@ package com.upv.adm.adm_personal_shapes.classes;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.Hashtable;
+import java.util.Iterator;
 import java.util.Properties;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
@@ -61,22 +63,28 @@ public class Utils {
 		return xmlString;
 	}
 	
-	public static CustomListItem[] getListViewItemsFromXMLData(Context context, String xmlFileName, String itemName) {
-
+	public static ArrayList<String[]> getArrayListFromXMLData(Context context, String xmlFileName) {
 		XMLParser parser = new XMLParser();
 		String XMLContent = Utils.getXML(context, xmlFileName);
 		Document doc = parser.getDomElement(XMLContent);
-		 
-		NodeList nl = doc.getElementsByTagName(itemName);
-		CustomListItem[] result = new CustomListItem[nl.getLength()];
-		
-		for (int i = 0; i < nl.getLength(); i++) {
-			Node itemNode = nl.item(i);	
-			String key = itemNode.getAttributes().getNamedItem("value").getTextContent();
-			String text = itemNode.getTextContent();
-			result[i] = new CustomListItem(key, text);
+		NodeList nl = doc.getFirstChild().getChildNodes();
+		ArrayList<String[]> result = new ArrayList<String[]>();
+		for (int i = 0; nl != null && i < nl.getLength(); i++) {
+			if (nl.item(i).getNodeType() == Node.ELEMENT_NODE) {
+				Node itemNode = nl.item(i);	
+				String key = itemNode.getAttributes().getNamedItem("value").getTextContent();
+				String text = itemNode.getTextContent();
+				result.add(new String[]{key, text});
+			}
 		}
-		
+		return result;
+	}
+	
+	public static CustomListItem[] getListViewItemsFromXMLData(Context context, String xmlFileName) {
+		ArrayList<String[]> data = getArrayListFromXMLData(context, xmlFileName);
+		CustomListItem[] result = new CustomListItem[data.size()];
+		for (int i = 0; i < data.size(); i++)
+			result[i] = new CustomListItem(data.get(i)[0], data.get(i)[1]);
 		return result;
 	}
 	
@@ -164,4 +172,7 @@ public class Utils {
 		webview.loadUrl("javascript: initialize_map()");		
 	}
 	
+	public static ArrayList<String[]> getTypes(Context context) {
+		return getArrayListFromXMLData(context, "types.xml");		
+	}
 }
