@@ -26,7 +26,7 @@ public class debug01_general extends Activity {
 
 		ArrayList<String[]> layers = Utils.getLayers(getApplicationContext());
 		
-		System.out.println("hello world");
+		System.out.println("Nothing to show.");
 
 	}
 }
