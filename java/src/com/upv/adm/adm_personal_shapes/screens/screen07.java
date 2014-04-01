@@ -89,19 +89,28 @@ public class screen07 extends CustomActionBarActivity {
 			builder_places.setTitle("Lugares");
 			builder_places.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 		           public void onClick(DialogInterface dialog, int id) {
-		        		ArrayList<String> places_type = Utils.getSelectedKeys(list_places);
-		        		
-		        		for (int i = 0; i < places_type.size(); i++){
-		        			
-		        			String place_type = places_type.get(i);
-
-		        		}
-
-		        				
-		        		//SQLite.setPlaceTypeVisibility(place_type, visible)
-		        		//UtilsUpdateMap(webview_map); // WebView webview_map
-		        		//llamar también a la función anterior en el momento de carga de esta activity para que
-		        		//al usuario se le muestre su mapa de la forma en que él lo tenía configurado de antes
+		        	   
+		        	   	ArrayList<String[]> all_types = Utils.getTypes(getApplicationContext());
+		        	   	
+						ArrayList<String> places_type = Utils.getSelectedKeys(list_places);
+						
+						
+						for (int i = 0; i < all_types.size(); i++) { 
+							
+							
+		           		}
+						
+						for (int i = 0; i < places_type.size(); i++){
+							
+							String place_type = places_type.get(i);
+						
+						}
+						
+								
+						//SQLite.setPlaceTypeVisibility(place_type, visible)
+						//UtilsUpdateMap(webview_map); // WebView webview_map
+						//llamar también a la función anterior en el momento de carga de esta activity para que
+						//al usuario se le muestre su mapa de la forma en que él lo tenía configurado de antes
 		        		
 		           }
 		       });
