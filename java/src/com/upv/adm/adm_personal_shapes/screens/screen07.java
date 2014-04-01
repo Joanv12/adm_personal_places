@@ -65,6 +65,17 @@ public class screen07 extends CustomActionBarActivity {
 		}
 	}
 	
+	public void checkVisiblePlots() {
+		ArrayList<BeanShape> visible_plots = SQLite.getVisiblePlots();
+		for (int i = 0; i < list_plots.getCount(); i++) {
+			BeanShape item = (BeanShape)list_plots.getItemAtPosition(i);
+			if (visible_plots.contains(item.getId()))
+				list_plots.setItemChecked(i, true);
+			else
+				list_plots.setItemChecked(i, false);
+		}
+	}
+	
 	public void checkVisibleLayers() {
 		ArrayList<String> visible_layers = SQLite.getVisibleLayers();
 		for (int i = 0; i < list_layers.getCount(); i++) {
@@ -76,16 +87,7 @@ public class screen07 extends CustomActionBarActivity {
 		}
 	}
 	
-	public void checkVisiblePlots() {
-		ArrayList<BeanShape> visible_plots = SQLite.getVisiblePlots();
-		for (int i = 0; i < list_plots.getCount(); i++) {
-			CustomListItem item = (CustomListItem)list_plots.getItemAtPosition(i);
-			if (visible_plots.contains(item.getKey()))
-				list_plots.setItemChecked(i, true);
-			else
-				list_plots.setItemChecked(i, false);
-		}
-	}
+	
 	
 	public void initControls() {
 		
@@ -191,7 +193,7 @@ public class screen07 extends CustomActionBarActivity {
 				builder_layers.setTitle("Capas");
 				builder_layers.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 			        public void onClick(DialogInterface dialog, int id) {
-						ArrayList<String[]> all_layers = Utils.getTypes(getApplicationContext()); // a cambiar
+						ArrayList<String[]> all_layers = Utils.getLayers(getApplicationContext()); // a cambiar
 						ArrayList<String> selected_layers = Utils.getSelectedKeys(list_layers);
 							for (int i = 0; i < all_layers.size(); i++) { 
 								if (selected_layers.contains(all_layers.get(i)[0]))
