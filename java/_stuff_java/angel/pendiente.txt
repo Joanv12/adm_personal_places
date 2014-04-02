@@ -1,5 +1,2 @@
-ArrayList<String[]> Utils.getLayers();
-{
-["l01", "Fuentes Bebedero"],
-["l02", "Valenbisi"],
-}
+he acabado de crear las funciones de manipulación del código QR en Utils.java
+---

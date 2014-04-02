@@ -6,7 +6,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="8"
+        android:minSdkVersion="9"
         android:targetSdkVersion="18" />
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -49,10 +49,6 @@
             android:name="com.upv.adm.adm_personal_shapes.screens.screen07"
             android:label="@string/title_screen07"
             android:noHistory="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name="com.upv.adm.adm_personal_shapes.screens.screen12"
@@ -102,6 +98,10 @@
         <activity
             android:name="com.upv.adm.adm_personal_shapes.screens.debug.debug01_general"
             android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name="com.upv.adm.adm_personal_shapes.screens.debug.debug02_map"
