@@ -149,7 +149,6 @@ public class screen05 extends CustomActionBarActivity {
 		
 		button_map = (Button) findViewById(R.id.button_map);
 		button_coordinates = (Button) findViewById(R.id.button_coordinates);
-
 		button_share = (ImageButton) findViewById(R.id.button_send);
 		button_save = (ImageButton) findViewById(R.id.button_save);
 		button_delete = (ImageButton) findViewById(R.id.button_delete);

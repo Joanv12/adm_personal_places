@@ -42,8 +42,7 @@
         </activity>
         <activity
             android:name="com.upv.adm.adm_personal_shapes.screens.screen05"
-            android:label="@string/title_screen05"
-            android:noHistory="true" >
+            android:label="@string/title_screen05">
              <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
