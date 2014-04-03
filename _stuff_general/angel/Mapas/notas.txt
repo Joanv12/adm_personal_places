@@ -1,0 +1,71 @@
+Para resolver problemas con el portapapeles (copiado/pegado):
+cmd /c "echo off | clip"
+---
+Configuración del Quantum GIS
+Dentro de las propiedades de la capa:
+Coordinate reference system: "ETRS89 / UTM zone 30N (EPSG:25830)" ó "ETRS89 (EPSG:4258)"
+       Data source encoding: "ISO-8859-1"
+---
+http://mappinggis.com/2012/08/como-crear-un-mapa-con-google-fusion-tables/
+- Es necesario hacer: File/Share.../Privaciad = [Cualquiera con el link]
+- En el Google Fusion Tables es posible que para que el link del iframe funcione
+bien sea necesario duplicar la tabla. Borrar la anterior luego y renombrar. Esto
+es para cambiar de GEOCODABLE a KML.
+(aunque tener en cuenta que al final, apareciendo: GEOCODABLE sí que ha sido posible ver el mapa (confirmado))
+---
+Para trabajar más cómodo instalar:
+- MockFlow (Desktop version)
+- Google Drive para subir los archivos KML más fácilmente
+---
+Catastro:
+https://www.sedecatastro.gob.es/OVCFrames.aspx?TIPO=Tit&Dest=19
+---
+Para que salga el listado de capas, especificar:
+Provincia: VALENCIA
+Municipio: Valencia
+(es probable que sea necesario insistir varias veces)
+Acceder con el certificado: FNMT
+---
+Lo siguiente es para convertir archivos 
+usar preferentemente este:
+chcp 1252
+"C:\Program Files (x86)\FWTools2.4.7\bin\ogr2ogr" --config SHAPE_ENCODING "ISO-8859-1" -f "KML" "D:\_Sistema\Administrador\Mis documentos\Dropbox\ADM\shp files\elementos_lineales.kml" "D:\_Sistema\Administrador\Mis documentos\Dropbox\ADM\shp files\elementos_lineales.shp"
+"C:\Program Files (x86)\FWTools2.4.7\bin\ogr2ogr" --config SHAPE_ENCODING "ISO-8859-1" -f "KML" "D:\_Sistema\Administrador\Mis documentos\Dropbox\ADM\shp files\elementos_lineales.kml" "D:\_Sistema\Administrador\Mis documentos\Dropbox\ADM\shp files\elementos_lineales.shp"
+---
+"C:\Program Files (x86)\FWTools2.4.7\bin\ogr2ogr" --config SHAPE_ENCODING "UTF-8" -f "KML" "D:\_Sistema\Administrador\Mis documentos\Dropbox\ADM\shp files\elementos_lineales.kml" "D:\_Sistema\Administrador\Mis documentos\Dropbox\ADM\shp files\elementos_lineales.shp"
+"C:\Program Files (x86)\FWTools2.4.7\bin\ogr2ogr" -lco ENCODING=UTF-8 -f "KML" "D:\_Sistema\Administrador\Mis documentos\Dropbox\ADM\shp files\elementos_lineales.kml" "D:\_Sistema\Administrador\Mis documentos\Dropbox\ADM\shp files\elementos_lineales.shp"
+-
+"C:\Program Files (x86)\FWTools2.4.7\bin\ogr2ogr" -f "KML" "D:\_Sistema\Administrador\Mis documentos\Dropbox\ADM\shp files\elementos_lineales.kml" "D:\_Sistema\Administrador\Mis documentos\Dropbox\ADM\shp files\elementos_lineales.shp"
+"C:\Program Files (x86)\FWTools2.4.7\bin\ogr2ogr" -lco ENCODING=UTF-8 -f "KML" "D:\_Sistema\Administrador\Mis documentos\Dropbox\ADM\shp files\elementos_lineales.kml" "D:\_Sistema\Administrador\Mis documentos\Dropbox\ADM\shp files\elementos_lineales.shp"
+"C:\Program Files (x86)\FWTools2.4.7\bin\ogr2ogr" -lco ENCODING=LATIN1 -f "KML" "D:\_Sistema\Administrador\Mis documentos\Dropbox\ADM\shp files\elementos_lineales.kml" "D:\_Sistema\Administrador\Mis documentos\Dropbox\ADM\shp files\elementos_lineales.shp"
+"C:\Program Files (x86)\FWTools2.4.7\bin\ogr2ogr" -lco ENCODING=ISO-8859-1 -f "KML" "D:\_Sistema\Administrador\Mis documentos\Dropbox\ADM\shp files\elementos_lineales.kml" "D:\_Sistema\Administrador\Mis documentos\Dropbox\ADM\shp files\elementos_lineales.shp"
+---
+
+
+https://dl.dropboxusercontent.com/u/50186541/ConstruccionesLineales.KML
+https%3A%2F%2Fdl.dropboxusercontent.com%2Fu%2F50186541%2FConstruccionesLineales.KML
+
+https://www.google.com/fusiontables/exporttable?query=select+col9+from+1-mKRPYu4ib0eiKQ38kQ4aH3ujSx4ETJTCE6RBg4&o=kml&g=col9&styleId=2&templateId=3
+https%3A%2F%2Fwww.google.com%2Ffusiontables%2Fexporttable%3Fquery%3Dselect%2Bcol9%2Bfrom%2B1-mKRPYu4ib0eiKQ38kQ4aH3ujSx4ETJTCE6RBg4%26o%3Dkml%26g%3Dcol9%26styleId%3D2%26templateId%3D3
+
+http://pppaaa.tk/adm/SamplesInMaps4.kml
+http%3A%2F%2Fpppaaa.tk%2Fadm%2FSamplesInMaps.kml
+
+
+
+<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;hl=en&amp;q=http:%2F%2Fkmlscribe.googlepages.com%2FSamplesInMaps.kml&amp;ie=UTF8&amp;om=1&amp;t=m&amp;ll=36.879621,-53.4375&amp;spn=103.772916,208.476563&amp;output=embed"></iframe>
+<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;hl=en&amp;q=https%3A%2F%2Fdl.dropboxusercontent.com%2Fu%2F50186541%2FConstruccionesLineales.KML&amp;ie=UTF8&amp;om=1&amp;t=m&amp;ll=36.879621,-53.4375&amp;spn=103.772916,208.476563&amp;output=embed"></iframe>
+<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https%3A%2F%2Fwww.google.com%2Ffusiontables%2Fexporttable%3Fquery%3Dselect%2Bcol9%2Bfrom%2B1-mKRPYu4ib0eiKQ38kQ4aH3ujSx4ETJTCE6RBg4%26o%3Dkml%26g%3Dcol9%26styleId%3D2%26templateId%3D3"></iframe>
+
+---
+
+http://localhost/adm/map.php?lat=39.16241&lng=-0.25389&zoom=13&tableId=1-mKRPYu4ib0eiKQ38kQ4aH3ujSx4ETJTCE6RBg4
+---
+
+
+
+"C:\Program Files (x86)\FWTools2.4.7\bin\ogr2ogr" -f "KML" "D:\_Sistema\Administrador\Mis documentos\Dropbox\ADM\shp files\elementos_lineales.kml" "D:\_Sistema\Administrador\Mis documentos\Dropbox\ADM\shp files\elementos_lineales.shp"
+
+
+
+-lco ENCODING=UTF-8

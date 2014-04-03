@@ -1,5 +1,8 @@
 package com.upv.adm.adm_personal_shapes.classes;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -7,8 +10,10 @@ import java.util.Properties;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import com.google.zxing.BarcodeFormat;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
 import android.util.SparseBooleanArray;
 import android.webkit.WebView;
 import android.widget.ListView;
@@ -181,4 +186,66 @@ public class Utils {
 		return false;
 	}
 	
+	public static String getTextFromQR(Bitmap bitmap) {
+		try {
+			ByteArrayOutputStream stream = new ByteArrayOutputStream();
+			bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+			byte[] imageData = stream.toByteArray();			
+			return QRCodeDecoder.decode(imageData);
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public static Bitmap getQRFromText(String text) {
+		try {
+			QRCodeEncoder qrCodeEncoder = new QRCodeEncoder(text, null, Contents.Type.TEXT, BarcodeFormat.QR_CODE.toString(), 300);
+			return qrCodeEncoder.encodeAsBitmap();
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public static String getTempFilePathFromBitmap(Bitmap bitmap) {
+		try {
+			File tempFile = File.createTempFile("temp_file_", ".jpg");
+			FileOutputStream fos = new FileOutputStream(tempFile);
+			bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+			fos.close();
+			return tempFile.getPath();
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	// Opcionalmente usar junto con: Utils.getTempFilePathFromBitmap(bitmap)
+	public static Bitmap getQRFromPlace(BeanShape place) {
+		String name = place.getName();
+		name = name.substring(0, 40);
+		String desc = place.getDescription();
+		desc = desc.substring(0, 100);
+		String type = place.getType();
+		String coords = place.getCoords();
+		String[] coordsArr = coords.split(";");
+		coords = coordsArr[0];
+		String text = name + "||" + desc + "||" + type + "||" + coords;
+		return getQRFromText(text);
+	}
+
+	public static BeanShape getPlaceFromQR(Bitmap bitmap) {
+		String text = getTextFromQR(bitmap);
+		String[] data = text.split("\\|\\|");
+		String name = data[0];
+		String desc = data[1];
+		String type = data[2];
+		String coords = data[3];
+		return new BeanShape(null, name, desc, type, coords, null);
+	}
+
 }
