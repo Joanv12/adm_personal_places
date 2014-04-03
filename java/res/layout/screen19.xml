@@ -25,23 +25,18 @@
 
         <!-- List View -->
 
+        <Button
+            android:id="@+id/button_search"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:text="@string/button_search" />
+
         <ListView
             android:id="@+id/listview_search"
             android:layout_width="fill_parent"
-            android:layout_height="285dp" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="right"
-            android:orientation="horizontal" >
-
-            <Button
-                android:id="@+id/button_searchfriends"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/button_searchfriends" />
-        </LinearLayout>
+            android:layout_height="match_parent" />
     </LinearLayout>
 
     <ListView

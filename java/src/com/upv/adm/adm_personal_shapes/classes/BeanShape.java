@@ -81,7 +81,7 @@ public class BeanShape implements IListItem {
 
 	@Override
 	public String getKey() {
-		return getKey();
+		return String.valueOf(getId());
 	}
 
 	@Override

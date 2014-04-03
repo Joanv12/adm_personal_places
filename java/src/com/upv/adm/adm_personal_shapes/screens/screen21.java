@@ -47,11 +47,8 @@ public class screen21 extends CustomActionBarActivity {
 	
 		button_share = (Button) findViewById(R.id.button_send);
 		button_use = (Button) findViewById(R.id.button_use);
-
 		edittext_coordinates = (EditText) findViewById(R.id.edittext_coordinates);
 		coords = edittext_coordinates.getText().toString();
-
-		
 		button_share.setOnClickListener(new OnClickListener() {
 		    @Override
 		    public void onClick(View v) {

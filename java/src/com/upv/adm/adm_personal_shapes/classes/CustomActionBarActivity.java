@@ -5,7 +5,6 @@ import com.upv.adm.adm_personal_shapes.screens.screen03;
 import com.upv.adm.adm_personal_shapes.screens.screen04;
 import com.upv.adm.adm_personal_shapes.screens.screen05;
 import com.upv.adm.adm_personal_shapes.screens.screen07;
-import com.upv.adm.adm_personal_shapes.screens.screen12;
 import com.upv.adm.adm_personal_shapes.screens.screen13;
 import com.upv.adm.adm_personal_shapes.screens.screen19;
 import com.upv.adm.adm_personal_shapes.R;
@@ -53,7 +52,6 @@ public class CustomActionBarActivity extends ActionBarActivity implements IActiv
 				"Lista",
 				"Mapa",
 				"Amigos",
-				"Eventos",
 				"Buscador"
 		};
 		drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -100,10 +98,6 @@ public class CustomActionBarActivity extends ActionBarActivity implements IActiv
 						startActivity(in13);
 						break;
 					case 6:
-						Intent in12 = new Intent(getApplicationContext(), screen12.class);
-						startActivity(in12);
-						break;
-					case 7:
 						Intent in19 = new Intent(getApplicationContext(), screen19.class);
 						startActivity(in19);
 						break;

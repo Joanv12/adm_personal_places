@@ -199,12 +199,13 @@ public class screen05 extends CustomActionBarActivity {
 		else
 			((ViewManager) radiogroup_shape.getParent()).removeView(radiogroup_shape);
 		
-		if(screen04.select_plot == true){
-			((ViewManager) layout_spinnertypes.getParent()).removeView(layout_spinnertypes);
-			((ViewManager) button_fillqr.getParent()).removeView(button_fillqr);
-			textview_selectshape.setText("Parcela");
-			screen04.select_plot = false;
-		}
+		//Cambiar la condicion, a getType() == null
+		//if(){
+			//((ViewManager) layout_spinnertypes.getParent()).removeView(layout_spinnertypes);
+			//((ViewManager) button_fillqr.getParent()).removeView(button_fillqr);
+			//textview_selectshape.setText("Parcela");
+			
+		//}
 
 		button_map.setOnClickListener(new OnClickListener() {
 			@Override
@@ -229,11 +230,12 @@ public class screen05 extends CustomActionBarActivity {
 					shareClick();
 				}  
 			});  
+			//Al compartir una parcela, builder_share descactivado si se accede en modo edicion con parcela
 			builder_share.setPositiveButton("Redes Sociales",new DialogInterface.OnClickListener() {  
 				@Override  
 				public void onClick(DialogInterface dialog, int which) {
 						
-				
+			
 				}  
 			}); 
 			builder_share.show();  

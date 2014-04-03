@@ -19,44 +19,21 @@ import com.upv.adm.adm_personal_shapes.classes.BeanShape;
 import com.upv.adm.adm_personal_shapes.classes.CustomActionBarActivity;
 import com.upv.adm.adm_personal_shapes.classes.CustomListItem;
 import com.upv.adm.adm_personal_shapes.classes.GlobalContext;
+import com.upv.adm.adm_personal_shapes.classes.IListItem;
 import com.upv.adm.adm_personal_shapes.classes.SQLite;
+import com.upv.adm.adm_personal_shapes.classes.Utils;
 
 public class screen19 extends CustomActionBarActivity {
 
 	private EditText edittext_search;
-	
+	private CustomListItem[] shapesListItems;
 	private ListView listview_shapes;
-
-	ArrayAdapter<String> adapter;
-	ArrayList<BeanShape> list = new ArrayList<BeanShape>();
+	private Button button_search;
 	
-	BeanShape place;
-
+	private ArrayAdapter<CustomListItem> adapter;
+	private ArrayList<? extends IListItem> shapes;
 	private Button button_searchplaces;
 	
-	private void load_data_debug() {
-		
-		CustomListItem[] FriendsListItems = new CustomListItem[] {
-			new CustomListItem("23", "Pedro"),
-			new CustomListItem("14", "Susana"),
-			new CustomListItem("52", "Tomás"),
-			new CustomListItem("12", "Melody"),
-			new CustomListItem("74", "Andrea"),
-			new CustomListItem("36", "Pepe"),
-			new CustomListItem("61", "Ana"),
-			new CustomListItem("22", "Pepe7"),
-			new CustomListItem("27", "Pepe2"),
-			new CustomListItem("28", "Pepe3"),
-			new CustomListItem("29", "Pepe4"),
-			new CustomListItem("25", "Pepe9")
-		};
-		
-		ArrayAdapter<CustomListItem> adapter = new ArrayAdapter<CustomListItem>(this,android.R.layout.simple_list_item_1, FriendsListItems);
-		listview_shapes.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-		listview_shapes.setAdapter(adapter);
-	}
-
-		
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState, R.layout.screen19);
 		GlobalContext.setContext(getApplicationContext());
@@ -66,35 +43,25 @@ public class screen19 extends CustomActionBarActivity {
 	}
 	
 	private void initControls() {
-		
 		edittext_search = (EditText) findViewById(R.id.edittext_inputSearch);
-		button_searchplaces = (Button) findViewById(R.id.button_searchfriends);
 		listview_shapes = (ListView) findViewById(R.id.listview_search);
-
-		listview_shapes.setBackgroundColor(Color.BLACK);
+		button_search = (Button) findViewById(R.id.button_search);
 		
-		button_searchplaces.setOnClickListener(new OnClickListener() {
+		button_search.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				String query = edittext_search.getText().toString();
-				ArrayList<BeanShape> shapes = SQLite.getShapes("WHERE name LIKE '%" + query + "%'");
-				//searchshapeClick(edittext_search); 
-				System.out.println("hola");
+				shapes = SQLite.getPlaces("WHERE name LIKE '%" + query + "%'");
+				shapesListItems = Utils.ArrayListToCustomListItemArray(shapes);
+				adapter = new ArrayAdapter<CustomListItem>(screen19.this,android.R.layout.simple_list_item_1, shapesListItems);
+				listview_shapes.setAdapter(adapter);
 			} 
 		});
 		
-		
 		listview_shapes.setOnItemClickListener(new OnItemClickListener() {
-
 			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
-					long arg3) {
-				
-				
-
-				Intent in = new Intent(getApplicationContext(), screen05.class);
-
-
-				startActivity(in);
+			public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
+				GlobalContext.shape_id = Long.valueOf(shapesListItems[position].getKey());
+				startActivity(new Intent(getApplicationContext(), screen05.class));
 
 			}
 		});

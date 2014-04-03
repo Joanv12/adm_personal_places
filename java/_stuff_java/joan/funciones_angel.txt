@@ -1,6 +1,12 @@
 //comentario//un lugar en la web se almacena solo si se comparte, sino no.
 
 
+screen17: //ArrayList<BeanUser> users = WebServerProxy.searchFriends(query);
+
+
+screen13: //WebServerProxy.searchFriends(list_friends);
+
+
 -----
 una funcion que recibe un String y guarde ese texto 
 GlobalContext.saveTextCoordenates(edittext);

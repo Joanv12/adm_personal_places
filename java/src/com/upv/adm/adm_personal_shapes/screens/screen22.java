@@ -34,7 +34,6 @@ public class screen22 extends CustomActionBarActivity{
 	public void initControls(){
 		
 		webview_map = (WebView) findViewById(R.id.mapview_map);
-		//webview_map = screen05.webview_map;
 		webview_map.getSettings().setJavaScriptEnabled(true);
 		 
 		webview_map.setWebViewClient(new WebViewClient()); 

@@ -71,8 +71,6 @@ public class screen02 extends CustomActionBarActivity implements OnClickListener
 		edittext_phone.setText("678123444");
 	}
 
-	
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState, R.layout.screen02);

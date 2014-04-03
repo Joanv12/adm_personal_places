@@ -248,7 +248,7 @@ public class Utils {
 		return new BeanShape(null, name, desc, type, coords, null);
 	}
 
-	public static CustomListItem[] ArrayListToCustomListItemArray(ArrayList<IListItem> arrayList) {
+	public static CustomListItem[] ArrayListToCustomListItemArray(ArrayList<? extends IListItem> arrayList) {
 		CustomListItem[] result = new CustomListItem[arrayList.size()];
 		for (int i = 0; i < arrayList.size(); i++)
 			result[i] = new CustomListItem(arrayList.get(i).getKey(), arrayList.get(i).getValue());

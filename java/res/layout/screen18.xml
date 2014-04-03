@@ -30,7 +30,19 @@
                 android:text="@string/edittext_pendingrequest" />
         </LinearLayout>
 
-        <TableRow
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:orientation="horizontal" >
+
+            <ListView
+                android:id="@+id/listview_requestfriends"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+        
+         <TableRow
            android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
@@ -58,18 +70,6 @@
                 android:layout_weight="1"
                 android:text="@string/button_profile" />
         </TableRow>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="left"
-            android:orientation="horizontal" >
-
-            <ListView
-                android:id="@+id/listview_requestfriends"
-                android:layout_width="fill_parent"
-                android:layout_height="match_parent" />
-        </LinearLayout>
     </LinearLayout>
 
     <ListView

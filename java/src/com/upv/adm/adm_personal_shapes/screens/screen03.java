@@ -19,7 +19,6 @@ public class screen03 extends CustomActionBarActivity {
 			button_list, 
 			button_map,
 			button_friends, 
-			button_events, 
 			button_search;
 
 	@Override
@@ -37,7 +36,6 @@ public class screen03 extends CustomActionBarActivity {
 		button_list = (Button) findViewById(R.id.button_list);
 		button_map = (Button) findViewById(R.id.button_map);
 		button_friends = (Button) findViewById(R.id.button_friends);
-		button_events = (Button) findViewById(R.id.button_events);
 		button_search = (Button) findViewById(R.id.button_search);
 
 		button_profile.setOnClickListener(new OnClickListener() {
@@ -46,17 +44,25 @@ public class screen03 extends CustomActionBarActivity {
 
 			}
 		});
-
 		button_list.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				startActivity(new Intent(getApplicationContext(), screen04.class));
 			}
 		});
-
 		button_create.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				GlobalContext.shape_id = null;
 				startActivity(new Intent(getApplicationContext(), screen05.class));
+			}
+		});
+		button_map.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				startActivity(new Intent(getApplicationContext(), screen07.class));
+			}
+		});
+		button_friends.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				startActivity(new Intent(getApplicationContext(), screen13.class));
 			}
 		});
 		button_search.setOnClickListener(new OnClickListener() {
@@ -64,25 +70,6 @@ public class screen03 extends CustomActionBarActivity {
 				startActivity(new Intent(getApplicationContext(), screen19.class));
 			}
 		});
-
-		button_friends.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
-				startActivity(new Intent(getApplicationContext(), screen13.class));
-			}
-		});
-
-		button_map.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
-				startActivity(new Intent(getApplicationContext(), screen07.class));
-			}
-		});
-
-		button_events.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
-				startActivity(new Intent(getApplicationContext(), screen12.class));
-			}
-		});
-
 	}
 
 }

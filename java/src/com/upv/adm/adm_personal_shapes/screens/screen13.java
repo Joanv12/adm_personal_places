@@ -1,11 +1,14 @@
 package com.upv.adm.adm_personal_shapes.screens;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
@@ -19,6 +22,7 @@ import android.widget.TextView;
 import com.upv.adm.adm_personal_shapes.R;
 import com.upv.adm.adm_personal_shapes.classes.BeanUser;
 import com.upv.adm.adm_personal_shapes.classes.CustomActionBarActivity;
+import com.upv.adm.adm_personal_shapes.classes.CustomListItem;
 import com.upv.adm.adm_personal_shapes.classes.GlobalContext;
 import com.upv.adm.adm_personal_shapes.classes.SQLite;
 import com.upv.adm.adm_personal_shapes.classes.Utils;
@@ -33,8 +37,9 @@ public class screen13 extends CustomActionBarActivity implements OnTouchListener
 	private TextView edittext_pendingrequest;
 	
 	private ListView listview_friends;
-
-	ArrayList<BeanUser> list_friends = new ArrayList<BeanUser>();
+	private ProgressDialog pd;
+	
+	ArrayList list_friends = new ArrayList();
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +50,7 @@ public class screen13 extends CustomActionBarActivity implements OnTouchListener
 		initControls();
 	}
 	
+	@SuppressWarnings("unchecked")
 	public void initControls(){
 
 		edittext_pendingrequest = (TextView) findViewById(R.id.edittext_pendingrequest);
@@ -57,11 +63,7 @@ public class screen13 extends CustomActionBarActivity implements OnTouchListener
 		// bind listeners
 		edittext_pendingrequest.setOnTouchListener(this);
 
-		ArrayAdapter<BeanUser> adapter_friends = new ArrayAdapter<BeanUser>(getApplicationContext(), android.R.layout.simple_list_item_1, list_friends);
-
-		listview_friends.setAdapter(adapter_friends);
-		listview_friends.setBackgroundColor(Color.BLACK);
-
+		
 		button_addfriend.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -80,19 +82,66 @@ public class screen13 extends CustomActionBarActivity implements OnTouchListener
 				
 			}
 		});
+
+		list_friends.add("element_1");
+		list_friends.add("element_2");
+		list_friends.add("element_3");
+		list_friends.add("element_4");
+		list_friends.add("element_5");
+		
+		(new AsyncTask<ArrayList<BeanUser>, Void, Boolean>() {
+			@Override
+			protected void onPreExecute() {
+				pd = new ProgressDialog(getCurrentActivity());
+				pd.setTitle("Comunicando con el servidor");
+				pd.setMessage("Importando amigos...");
+				pd.setCancelable(false);
+				pd.setIndeterminate(true);
+				pd.show();
+			}
+			@Override
+			protected Boolean doInBackground(ArrayList<BeanUser>... data) {
+				//WebServerProxy.searchFriends(list_friends);
+				return true;
+			}
+			@Override
+			protected void onPostExecute(Boolean result) {
+				if (pd != null)
+					pd.dismiss();
+				if (result) {
+					
+					//usersListItems = Utils.ArrayListToCustomListItemArray(users);
+					
+					ArrayAdapter adapter_friends = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_multiple_choice,list_friends);
+					listview_friends.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+					listview_friends.setAdapter(adapter_friends);
+
+				}
+			}
+		}).execute(list_friends);
+		
+		
+		
+		
 	}
 
+	
+	
+	
 	@Override
 	public boolean onTouch(View arg0, MotionEvent arg1) {
-		// check which textview it is and do what you need to do
 
 		startActivity(new Intent(getApplicationContext(), screen18.class));
 
-		// return true if you don't want it handled by any other touch/click
-		// events after this
+		
 
 		return true;
 	}
+	
+	
+	
+	
+	
 	
 	public void share_Click(){
 		
@@ -109,9 +158,6 @@ public class screen13 extends CustomActionBarActivity implements OnTouchListener
 			
 			
 			
-			
-			
-		
 		}
 		else {
 			AlertDialog ad = new AlertDialog.Builder(getCurrentActivity()).create();

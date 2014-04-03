@@ -24,15 +24,13 @@ Tipos de elementos (prefijos):
     <string name="title_screen04">Lista de capas</string>
     <string name="title_screen05">Creación de capa</string>
     <string name="title_screen07">Mapa</string>
-    <string name="title_screen12">Eventos</string>
     <string name="title_screen13">Amigos</string>
     <string name="title_screen15">Creación de evento</string>
     <string name="title_screen17">Buscador de amigos</string>
     <string name="title_screen18">Solicitudes Amigos</string>
-    <string name="title_screen19">Buscador de lugares</string>
+    <string name="title_screen19">Buscador de Capas</string>
     <string name="title_screen21">Coordenadas</string>
     <string name="title_screen22">Mapa</string>
-    <string name="title_screen23">Solicitudes Eventos</string>
 
     <!-- tipos de elemento: header -->
     <string name="header_privatefields">* Campos privados</string>
@@ -176,7 +174,7 @@ hacia arriba organizadamente)
     <!-- screen18 -->
     <string name="button_reject">Rechazar</string>
     <!-- screen19 -->
-    <string name="edittext_searchplace">Buscar un lugar:</string>
+    <string name="button_search">Buscar</string>
     <string name="button_viewdata">Ver datos</string>
 
     <!-- screen22 -->
@@ -210,7 +208,7 @@ hacia arriba organizadamente)
 
     <string name="searchname">Search Names</string>
     <string name="search_label">Search</string>
-    <string name="search_hint">Search Names</string>
+    <string name="search_hint">Buscar...</string>
 
     <!-- menu_screen7 -->
 

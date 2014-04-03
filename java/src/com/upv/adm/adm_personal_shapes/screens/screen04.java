@@ -37,7 +37,6 @@ public class screen04 extends CustomActionBarActivity {
 	
 	protected CustomListItem[] options_places;
 
-	static Boolean select_plot= false;
 	private Button button_types;
 	
 	ArrayList<BeanShape> list_places;
@@ -108,7 +107,6 @@ public class screen04 extends CustomActionBarActivity {
 			public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
 
 				GlobalContext.shape_id = list_plots.get(position).getId();
-				select_plot = true;
 				Intent in = new Intent(getApplicationContext(), screen05.class);startActivity(in);
 			}
 		});
