@@ -45,7 +45,7 @@ public class debug02_map extends Activity {
 		button_showlayer.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Utils.addLayerToMap("l01", webview_map);
+				Utils.addLayerToMap("5", webview_map);
 			}
 		});
 

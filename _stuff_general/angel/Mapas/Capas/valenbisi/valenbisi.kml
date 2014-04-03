@@ -1,0 +1,2223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+<Document>
+	<name>Valenbisi - Valencia</name>
+	<description><![CDATA[Valenbisi - Valencia]]></description>
+	<Style id="style1">
+		<IconStyle>
+			<Icon>
+				<href>http://maps.gstatic.com/intl/en_au/mapfiles/ms/micons/homegardenbusiness.png</href>
+			</Icon>
+		</IconStyle>
+    </Style>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 1]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.38354, 39.47818</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 2]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.37984, 39.47986</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 3]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.38038, 39.4768</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 4]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.37543, 39.47672</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 5]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.37123, 39.47686</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 6]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.38417, 39.47277</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 7]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.37928, 39.47484</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 8]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.37518, 39.47429</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 9]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.37002, 39.47432</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 10]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.3827, 39.47078</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 11]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.37688, 39.47115</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 12]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.3741, 39.47119</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 13]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.37097, 39.47203</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 14]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.37982, 39.46894</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 15]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.37573, 39.46906</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 16]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.37052, 39.47006</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 17]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.37735, 39.46744</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 18]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.37322, 39.46816</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 19]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.39168, 39.47434</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 20]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.38794, 39.475</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 21]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.39031, 39.47234</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 22]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.38844, 39.46976</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 23]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.38627, 39.4716</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 24]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.38412, 39.46905</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 25]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.3887, 39.4677</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 26]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.38614, 39.46616</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 27]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.38194, 39.46333</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 28]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.36784, 39.47155</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 29]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.36539, 39.47008</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 30]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.36859, 39.46857</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 31]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.36512, 39.46733</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 32]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.36834, 39.46597</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 33]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.37408, 39.46479</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 34]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.37005, 39.46409</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 35]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.36709, 39.46372</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 36]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.37553, 39.47904</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 37]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.36653, 39.46091</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 38]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.37034, 39.45937</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 39]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.37402, 39.45782</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 40]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.37492, 39.47043</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 41]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.36487, 39.45888</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 42]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.35875, 39.45875</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 43]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.36124, 39.45945</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 44]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.36311, 39.4564</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 45]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.36195, 39.45379</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 46]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.35888, 39.45548</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 47]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.35551, 39.45648</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 48]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.35864, 39.45078</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 49]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.3572, 39.45295</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 50]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.35295, 39.45329</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 51]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.34732, 39.45215</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 52]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.34643, 39.456</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 53]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.34823, 39.45673</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 54]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.35278, 39.45975</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 55]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.34878, 39.45931</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 56]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.3445, 39.45839</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 57]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.35835, 39.46444</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 58]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.38168, 39.46619</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 59]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.35464, 39.46306</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 60]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.35187, 39.4622</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 61]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.34792, 39.46126</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 62]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.34224, 39.45978</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 63]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.35851, 39.46775</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 64]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.35429, 39.46649</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 65]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.35093, 39.46548</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 66]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.34635, 39.46424</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 67]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.33689, 39.45883</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 68]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.34182, 39.46277</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 69]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.33881, 39.46192</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 70]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.37175, 39.46936</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 71]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.33362, 39.46035</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 72]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.3464, 39.46721</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 73]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.34297, 39.46623</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 74]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.35383, 39.46992</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 75]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.35179, 39.47208</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 76]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.34355, 39.47005</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 77]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.36576, 39.48494</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 78]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.35878, 39.46991</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 79]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.35733, 39.47275</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 80]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.36239, 39.47371</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 81]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.36107, 39.4751</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 82]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.38401, 39.47602</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 83]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.36706, 39.47755</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 84]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.33526, 39.46726</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 85]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.36481, 39.47943</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 86]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.39128, 39.45521</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 87]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.36197, 39.47849</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 88]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.36123, 39.47748</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 89]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.35941, 39.47777</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 90]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.35906, 39.4767</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 91]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.36766, 39.44409</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 92]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.35606, 39.47583</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 93]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.3439, 39.47225</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 94]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.35167, 39.47535</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 95]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.34621, 39.4798</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 96]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.34831, 39.47352</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 97]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.34322, 39.47304</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 98]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.34853, 39.46965</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 99]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.34057, 39.47131</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 100]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.33824, 39.4716</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 101]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.33445, 39.47004</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 102]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.34681, 39.4758</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 103]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.35246, 39.47842</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 104]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.34737, 39.47835</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 105]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.34461, 39.47766</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 106]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.34148, 39.47671</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 107]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.33631, 39.47521</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 108]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.3337, 39.47365</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 109]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.3336, 39.47679</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 110]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.33677, 39.48071</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 111]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.34065, 39.48018</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 112]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.34237, 39.47855</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 113]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.3437, 39.48124</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 114]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.34668, 39.48177</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 115]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.35224, 39.48153</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 116]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.35765, 39.48322</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 117]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.35716, 39.47922</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 118]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.36051, 39.48043</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 119]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.36332, 39.48249</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 120]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.36214, 39.48485</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 121]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.35886, 39.48615</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 122]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.35416, 39.48445</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 123]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.36493, 39.48764</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 124]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.36205, 39.48847</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 125]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.35871, 39.48966</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 126]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.3602, 39.49307</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 127]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.36454, 39.49056</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 128]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.36764, 39.48873</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 129]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.37004, 39.48594</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 130]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.3703, 39.48321</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 131]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.37125, 39.48062</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 132]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.37353, 39.48525</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 133]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.37597, 39.48272</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 134]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.37343, 39.48762</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 135]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.37859, 39.48567</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 136]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.3757, 39.48991</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 137]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.37999, 39.489</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 138]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.38431, 39.48816</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 139]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.38296, 39.48567</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 140]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.38969, 39.48797</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 141]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.38525, 39.48324</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 142]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.38975, 39.48189</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 143]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.39103, 39.47951</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 144]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.39557, 39.47875</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 145]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.39849, 39.48152</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 146]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.39104, 39.48508</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 147]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.3803, 39.47317</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 148]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.37799, 39.46576</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 149]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.36189, 39.4629</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 150]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.3507, 39.46769</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 151]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.33721, 39.46464</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 152]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.3728, 39.46089</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 153]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.38026, 39.48313</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 154]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.32964, 39.46984</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 155]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.36317, 39.46492</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 156]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.37644, 39.46093</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 157]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.38746, 39.46402</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 158]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.32781, 39.46667</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 159]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.33481, 39.46342</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 160]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.33907, 39.4673</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 161]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.33182, 39.46794</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 162]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.32989, 39.46357</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 163]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.32349, 39.46441</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 164]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.32472, 39.46843</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 165]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.32466, 39.47138</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 166]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.3289, 39.47332</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 167]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.3247, 39.47488</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 168]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.32798, 39.47684</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 169]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.32474, 39.47875</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 170]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.32542, 39.48294</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 171]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.3291, 39.48303</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 172]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.39344, 39.48143</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 173]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.39477, 39.48451</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 174]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.38674, 39.48941</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 175]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.3828, 39.49256</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 176]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.37894, 39.49199</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 177]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.37358, 39.49351</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 178]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.3706, 39.49218</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 179]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.36652, 39.45544</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 180]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.37077, 39.45599</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 181]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.36828, 39.45797</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 182]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.37506, 39.4554</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 183]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.37238, 39.45259</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 184]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.36566, 39.45275</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 185]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.37059, 39.45001</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 186]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.37411, 39.45036</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 187]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.36891, 39.44793</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 188]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.37388, 39.44446</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 189]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.37599, 39.44464</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 190]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.38039, 39.44605</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 191]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.37896, 39.4503</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 192]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.37881, 39.45261</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 193]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.38681, 39.45511</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 194]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.38107, 39.46099</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 195]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.38437, 39.45935</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 196]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.38816, 39.45954</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 197]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.39242, 39.45815</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 198]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.39541, 39.46085</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 199]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.39165, 39.46156</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 200]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.39331, 39.46771</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 201]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.39376, 39.47168</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 202]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.39343, 39.47619</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 203]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.40127, 39.48458</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 204]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.39668, 39.48581</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 205]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.39318, 39.48926</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 206]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.3891, 39.49268</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 207]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.382, 39.45536</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 208]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.38867, 39.45166</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 209]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.39311, 39.45205</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 210]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.39681, 39.45552</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 211]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.39785, 39.45869</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 212]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.40049, 39.46145</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 213]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.39706, 39.46313</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 214]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.40067, 39.4649</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 215]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.39684, 39.46564</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 216]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.39923, 39.46885</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 217]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.40469, 39.4703</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 218]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.39748, 39.47071</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 219]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.40298, 39.47273</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 220]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.39841, 39.47382</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 221]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.40294, 39.47524</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 222]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.39737, 39.47686</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 223]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.40128, 39.47853</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 224]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.40368, 39.48054</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 225]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.40123, 39.48808</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 226]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.39895, 39.49083</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 227]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.40302, 39.49022</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 228]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.39876, 39.49366</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 229]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.3949, 39.49307</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 230]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.38688, 39.49472</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 231]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.37871, 39.49504</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 232]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.36584, 39.49461</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 233]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.36953, 39.49713</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 234]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.37374, 39.49647</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 235]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.37729, 39.49801</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 236]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.38237, 39.49503</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 237]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.39113, 39.49473</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 238]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.39447, 39.49742</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 239]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.40006, 39.49695</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 240]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.40164, 39.49497</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 241]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.40198, 39.49295</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 242]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.40429, 39.48788</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 243]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.38463, 39.46279</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 244]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.40623, 39.47847</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 245]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.40564, 39.47203</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 246]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.4066, 39.46906</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 247]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.40566, 39.46738</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 248]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.40506, 39.46281</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 249]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.40283, 39.45947</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 250]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.40057, 39.45605</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 251]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.4045, 39.4558</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 252]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.40367, 39.45026</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 253]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.40119, 39.45269</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 254]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.39001, 39.44768</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 255]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.38612, 39.44767</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 256]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.39233, 39.46393</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 257]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.3892, 39.44522</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 258]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.38923, 39.4398</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 259]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.39311, 39.44543</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 260]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.40731, 39.45952</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 261]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.35047, 39.47664</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 262]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.40932, 39.46344</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 263]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.40974, 39.46701</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 264]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.41452, 39.46913</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 265]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.40821, 39.47094</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 266]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.40646, 39.49026</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 267]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.40602, 39.49414</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 268]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.41858, 39.50141</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 269]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.42635, 39.49988</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 270]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.39298, 39.50004</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 271]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.38998, 39.49925</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 272]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.33228, 39.48059</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 273]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.33336, 39.45027</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 274]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.33328, 39.44804</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 275]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.33516, 39.45227</coordinates>
+        </Point>
+    </Placemark>
+    <Placemark>
+        <name>Valenbisi</name>
+        <description><![CDATA[Estación número: 276]]></description>
+        <styleUrl>#style1</styleUrl>
+        <Point>
+	        <coordinates>-0.32386, 39.46194</coordinates>
+        </Point>
+    </Placemark>
+
+</Document>
+</kml>

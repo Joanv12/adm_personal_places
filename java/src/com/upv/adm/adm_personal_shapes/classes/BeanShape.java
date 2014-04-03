@@ -1,6 +1,6 @@
 package com.upv.adm.adm_personal_shapes.classes;
 
-public class BeanShape {
+public class BeanShape implements IListItem {
 
 	private Long id;
 	
@@ -79,6 +79,14 @@ public class BeanShape {
 		
 	}
 
-	
+	@Override
+	public String getKey() {
+		return getKey();
+	}
+
+	@Override
+	public String getValue() {
+		return getName();
+	}
 
 }
