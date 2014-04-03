@@ -44,20 +44,19 @@
             android:name="com.upv.adm.adm_personal_shapes.screens.screen05"
             android:label="@string/title_screen05"
             android:noHistory="true" >
-        </activity>
-        <activity
-            android:name="com.upv.adm.adm_personal_shapes.screens.screen07"
-            android:label="@string/title_screen07"
-            android:noHistory="true" >
-            <intent-filter>
+             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name="com.upv.adm.adm_personal_shapes.screens.screen12"
-            android:label="@string/title_screen12"
+            android:name="com.upv.adm.adm_personal_shapes.screens.screen07"
+            android:label="@string/title_screen07"
             android:noHistory="true" >
+        </activity>
+        <activity
+            android:name="com.upv.adm.adm_personal_shapes.screens.screen12"
+            android:label="@string/title_screen12">
         </activity>
         <activity
             android:name="com.upv.adm.adm_personal_shapes.screens.screen13"
@@ -71,13 +70,11 @@
         </activity>
         <activity
             android:name="com.upv.adm.adm_personal_shapes.screens.screen17"
-            android:label="@string/title_screen17"
-            android:noHistory="true" >
+            android:label="@string/title_screen17">
         </activity>
         <activity
             android:name="com.upv.adm.adm_personal_shapes.screens.screen18"
-            android:label="@string/title_screen18"
-            android:noHistory="true" >
+            android:label="@string/title_screen18">
         </activity>
         <activity
             android:name="com.upv.adm.adm_personal_shapes.screens.screen19"
@@ -86,8 +83,7 @@
         </activity>
         <activity
             android:name="com.upv.adm.adm_personal_shapes.screens.screen21"
-            android:label="@string/title_screen21"
-            android:noHistory="true" >
+            android:label="@string/title_screen21">
         </activity>
         <activity
             android:name="com.upv.adm.adm_personal_shapes.screens.screen22"
@@ -96,8 +92,7 @@
         </activity>
         <activity
             android:name="com.upv.adm.adm_personal_shapes.screens.screen23"
-            android:label="@string/title_screen23"
-            android:noHistory="true" >
+            android:label="@string/title_screen23">
         </activity>
         <activity
             android:name="com.upv.adm.adm_personal_shapes.screens.debug.debug01_general"

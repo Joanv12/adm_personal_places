@@ -8,6 +8,7 @@ import java.util.Hashtable;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
+import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
@@ -18,6 +19,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewManager;
@@ -37,15 +39,14 @@ import com.upv.adm.adm_personal_shapes.R;
 import com.upv.adm.adm_personal_shapes.classes.BeanShape;
 import com.upv.adm.adm_personal_shapes.classes.CustomActionBarActivity;
 import com.upv.adm.adm_personal_shapes.classes.CustomListItem;
-import com.upv.adm.adm_personal_shapes.classes.WebServerProxy;
 import com.upv.adm.adm_personal_shapes.classes.GlobalContext;
 import com.upv.adm.adm_personal_shapes.classes.SQLite;
 import com.upv.adm.adm_personal_shapes.classes.Utils;
+import com.upv.adm.adm_personal_shapes.classes.WebServerProxy;
 
 public class screen05 extends CustomActionBarActivity {
-
-	private TextView lblMessage;
-	private String coords;
+	
+	private TextView textview_selectshape;
 	private EditText 
 			edittext_name,
 			edittext_description;
@@ -57,31 +58,35 @@ public class screen05 extends CustomActionBarActivity {
 			
 	private static final int DIALOG_ALERT = 10;
 	
-	private String resizedImagePath;
+	private String 
+			resizedImagePath,
+			coords;
 
-	ArrayList<BeanShape> list_places = new ArrayList<BeanShape>();
-	ArrayList<BeanShape> list_plots = new ArrayList<BeanShape>();
+	private ArrayList<BeanShape> list_places = new ArrayList<BeanShape>();
+	private ArrayList<BeanShape> list_plots = new ArrayList<BeanShape>();
 
-	BeanShape place;
-	BeanShape plot;
+	private BeanShape 
+				place,
+				plot;
 
 	private Object[] typesData;
 	private Spinner spinner_types;
-	
+		
 	private ImageButton 
 			button_share, 
 			button_save, 
 			button_delete;
+	
 	private Button 
 			button_fillqr,
 			button_map,
 			button_coordinates;
 	
-	private RadioGroup radiogroup_placecategory;
+	private RadioGroup radiogroup_shape;
 	
-	public static RadioButton
-					radiobutton_place,
-					radiobutton_plot;
+	private RadioButton
+			radiobutton_place,
+			radiobutton_plot;
 	
 	private View layout_spinnertypes;
 	
@@ -94,46 +99,8 @@ public class screen05 extends CustomActionBarActivity {
 	// captured picture uri
 	private Uri picUri;
 	
-	ProgressDialog pd;
+	private ProgressDialog pd;
 	
-	@SuppressWarnings("deprecation")
-	@Override
-	protected Dialog onCreateDialog(int id) {
-		switch (id) {
-		case DIALOG_ALERT:
-			Builder builder = new AlertDialog.Builder(this);
-			builder.setMessage("Compartir con...");
-			builder.setCancelable(true);
-			builder.setPositiveButton("PersonalPlaces", new OkOnClickListener());
-			builder.setNegativeButton("Redes Sociales", new CancelOnClickListener());
-			AlertDialog dialog = builder.create();
-			dialog.show();
-		}
-		return super.onCreateDialog(id);
-	}
-
-	private final class CancelOnClickListener implements DialogInterface.OnClickListener {
-		public void onClick(DialogInterface dialog, int which) {
-
-			// es necesario un intent que levante la actividad deseada
-			Intent itSend = new Intent(android.content.Intent.ACTION_SEND);
-
-			// itSend.setType("plain/text");
-
-			itSend.putExtra(android.content.Intent.EXTRA_TEXT, edittext_name.getText().toString());
-			itSend.putExtra(android.content.Intent.EXTRA_TITLE,edittext_description.getText().toString());
-
-			itSend.setType("text/plain");
-			startActivity(itSend);
-		}
-	}
-
-	private final class OkOnClickListener implements DialogInterface.OnClickListener {
-		public void onClick(DialogInterface dialog, int which) {
-			shareClick();
-		}
-	}
-
 	@SuppressLint("ResourceAsColor")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -145,6 +112,7 @@ public class screen05 extends CustomActionBarActivity {
 		if (GlobalContext.shape_id != null) {
 			fillFields();
 		}
+		
 	}
 	
 	public void fillFields () {
@@ -165,17 +133,15 @@ public class screen05 extends CustomActionBarActivity {
 	
 	public void initControls(){
 	
-		lblMessage = (TextView) findViewById(R.id.edittext_selectoption);
-		radiogroup_placecategory = (RadioGroup) findViewById(R.id.radiogroup_shapetype);
+		textview_selectshape = (TextView) findViewById(R.id.textview_selectshape);
+		radiogroup_shape = (RadioGroup) findViewById(R.id.radiogroup_shape);
 		
 		radiobutton_place = (RadioButton) findViewById(R.id.radiobutton_place);
 		radiobutton_plot = (RadioButton) findViewById(R.id.radiobutton_plot);
+		button_fillqr = (Button) findViewById(R.id.button_fillqr);
 
 		layout_spinnertypes = (View) findViewById(R.id.layout_spinnertypes);
-		
 		spinner_types = (Spinner) findViewById(R.id.spinner_types);
-
-		button_fillqr = (Button) findViewById(R.id.button_fillqr);
 
 		edittext_name = (EditText) findViewById(R.id.edittext_placename);
 		edittext_description = (EditText) findViewById(R.id.edittext_description);
@@ -210,8 +176,9 @@ public class screen05 extends CustomActionBarActivity {
 		button_fillqr.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				fillQrClick();
-				}
+				selectImage();
+				//Uri:  resizedImagePath
+			}
 		});
 
 		if (GlobalContext.shape_id == null) {
@@ -219,7 +186,16 @@ public class screen05 extends CustomActionBarActivity {
 			((ViewManager) button_delete.getParent()).removeView(button_delete);
 
 		}
+		else
+			((ViewManager) radiogroup_shape.getParent()).removeView(radiogroup_shape);
 		
+		if(screen04.select_plot == true){
+			((ViewManager) layout_spinnertypes.getParent()).removeView(layout_spinnertypes);
+			((ViewManager) button_fillqr.getParent()).removeView(button_fillqr);
+			textview_selectshape.setText("Parcela");
+			screen04.select_plot = false;
+		}
+
 		button_map.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -234,17 +210,13 @@ public class screen05 extends CustomActionBarActivity {
 			}
 		});
 		
-		
-		
 		button_share.setOnClickListener(new OnClickListener() {  @Override  public void onClick(View v) {
 			AlertDialog.Builder builder_share =new AlertDialog.Builder(screen05.this);
 			builder_share.setTitle("Compartir con...");
-			
 			builder_share.setNeutralButton("Personal Shapes",new DialogInterface.OnClickListener() {  
 				@Override  
 				public void onClick(DialogInterface dialog, int which) {
 					shareClick();
-				
 				}  
 			});  
 			builder_share.setPositiveButton("Redes Sociales",new DialogInterface.OnClickListener() {  
@@ -265,51 +237,38 @@ public class screen05 extends CustomActionBarActivity {
 			}
 		});
 		
-		radiogroup_placecategory.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+		radiogroup_shape.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 			public void onCheckedChanged(RadioGroup group, int checkedId) {
-
 				if (checkedId == R.id.radiobutton_place) {
-					lblMessage.setText("Lugar personal");
-					layout_spinnertypes.setVisibility(View.VISIBLE);
+					textview_selectshape.setText("Lugar personal");
+				    (findViewById(R.id.layout_spinnertypes)).setVisibility(View.VISIBLE);
+				    (findViewById(R.id.layout_fillqr)).setVisibility(View.VISIBLE);
 				}
 				else if (checkedId == R.id.radiobutton_plot) {
-					lblMessage.setText("Parcela");
-					layout_spinnertypes.setVisibility(View.INVISIBLE);
+					textview_selectshape.setText("Parcela");
+				    (findViewById(R.id.layout_spinnertypes)).setVisibility(View.GONE);
+				    (findViewById(R.id.layout_fillqr)).setVisibility(View.GONE);
 				}
 			}
 		});
 	}
 	
-	public void fillQrClick() {
-		
-		@SuppressWarnings("unchecked")
-		ArrayList<String> typesDataCodes = (ArrayList<String>) typesData[0];
-		String typesCode = typesDataCodes.get(spinner_types.getSelectedItemPosition());
-		edittext_name.setText(typesCode);
-	
-	}
 	
 	public void saveClick() {
-		
 		String name = edittext_name.getText().toString();
 		String description = edittext_description.getText().toString();
 		String coords = edittext_description.getText().toString();
-
 		if (radiobutton_place.isChecked()) {
-			
 			String type = Utils.getSelectedKey(spinner_types);
 			BeanShape place = new BeanShape(id, name, description, type, coords, resizedImagePath);
 			long result = SQLite.saveShape(place);
 			System.out.println("Result: " + result);
 		}
 		else {
-			
 			BeanShape plot = new BeanShape(id, name, description, null, coords, resizedImagePath);
 			SQLite.saveShape(plot);
 		}
-
 		if(id == null) {startActivity(new Intent(getApplicationContext(), screen03.class));}
-		
 	}
 	
 	public void coordinatesClick() {
@@ -322,7 +281,6 @@ public class screen05 extends CustomActionBarActivity {
 		String name = edittext_name.getText().toString();
 		String description = edittext_description.getText().toString();
 		String coords = screen21.coords;
-		
 		
 		if (radiobutton_place.isChecked()) {
 			
@@ -357,7 +315,7 @@ public class screen05 extends CustomActionBarActivity {
 		final CharSequence[] options = { "Cámara", "Galeria", "Cancelar" };
 		
 		AlertDialog.Builder builder = new AlertDialog.Builder(screen05.this);
-		builder.setTitle("Añadir Imagen!");
+		builder.setTitle("Selecciona una opción");
 		builder.setItems(options, new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int item) {

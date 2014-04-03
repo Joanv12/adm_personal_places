@@ -94,7 +94,7 @@ public class screen07 extends CustomActionBarActivity {
 	public void initControls() {
 		
 		options_places = GlobalContext.getTypesData();
-		options_plots = GlobalContext.getTypesData();
+		options_plots = GlobalContext.getPlotsData();
 		options_layers = GlobalContext.getLayersData();
 
 		webview_map = (WebView) findViewById(R.id.webview_map);
@@ -170,15 +170,14 @@ public class screen07 extends CustomActionBarActivity {
 				builder_plots.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int id) {
 						
-						ArrayList<String[]> all_plots = Utils.getTypes();
-						
+						ArrayList<BeanShape> all_plots = SQLite.getPlots();
 			        	ArrayList<String> selected_plots = Utils.getSelectedKeys(list_plots);
 			        	
 			        	for (int i = 0; i < all_plots.size(); i++) { 
-			        		if (selected_plots.contains(all_plots.get(i)[0]))
-			        			SQLite.setPlotVisibility(all_plots.get(i)[0], true);
+			        		if (selected_plots.contains(all_plots.get(i).getId()))
+			        			SQLite.setPlotVisibility(String.valueOf(all_plots.get(i).getId()), true);
 							else
-			        			SQLite.setPlotVisibility(all_plots.get(i)[0], true);
+			        			SQLite.setPlotVisibility(String.valueOf(all_plots.get(i).getId()), false);
 			           		}
 			           }
 			       });

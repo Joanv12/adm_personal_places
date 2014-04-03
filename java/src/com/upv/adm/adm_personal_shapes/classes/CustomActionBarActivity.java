@@ -84,6 +84,7 @@ public class CustomActionBarActivity extends ActionBarActivity implements IActiv
 						break;
 					case 2:
 						Intent in05 = new Intent(getApplicationContext(), screen05.class);
+						GlobalContext.shape_id = null;
 						startActivity(in05);
 						break;
 					case 3:
