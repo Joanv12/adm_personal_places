@@ -1,2 +1,3 @@
 he acabado de crear las funciones de manipulación del código QR en Utils.java
 ---
+hacer una función que transforme un arraylist<BeanShape> a CustomListItem[] para poder usar en un listview
