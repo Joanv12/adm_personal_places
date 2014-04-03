@@ -25,7 +25,7 @@ public class screen19 extends CustomActionBarActivity {
 
 	private EditText edittext_search;
 	
-	private ListView listview_places;
+	private ListView listview_shapes;
 
 	ArrayAdapter<String> adapter;
 	ArrayList<BeanShape> list = new ArrayList<BeanShape>();
@@ -52,8 +52,8 @@ public class screen19 extends CustomActionBarActivity {
 		};
 		
 		ArrayAdapter<CustomListItem> adapter = new ArrayAdapter<CustomListItem>(this,android.R.layout.simple_list_item_1, FriendsListItems);
-		listview_places.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-		listview_places.setAdapter(adapter);
+		listview_shapes.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+		listview_shapes.setAdapter(adapter);
 	}
 
 		
@@ -69,18 +69,21 @@ public class screen19 extends CustomActionBarActivity {
 		
 		edittext_search = (EditText) findViewById(R.id.edittext_inputSearch);
 		button_searchplaces = (Button) findViewById(R.id.button_searchfriends);
-		listview_places = (ListView) findViewById(R.id.listview_search);
+		listview_shapes = (ListView) findViewById(R.id.listview_search);
 
-		listview_places.setBackgroundColor(Color.BLACK);
+		listview_shapes.setBackgroundColor(Color.BLACK);
 		
 		button_searchplaces.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) { 
+			public void onClick(View v) {
+				String query = edittext_search.getText().toString();
+				ArrayList<BeanShape> shapes = SQLite.getShapes("WHERE name LIKE '%" + query + "%'");
 				//searchshapeClick(edittext_search); 
-			} // por cambiar
+				System.out.println("hola");
+			} 
 		});
 		
 		
-		listview_places.setOnItemClickListener(new OnItemClickListener() {
+		listview_shapes.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,

@@ -2,6 +2,7 @@ package com.upv.adm.adm_personal_shapes.screens;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Hashtable;
 
@@ -59,7 +60,8 @@ public class screen05 extends CustomActionBarActivity {
 	private static final int DIALOG_ALERT = 10;
 	
 	private String 
-			resizedImagePath,
+			resizedShapeImagePath,
+			qrImagePath,
 			coords;
 
 	private ArrayList<BeanShape> list_places = new ArrayList<BeanShape>();
@@ -93,13 +95,18 @@ public class screen05 extends CustomActionBarActivity {
 	private ImageView image_photo;
 	
 	// keep track of camera capture intent
-	final int CAMERA_CAPTURE = 1;
+	final int CAMERA_CAPTURE_PLOT = 1;
 	// keep track of cropping intent
 	final int PIC_CROP = 2;
 	// captured picture uri
 	private Uri picUri;
 	
+	private boolean image = false;
+	private Bitmap thePic;
+	private Bitmap thePic_photo;
+
 	private ProgressDialog pd;
+	private Bitmap thePicResized;
 	
 	@SuppressLint("ResourceAsColor")
 	@Override
@@ -153,6 +160,8 @@ public class screen05 extends CustomActionBarActivity {
 		button_save = (ImageButton) findViewById(R.id.button_save);
 		button_delete = (ImageButton) findViewById(R.id.button_delete);
 		
+		
+		
 		image_photo.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -160,6 +169,7 @@ public class screen05 extends CustomActionBarActivity {
 				if (v.getId() == R.id.imageview_photo) {
 					try {
 						selectImage();
+						image = true;
 					} catch (ActivityNotFoundException anfe) {
 						@SuppressWarnings("unused")
 						String errorMessage = "Whoops - your device doesn't support capturing images!";
@@ -177,6 +187,7 @@ public class screen05 extends CustomActionBarActivity {
 			public void onClick(View v) {
 				selectImage();
 				//Uri:  resizedImagePath
+				
 			}
 		});
 
@@ -259,12 +270,12 @@ public class screen05 extends CustomActionBarActivity {
 		String coords = edittext_description.getText().toString();
 		if (radiobutton_place.isChecked()) {
 			String type = Utils.getSelectedKey(spinner_types);
-			BeanShape place = new BeanShape(id, name, description, type, coords, resizedImagePath);
+			BeanShape place = new BeanShape(id, name, description, type, coords, resizedShapeImagePath);
 			long result = SQLite.saveShape(place);
 			System.out.println("Result: " + result);
 		}
 		else {
-			BeanShape plot = new BeanShape(id, name, description, null, coords, resizedImagePath);
+			BeanShape plot = new BeanShape(id, name, description, null, coords, resizedShapeImagePath);
 			SQLite.saveShape(plot);
 		}
 		if(id == null) {startActivity(new Intent(getApplicationContext(), screen03.class));}
@@ -284,13 +295,13 @@ public class screen05 extends CustomActionBarActivity {
 		if (radiobutton_place.isChecked()) {
 			
 			String type = Utils.getSelectedKey(spinner_types);
-			BeanShape place = new BeanShape(id, name, description, type, coords, resizedImagePath);
+			BeanShape place = new BeanShape(id, name, description, type, coords, resizedShapeImagePath);
 			long result = SQLite.saveShape(place);
 			System.out.println("Result: " + result);
 		}
 		else {
 			//UtilsAddBeanPlotToMap(BeanShape plot, WebView webview)
-			BeanShape plot = new BeanShape(id, name, description, null, coords, resizedImagePath);
+			BeanShape plot = new BeanShape(id, name, description, null, coords, resizedShapeImagePath);
 		}
 		Intent in = new Intent(getApplicationContext(),	screen22.class);
 		
@@ -322,7 +333,7 @@ public class screen05 extends CustomActionBarActivity {
 					// use standard intent to capture an image
 					Intent captureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 					// we will handle the returned data in onActivityResult
-					startActivityForResult(captureIntent, CAMERA_CAPTURE);
+					startActivityForResult(captureIntent, CAMERA_CAPTURE_PLOT);
 				} else if (options[item].equals("Galeria")) {
 					// acción para buscar una imagen en la galeria
 					Intent pickPhoto = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
@@ -330,6 +341,7 @@ public class screen05 extends CustomActionBarActivity {
 				} else if (options[item].equals("Cancelar")) {
 					dialog.dismiss();
 				}
+				
 			}
 		});
 		builder.show();
@@ -337,31 +349,68 @@ public class screen05 extends CustomActionBarActivity {
 
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
+		
+		
 		if (resultCode == RESULT_OK) {
+			
+			
+			
 			// user is returning from capturing an image using the camera
-			if (requestCode == CAMERA_CAPTURE) {
+			if (requestCode == CAMERA_CAPTURE_PLOT) {
 				// get the Uri for the captured image
 				picUri = data.getData();
+				
 				// carry out the crop operation
+				
 				performCrop();
+				
+				if(image == false){
+
+					// get the returned data
+					Bundle extras = data.getExtras();
+					// get the cropped bitmap
+					thePic = extras.getParcelable("data");
+					
+					try {
+						File tempFile_qr = File.createTempFile("temp_file_",".jpg");
+						FileOutputStream fos = new FileOutputStream(tempFile_qr);
+						thePic.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+						qrImagePath = tempFile_qr.getPath();
+						
+						BeanShape place = Utils.getPlaceFromQR(thePic);
+						System.out.println("hello world");
+						
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
+				}
+				
+				
+
 			}
 			// user is returning from cropping the image
 			else if (requestCode == PIC_CROP) {
+				
 				// get the returned data
 				Bundle extras = data.getExtras();
 				// get the cropped bitmap
-				Bitmap thePic = extras.getParcelable("data");
+				thePic = extras.getParcelable("data");
 				
-				// display the returned cropped image
-
-				Bitmap thePicResized = Bitmap.createScaledBitmap(thePic, 512,512, false);
+				thePicResized = Bitmap.createScaledBitmap(thePic, 512,512, false);
 				image_photo.setImageBitmap(thePicResized);
-
+				
 				try {
+					
 					File tempFile = File.createTempFile("temp_file_",".jpg");
 					FileOutputStream fos = new FileOutputStream(tempFile);
 					thePicResized.compress(Bitmap.CompressFormat.JPEG, 100, fos);
-					resizedImagePath = tempFile.getPath();
+					resizedShapeImagePath = tempFile.getPath();
+					
+					image = false;
+
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -411,8 +460,8 @@ public class screen05 extends CustomActionBarActivity {
 		data.put("type",  type);
 		
 		
-		if (resizedImagePath != null)
-			data.put("photo", resizedImagePath);
+		if (resizedShapeImagePath != null)
+			data.put("photo", resizedShapeImagePath);
 		
 		(new AsyncTask<Hashtable<String, String>, Void, String[]>() {
 			@Override
