@@ -8,8 +8,8 @@
 			break;
 	}
 	$dbase_params = array(
-		0 => array("localhost", "root", "valencia", "adm_personal_places"),
-		1 => array("localhost", "root", "valencia", "adm_personal_places"),
+		0 => array("localhost", "root", "valencia", "adm_personal_shapes"),
+		1 => array("localhost", "root", "valencia", "adm_personal_shapes"),
 	NULL);
 
 	function connect_database() {
@@ -77,6 +77,18 @@
 		$fields = substr($fields, 0, -2);
 		$values = substr($values, 0, -2);
 		return "INSERT INTO `$table`($fields) VALUES($values)";
+	}
+	function array_to_sql_update($table, $array, $cond) {
+		$assigns = "";
+		$values = "";
+		foreach ($array as $key=>$value) {
+			$assigns .= "`$key` = %s, ";
+			$values  .= "GetSQLValueString(\$array[\"$key\"], \"text\"), ";
+		}
+		$assigns = trim($assigns, ", ");
+		$values = trim($values, ", ");
+		eval("\$sql = sprintf(\"UPDATE `$table` SET $assigns $cond\", $values);");
+		return $sql;
 	}
 	function get_username_checker() {
 		return "/^[a-zA-Z][a-zA-Z0-9\_\-]{2,19}$/";

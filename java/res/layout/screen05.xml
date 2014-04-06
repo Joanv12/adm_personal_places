@@ -8,8 +8,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/edittext_profile_text" >
+        android:layout_alignParentRight="true" >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -20,33 +19,27 @@
             android:paddingRight="@dimen/activity_horizontal_margin"
             android:paddingTop="@dimen/activity_vertical_margin" >
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:gravity="center"
-                android:orientation="horizontal" >
+            <LinearLayout style="@style/header_type_01" >
 
                 <TextView
-                    android:id="@+id/textview_selectshape"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/radiobutton_personalplace" />
+                    style="@style/header_type_01_text"
+                    android:text="@string/textview_shapetype" />
             </LinearLayout>
 
             <RadioGroup
-                android:id="@+id/radiogroup_shape"
+                android:id="@+id/radiogroup_shapetype"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center"
-                android:orientation="vertical" >
+                android:orientation="horizontal" >
 
                 <RadioButton
                     android:id="@+id/radiobutton_place"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
                     android:checked="true"
-                    android:text="@string/radiobutton_personalplace" />
+                    android:text="@string/radiobutton_place" />
 
                 <RadioButton
                     android:id="@+id/radiobutton_plot"
@@ -56,7 +49,6 @@
             </RadioGroup>
 
             <LinearLayout
-                android:id="@+id/layout_fillqr"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -65,188 +57,146 @@
 
                 <Button
                     android:id="@+id/button_fillqr"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/button_fill_qr" />
+                    style="@style/button_type_02"
+                    android:background="@drawable/button_type_01"
+                    android:text="@string/button_fillqr" />
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/layout_spinnertypes"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal" >
+            <LinearLayout style="@style/header_type_01" >
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:text="@string/edittext_type" />
-
-                <Spinner
-                    android:id="@+id/spinner_types"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:prompt="@string/type_prompt" />
+                    style="@style/header_type_01_text"
+                    android:text="@string/textview_shapedata" />
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/layout_name"
+            <TableLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal" >
+                android:layout_height="wrap_content" >
+
+                <TableRow
+                    android:id="@+id/tablerow_placetype"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:gravity="right"
+                        android:text="@string/textview_placetype" />
+
+                    <Spinner
+                        android:id="@+id/spinner_types"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_weight="1"
+                        android:prompt="@string/spinner_placetype" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:gravity="right"
+                        android:text="@string/textview_shapename" />
+
+                    <EditText
+                        android:id="@+id/edittext_placename"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:inputType="text" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:text="@string/textview_description" />
+
+                    <EditText
+                        android:id="@+id/edittext_description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:inputType="textMultiLine" />
+                </TableRow>
+            </TableLayout>
+
+            <LinearLayout style="@style/header_type_01" >
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:text="@string/edittext_name_places" />
-
-                <EditText
-                    android:id="@+id/edittext_placename"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="text" />
+                    style="@style/header_type_01_text"
+                    android:text="@string/header_image" />
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/layout_description"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal" >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:text="@string/edit_description" />
-
-                <EditText
-                    android:id="@+id/edittext_description"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="text" >
-                </EditText>
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/layout_photo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal" >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginTop="10dp"
-                    android:text="@string/edit_photo" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/layout_imagephoto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center" >
 
                 <ImageView
-                    android:id="@+id/imageview_photo"
+                    android:id="@+id/imageview_image"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:background="@drawable/pic_border"
                     android:contentDescription="@string/picture"
                     android:onClick="selectImage"
                     android:src="@android:drawable/ic_menu_gallery" />
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/layout_situation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal" >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="10dp"
-                    android:text="@string/edittext_situation" />
-            </LinearLayout>
-
-            <TableRow
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center" >
-
-                <Button
-                    android:id="@+id/button_map"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/button_seemap" />
-
-                <Button
-                    android:id="@+id/button_coordinates"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/edittext_coordinates" />
-            </TableRow>
+            <LinearLayout style="@style/header_type_02" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:layout_marginTop="10dp"
                 android:orientation="horizontal" >
 
-                <ImageButton
-                    android:id="@+id/button_send"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="2dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="0dp"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="true"
-                    android:background="@drawable/button_share_selector"
-                    android:contentDescription="@string/button_share"
-                    android:scaleType="fitCenter" />
+                <Button
+                    android:id="@+id/button_map"
+                    style="@style/button_type_02"
+                    android:background="@drawable/button_type_01"
+                    android:text="@string/button_map" />
 
-                <ImageButton
-                    android:id="@+id/button_delete"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="2dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="0dp"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="true"
-                    android:background="@drawable/button_delete"
-                    android:contentDescription="@string/button_delete"
-                    android:scaleType="fitCenter" />
+                <Button
+                    android:id="@+id/button_coordinates"
+                    style="@style/button_type_02"
+                    android:background="@drawable/button_type_01"
+                    android:text="@string/button_coordinates" />
 
-                <ImageButton
+                <Button
                     android:id="@+id/button_save"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="2dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="0dp"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="true"
-                    android:background="@drawable/button_save"
-                    android:contentDescription="@string/button_save"
-                    android:scaleType="fitCenter" />
+                    style="@style/button_type_02"
+                    android:background="@drawable/button_type_01"
+                    android:text="@string/button_save" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/button_share"
+                    style="@style/button_type_02"
+                    android:background="@drawable/button_type_01"
+                    android:text="@string/button_share" />
+
+                <Button
+                    android:id="@+id/button_delete"
+                    style="@style/button_type_02"
+                    android:background="@drawable/button_type_01"
+                    android:text="@string/button_delete" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

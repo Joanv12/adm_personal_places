@@ -9,7 +9,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewManager;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -37,6 +36,7 @@ public class screen04 extends CustomActionBarActivity {
 	
 	protected CustomListItem[] options_places;
 
+	
 	private Button button_types;
 	
 	ArrayList<BeanShape> list_places;
@@ -47,12 +47,12 @@ public class screen04 extends CustomActionBarActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState, R.layout.screen04);
-		GlobalContext.setContext(getApplicationContext());
-		SQLite.staticInitialization();
 
 		initControls();
 	}
 	private void initControls() {
+		
+		
 		
 		options_places = GlobalContext.getTypesData();
 		selections_placetypes = new boolean[options_places.length];
@@ -104,9 +104,12 @@ public class screen04 extends CustomActionBarActivity {
 		
 		listview_plots.setOnItemClickListener(new OnItemClickListener() {
 			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 
-				GlobalContext.shape_id = list_plots.get(position).getId();
+				GlobalContext.shape_id = list_plots.get(arg2).getId();
+
+				//screen05.radiobutton_plot.isActivated();
+				
 				Intent in = new Intent(getApplicationContext(), screen05.class);startActivity(in);
 			}
 		});

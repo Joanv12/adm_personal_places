@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 import org.apache.commons.httpclient.methods.multipart.StringPart;
 import com.upv.adm.adm_personal_shapes.R;
+import com.upv.adm.adm_personal_shapes.classes.CustomActionBarActivity;
 import com.upv.adm.adm_personal_shapes.classes.WebServerProxy;
 import com.upv.adm.adm_personal_shapes.classes.GlobalContext;
 import com.upv.adm.adm_personal_shapes.classes.IActivityGiver;
-import com.upv.adm.adm_personal_shapes.classes.SQLite;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -22,7 +22,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 
-public class screen01 extends Activity implements IActivityGiver {
+public class screen01 extends CustomActionBarActivity {
 
 	private EditText
 		edittext_username,
@@ -32,9 +32,9 @@ public class screen01 extends Activity implements IActivityGiver {
 
 	private Button
 		button_login,
+		button_skip,
 		button_register,
-		button_clear,
-		button_exit;
+		button_clear;
 
 	private ProgressDialog pd;
 	
@@ -45,17 +45,15 @@ public class screen01 extends Activity implements IActivityGiver {
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.screen01);
-		GlobalContext.setContext(getApplicationContext());
-		SQLite.staticInitialization();
+		super.onCreate(savedInstanceState, R.layout.screen01);
+		GlobalContext.init(getApplicationContext());
+		initControls();
 		
 		// guardarmos la screen01 en el contexto porque luego de que el usuario se haya logueado
 		// no nos interesará más volver a a ella, y querremos invocar su método: finish().
 		// No es necesario guardar todas las activities en el contexto, sino sólo aquellas
 		// que se puedan necesitar más adelante
 		GlobalContext.screen01 = this;
-		initControls();
 	}
 
 	private void initControls() {
@@ -64,9 +62,9 @@ public class screen01 extends Activity implements IActivityGiver {
 		edittext_password = (EditText) findViewById(R.id.edittext_password);
 		checkbox_remember = (CheckBox) findViewById(R.id.checkbox_remember);
 		button_login = (Button) findViewById(R.id.button_login);
+		button_skip = (Button) findViewById(R.id.button_skip);
 		button_register = (Button) findViewById(R.id.button_register);
 		button_clear = (Button) findViewById(R.id.button_clear);
-		button_exit = (Button) findViewById(R.id.button_exit);
 		
 		edittext_username.addTextChangedListener(new TextWatcher() {
 			public void onTextChanged(CharSequence seq, int start, int before, int count) {
@@ -93,20 +91,28 @@ public class screen01 extends Activity implements IActivityGiver {
 		button_login.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) { loginClick(); }
 		});
+		button_skip.setOnClickListener(new Button.OnClickListener() {
+			public void onClick(View v) { skipClick(); }
+		});
 		button_register.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) { registerClick(); }
 		});
 		button_clear.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) { clearClick(); }
 		});
-		button_exit.setOnClickListener(new Button.OnClickListener() {
-			public void onClick(View v) { exitClick(); }
-		});
-		
+
+		String username = GlobalContext.getPreference(GlobalContext.PREF.USERNAME);
+		String password = GlobalContext.getPreference(GlobalContext.PREF.PASSWORD);
 		String remember = GlobalContext.getPreference(GlobalContext.PREF.REMEMBER);
-		if (remember != null && remember.equals("1")) {
-			edittext_username.setText(GlobalContext.getPreference(GlobalContext.PREF.USERNAME));
-			edittext_password.setText(GlobalContext.getPreference(GlobalContext.PREF.PASSWORD));
+		if (
+				remember != null &&
+				remember.equals("1") &&				
+				username != null &&
+				!username.equals("")
+				
+		) {
+			edittext_username.setText(username);
+			edittext_password.setText(password);
 			checkbox_remember.setChecked(true);
 		}
 	}
@@ -126,12 +132,10 @@ public class screen01 extends Activity implements IActivityGiver {
 
 	@SuppressWarnings("unchecked")
 	private void loginClick() {
-
 		
 		ArrayList<StringPart> fields = new ArrayList<StringPart>();
 		fields.add(new StringPart("action", "login_user"));
 
-		
 		Hashtable<String, String> data = new Hashtable<String, String>();
 		data.put("username", edittext_username.getText().toString());
 		data.put("password", edittext_password.getText().toString());
@@ -158,8 +162,8 @@ public class screen01 extends Activity implements IActivityGiver {
 					// Respuesta correcta por parte del servidor, entonces seguimos adelante
 					GlobalContext.username = edittext_username.getText().toString();
 					GlobalContext.password = edittext_password.getText().toString();
-					getCurrentActivity().finish(); // esta activity no se necesitará más, por tanto la cerramos
 					startActivity(new Intent(getApplicationContext(), screen03.class)); // abrimos (creación) la siguiente activity
+					getCurrentActivity().finish(); // esta activity no se necesitará más, por tanto la cerramos
 				}
 				else {
 				    AlertDialog ad = new AlertDialog.Builder(getCurrentActivity()).create();  
@@ -178,6 +182,11 @@ public class screen01 extends Activity implements IActivityGiver {
 		
 	}
 	
+	private void skipClick() {
+		startActivity(new Intent(getApplicationContext(), screen03.class));
+		getCurrentActivity().finish();
+	}
+
 	private void registerClick() {
 		startActivity(new Intent(getApplicationContext(), screen02.class));
 	}
@@ -188,9 +197,4 @@ public class screen01 extends Activity implements IActivityGiver {
 		checkbox_remember.setChecked(false);
 	}
 	
-	private void exitClick() {
-		this.finish();
-		System.exit(0);
-	}
-
 }

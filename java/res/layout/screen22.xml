@@ -13,40 +13,42 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
+            android:gravity="center"
             android:weightSum="3" >
 
             <Button
-                android:id="@+id/button_fixed"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/button_gps"
+                style="@style/button_type_02"
                 android:layout_weight="1"
-                android:text="@string/button_fixed" />
-
-            <Button
-                android:id="@+id/screen18_button_gps"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:background="@drawable/button_type_01"
                 android:text="@string/button_gps" />
 
             <Button
-                android:id="@+id/screen18_button_delete"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/button_fix"
+                style="@style/button_type_02"
                 android:layout_weight="1"
+                android:background="@drawable/button_type_01"
+                android:text="@string/button_fixed" />
+
+            <Button
+                android:id="@+id/button_delete"
+                style="@style/button_type_02"
+                android:layout_weight="1"
+                android:background="@drawable/button_type_01"
                 android:text="@string/button_delete" />
         </LinearLayout>
 
-        <TableLayout
-            android:layout_width="fill_parent"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@id/buttons" >
+            android:layout_above="@id/buttons">
 
             <WebView
                 android:id="@+id/mapview_map"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent" />
-        </TableLayout>
+        </LinearLayout>
+
     </RelativeLayout>
 
     <ListView

@@ -33,7 +33,7 @@ public class CustomActionBarActivity extends ActionBarActivity implements IActiv
 	private ActionBarDrawerToggle drawerToggle;
 	private CharSequence titleSection;
 	private CharSequence appTitle;
-
+	
 	@Override
 	public Activity getCurrentActivity() {
 		return this;
@@ -42,9 +42,8 @@ public class CustomActionBarActivity extends ActionBarActivity implements IActiv
 	public void onCreate(Bundle savedInstanceState, int layout) {
 		super.onCreate(savedInstanceState);
 		setContentView(layout);
-		GlobalContext.setContext(getApplicationContext());
-		SQLite.staticInitialization();
-		
+		GlobalContext.init(getApplicationContext());
+
 		menuOptions = new String[] {
 				"Inicio",
 				"Perfil",
