@@ -47,8 +47,6 @@ public class screen04 extends CustomActionBarActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState, R.layout.screen04);
-		GlobalContext.setContext(getApplicationContext());
-		SQLite.staticInitialization();
 
 		initControls();
 	}
@@ -110,7 +108,7 @@ public class screen04 extends CustomActionBarActivity {
 
 				GlobalContext.shape_id = list_plots.get(arg2).getId();
 
-				screen05.radiobutton_plot.isActivated();
+				//screen05.radiobutton_plot.isActivated();
 				
 				Intent in = new Intent(getApplicationContext(), screen05.class);startActivity(in);
 			}

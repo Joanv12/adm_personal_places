@@ -2,9 +2,9 @@ package com.upv.adm.adm_personal_shapes.screens;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.Hashtable;
-
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
@@ -25,14 +25,11 @@ import android.webkit.WebView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
-
+import android.widget.TableRow;
 import com.upv.adm.adm_personal_shapes.R;
 import com.upv.adm.adm_personal_shapes.classes.BeanShape;
 import com.upv.adm.adm_personal_shapes.classes.CustomActionBarActivity;
@@ -44,13 +41,11 @@ import com.upv.adm.adm_personal_shapes.classes.Utils;
 
 public class screen05 extends CustomActionBarActivity {
 
-	private TextView lblMessage;
-	private String coords;
 	private EditText 
 			edittext_name,
 			edittext_description;
 
-	private Long id;
+	private TableRow tablerow_placetype;
 	
 	private CustomListItem[] 
 			typesListviewItems;
@@ -62,39 +57,183 @@ public class screen05 extends CustomActionBarActivity {
 	ArrayList<BeanShape> list_places = new ArrayList<BeanShape>();
 	ArrayList<BeanShape> list_plots = new ArrayList<BeanShape>();
 
-	BeanShape place;
-	BeanShape plot;
-
 	private Object[] typesData;
 	private Spinner spinner_types;
 	
-	private ImageButton 
+	private Button 
 			button_share, 
-			button_save, 
 			button_delete;
 	private Button 
 			button_fillqr,
 			button_map,
-			button_coordinates;
+			button_coordinates,
+			button_save; 
 	
-	private RadioGroup radiogroup_placecategory;
+	private RadioGroup radiogroup_shapetype;
 	
 	public static RadioButton
 					radiobutton_place,
 					radiobutton_plot;
 	
-	private View layout_spinnertypes;
+	private ImageView imageview_image;
 	
-	private ImageView image_photo;
-	
-	// keep track of camera capture intent
-	final int CAMERA_CAPTURE = 1;
-	// keep track of cropping intent
-	final int PIC_CROP = 2;
-	// captured picture uri
-	private Uri picUri;
-	
+	final int ACTIVITYRESULT_CAMERA = 1;
+	final int ACTIVITYRESULT_CROP = 2;
+
 	ProgressDialog pd;
+
+	@SuppressLint("ResourceAsColor")
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState, R.layout.screen05);
+		GlobalContext.init(getApplicationContext());
+		initControls();
+
+		GlobalContext.shape_id = (long) 13;
+		if (GlobalContext.shape_id != null) {
+			ArrayList<BeanShape> shapes = (ArrayList<BeanShape>)SQLite.getShapes("WHERE id = " + GlobalContext.shape_id);
+			if (shapes.size() == 1) {
+				BeanShape shape = shapes.get(0);
+				fillFields(shape);
+			}
+		}
+	}
+	
+	public void initControls(){
+	
+		radiogroup_shapetype = (RadioGroup) findViewById(R.id.radiogroup_shapetype);
+		
+		radiobutton_place = (RadioButton) findViewById(R.id.radiobutton_place);
+		radiobutton_plot = (RadioButton) findViewById(R.id.radiobutton_plot);
+
+		tablerow_placetype = (TableRow) findViewById(R.id.tablerow_placetype);
+		
+		spinner_types = (Spinner) findViewById(R.id.spinner_types);
+
+		button_fillqr = (Button) findViewById(R.id.button_fillqr);
+
+		edittext_name = (EditText) findViewById(R.id.edittext_placename);
+		edittext_description = (EditText) findViewById(R.id.edittext_description);
+		imageview_image = (ImageView) findViewById(R.id.imageview_image);
+		
+		button_map = (Button) findViewById(R.id.button_map);
+		button_coordinates = (Button) findViewById(R.id.button_coordinates);
+		button_save = (Button) findViewById(R.id.button_save);
+
+		button_share = (Button) findViewById(R.id.button_share);
+		button_delete = (Button) findViewById(R.id.button_delete);
+		
+		imageview_image.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+
+				if (v.getId() == R.id.imageview_image) {
+					try {
+						selectImage();
+					} catch (ActivityNotFoundException anfe) {
+						@SuppressWarnings("unused")
+						String errorMessage = "Whoops - your device doesn't support capturing images!";
+					}
+				}
+			}
+		});
+
+		typesListviewItems = GlobalContext.getTypesData();
+		ArrayAdapter<CustomListItem> arrayAdapter_genders = new ArrayAdapter<CustomListItem>(this, android.R.layout.simple_spinner_dropdown_item, typesListviewItems);
+		spinner_types.setAdapter(arrayAdapter_genders);
+		
+		button_fillqr.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				fillQrClick();
+			}
+		});
+
+		if (GlobalContext.shape_id == null) {
+			((ViewManager) button_share.getParent()).removeView(button_share);
+			((ViewManager) button_delete.getParent()).removeView(button_delete);
+
+		}
+		
+		button_map.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				mapClick();
+			}
+		});
+		
+		button_coordinates.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				coordinatesClick();
+			}
+		});
+		
+		button_share.setOnClickListener(new OnClickListener() {  @Override  public void onClick(View v) {
+			AlertDialog.Builder builder_share =new AlertDialog.Builder(screen05.this);
+			builder_share.setTitle("Compartir con...");
+			
+			builder_share.setNeutralButton("Personal Shapes",new DialogInterface.OnClickListener() {  
+				@Override  
+				public void onClick(DialogInterface dialog, int which) {
+					shareClick();
+				
+				}  
+			});  
+			builder_share.setPositiveButton("Redes Sociales",new DialogInterface.OnClickListener() {  
+				@Override  
+				public void onClick(DialogInterface dialog, int which) {
+						
+				
+				}  
+			}); 
+			builder_share.show();  
+			}  
+		});
+		
+		button_save.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				saveClick();
+			}
+		});
+		
+		radiogroup_shapetype.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+			public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+				if (checkedId == R.id.radiobutton_place) {
+					button_fillqr.setVisibility(View.VISIBLE);
+					tablerow_placetype.setVisibility(View.VISIBLE);
+					screen22.isPlace = true;
+					screen22.coords = "";
+				}
+				else if (checkedId == R.id.radiobutton_plot) {
+					button_fillqr.setVisibility(View.GONE);
+					tablerow_placetype.setVisibility(View.GONE);
+					screen22.isPlace = false;
+					screen22.coords = "";
+				}
+			}
+		});
+	}
+	
+	public void fillFields(BeanShape shape) {
+		if (shape.getType() != null) {
+			radiobutton_place.setChecked(true);
+			button_fillqr.setVisibility(View.VISIBLE);
+			tablerow_placetype.setVisibility(View.VISIBLE);
+			Utils.setSelectedKey(spinner_types, shape.getType());
+		}
+		else {
+			radiobutton_plot.setChecked(true);
+			button_fillqr.setVisibility(View.GONE);
+			tablerow_placetype.setVisibility(View.GONE);
+		}
+		edittext_name.setText(shape.getName());
+		edittext_description.setText(shape.getDescription());	
+		screen22.isPlace = (shape.getType() != null); 
+		screen22.coords = shape.getCoords(); 
+	}
 	
 	@SuppressWarnings("deprecation")
 	@Override
@@ -134,214 +273,39 @@ public class screen05 extends CustomActionBarActivity {
 		}
 	}
 
-	@SuppressLint("ResourceAsColor")
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState, R.layout.screen05);
-		GlobalContext.setContext(getApplicationContext());
-		SQLite.staticInitialization();
-
-		initControls();
-		if (GlobalContext.shape_id != null) {
-			fillFields();
-		}
-	}
-	
-	public void fillFields () {
-		if (GlobalContext.shape_id != null) {
-			ArrayList<BeanShape> shapes = (ArrayList<BeanShape>)SQLite.getShapes("WHERE id = " + GlobalContext.shape_id);
-			if (shapes.size() == 1) {
-				BeanShape shape = shapes.get(0);
-				edittext_name.setText(shape.getName());
-				edittext_description.setText(shape.getDescription());	
-				Utils.setSelectedKey(spinner_types, shape.getType());
-				coords = screen21.coords; 
-				
-				//Pendiente por hacer, ya que la foto es temporal, falta guardarla con el movil.
-				//image_photo.setImag(shape.getPhoto());
-			}
-		}
-	}
-	
-	public void initControls(){
-	
-		lblMessage = (TextView) findViewById(R.id.edittext_selectoption);
-		radiogroup_placecategory = (RadioGroup) findViewById(R.id.radiogroup_shapetype);
-		
-		radiobutton_place = (RadioButton) findViewById(R.id.radiobutton_place);
-		radiobutton_plot = (RadioButton) findViewById(R.id.radiobutton_plot);
-
-		layout_spinnertypes = (View) findViewById(R.id.layout_spinnertypes);
-		
-		spinner_types = (Spinner) findViewById(R.id.spinner_types);
-
-		button_fillqr = (Button) findViewById(R.id.button_fillqr);
-
-		edittext_name = (EditText) findViewById(R.id.edittext_placename);
-		edittext_description = (EditText) findViewById(R.id.edittext_description);
-		image_photo = (ImageView) findViewById(R.id.imageview_photo);
-		
-		button_map = (Button) findViewById(R.id.button_map);
-		button_coordinates = (Button) findViewById(R.id.button_coordinates);
-
-		button_share = (ImageButton) findViewById(R.id.button_send);
-		button_save = (ImageButton) findViewById(R.id.button_save);
-		button_delete = (ImageButton) findViewById(R.id.button_delete);
-		
-		image_photo.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-
-				if (v.getId() == R.id.imageview_photo) {
-					try {
-						selectImage();
-					} catch (ActivityNotFoundException anfe) {
-						@SuppressWarnings("unused")
-						String errorMessage = "Whoops - your device doesn't support capturing images!";
-					}
-				}
-			}
-		});
-
-		typesListviewItems = GlobalContext.getTypesData();
-		ArrayAdapter<CustomListItem> arrayAdapter_genders = new ArrayAdapter<CustomListItem>(this, android.R.layout.simple_spinner_dropdown_item, typesListviewItems);
-		spinner_types.setAdapter(arrayAdapter_genders);
-		
-		button_fillqr.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				fillQrClick();
-				}
-		});
-
-		if (GlobalContext.shape_id == null) {
-			((ViewManager) button_share.getParent()).removeView(button_share);
-			((ViewManager) button_delete.getParent()).removeView(button_delete);
-
-		}
-		
-		button_map.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				mapClick();
-			}
-		});
-		
-		button_coordinates.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				coordinatesClick();
-			}
-		});
-		
-		
-		
-		button_share.setOnClickListener(new OnClickListener() {  @Override  public void onClick(View v) {
-			AlertDialog.Builder builder_share =new AlertDialog.Builder(screen05.this);
-			builder_share.setTitle("Compartir con...");
-			
-			builder_share.setNeutralButton("Personal Shapes",new DialogInterface.OnClickListener() {  
-				@Override  
-				public void onClick(DialogInterface dialog, int which) {
-					shareClick();
-				
-				}  
-			});  
-			builder_share.setPositiveButton("Redes Sociales",new DialogInterface.OnClickListener() {  
-				@Override  
-				public void onClick(DialogInterface dialog, int which) {
-						
-				
-				}  
-			}); 
-			builder_share.show();  
-			}  
-		});
-		
-		button_save.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				saveClick();
-			}
-		});
-		
-		radiogroup_placecategory.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-			public void onCheckedChanged(RadioGroup group, int checkedId) {
-
-				if (checkedId == R.id.radiobutton_place) {
-					lblMessage.setText("Lugar personal");
-					layout_spinnertypes.setVisibility(View.VISIBLE);
-				}
-				else if (checkedId == R.id.radiobutton_plot) {
-					lblMessage.setText("Parcela");
-					layout_spinnertypes.setVisibility(View.INVISIBLE);
-				}
-			}
-		});
-	}
-	
 	public void fillQrClick() {
-		
 		@SuppressWarnings("unchecked")
 		ArrayList<String> typesDataCodes = (ArrayList<String>) typesData[0];
 		String typesCode = typesDataCodes.get(spinner_types.getSelectedItemPosition());
 		edittext_name.setText(typesCode);
-	
 	}
 	
 	public void saveClick() {
 		
+		Long id = GlobalContext.shape_id;
 		String name = edittext_name.getText().toString();
 		String description = edittext_description.getText().toString();
-		String coords = edittext_description.getText().toString();
+		String coords = screen22.coords;
 
-		if (radiobutton_place.isChecked()) {
+		String type = null;
+		if (radiobutton_place.isChecked())
+			type = Utils.getSelectedKey(spinner_types);
 			
-			String type = Utils.getSelectedKey(spinner_types);
-			BeanShape place = new BeanShape(id, name, description, type, coords, resizedImagePath);
-			long result = SQLite.saveShape(place);
-			System.out.println("Result: " + result);
-		}
-		else {
-			
-			BeanShape plot = new BeanShape(id, name, description, null, coords, resizedImagePath);
-			SQLite.saveShape(plot);
-		}
+		BeanShape shape = new BeanShape(id, name, description, type, coords, resizedImagePath);
 
-		if(id == null) {startActivity(new Intent(getApplicationContext(), screen03.class));}
+		SQLite.saveShape(shape);
+
+		//this.finish();
 		
 	}
 	
 	public void coordinatesClick() {
-		
 		startActivity(new Intent(getApplicationContext(), screen21.class));
-		}
+	}
 	
 	public void mapClick() {
-		
-		String name = edittext_name.getText().toString();
-		String description = edittext_description.getText().toString();
-		String coords = screen21.coords;
-		
-		
-		if (radiobutton_place.isChecked()) {
-			
-			String type = Utils.getSelectedKey(spinner_types);
-			BeanShape place = new BeanShape(id, name, description, type, coords, resizedImagePath);
-			long result = SQLite.saveShape(place);
-			System.out.println("Result: " + result);
-		}
-		else {
-			//UtilsAddBeanPlotToMap(BeanShape plot, WebView webview)
-			BeanShape plot = new BeanShape(id, name, description, null, coords, resizedImagePath);
-		}
-		Intent in = new Intent(getApplicationContext(),	screen22.class);
-		
-		//in.putExtra("plot", plot);
-
-		startActivity(in);
-		
-		}
+		startActivity(new Intent(getApplicationContext(), screen22.class));
+	}
 
 	public void UtilsAddBeanPlotToMap(BeanShape plot, WebView webview_map){
 		
@@ -362,15 +326,14 @@ public class screen05 extends CustomActionBarActivity {
 			@Override
 			public void onClick(DialogInterface dialog, int item) {
 				if (options[item].equals("Cámara")) {
-					// use standard intent to capture an image
 					Intent captureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-					// we will handle the returned data in onActivityResult
-					startActivityForResult(captureIntent, CAMERA_CAPTURE);
-				} else if (options[item].equals("Galeria")) {
-					// acción para buscar una imagen en la galeria
-					Intent pickPhoto = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-					startActivityForResult(pickPhoto, 1);// one can be replced with any action code
-				} else if (options[item].equals("Cancelar")) {
+					startActivityForResult(captureIntent, ACTIVITYRESULT_CAMERA);
+				}
+				else if (options[item].equals("Galeria")) {
+					Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+					startActivityForResult(intent, 1);
+				}
+				else if (options[item].equals("Cancelar")) {
 					dialog.dismiss();
 				}
 			}
@@ -381,63 +344,42 @@ public class screen05 extends CustomActionBarActivity {
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
 		if (resultCode == RESULT_OK) {
-			// user is returning from capturing an image using the camera
-			if (requestCode == CAMERA_CAPTURE) {
-				// get the Uri for the captured image
-				picUri = data.getData();
-				// carry out the crop operation
-				performCrop();
+			if (requestCode == ACTIVITYRESULT_CAMERA) {
+				Uri uri = data.getData();
+				startCropImage(uri);
 			}
-			// user is returning from cropping the image
-			else if (requestCode == PIC_CROP) {
-				// get the returned data
+			else if (requestCode == ACTIVITYRESULT_CROP) {
 				Bundle extras = data.getExtras();
-				// get the cropped bitmap
-				Bitmap thePic = extras.getParcelable("data");
-				
-				// display the returned cropped image
-
-				Bitmap thePicResized = Bitmap.createScaledBitmap(thePic, 512,512, false);
-				image_photo.setImageBitmap(thePicResized);
-
+				Bitmap bitmap = extras.getParcelable("data");
+				Bitmap bitmap_resized = Bitmap.createScaledBitmap(bitmap, 512,512, false);
+				imageview_image.setImageBitmap(bitmap_resized);
 				try {
-					File tempFile = File.createTempFile("temp_file_",".jpg");
-					FileOutputStream fos = new FileOutputStream(tempFile);
-					thePicResized.compress(Bitmap.CompressFormat.JPEG, 100, fos);
-					resizedImagePath = tempFile.getPath();
-				} catch (Exception e) {
+					File file = File.createTempFile("temp_file_",".jpg");
+					FileOutputStream fos = new FileOutputStream(file);
+					bitmap_resized.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+					resizedImagePath = file.getPath();
+				}
+				catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		}
 	}
 
-	private void performCrop() {
-		// take care of exceptions
+	private void startCropImage(Uri uri) {
 		try {
-			// call the standard crop action intent (the user device may not support it)
-			Intent cropIntent = new Intent("com.android.camera.action.CROP");
-			// indicate image type and Uri
-			cropIntent.setDataAndType(picUri, "image/*");
-			// set crop properties
-			cropIntent.putExtra("crop", "true");
-			// indicate aspect of desired crop
-			cropIntent.putExtra("aspectX", 1);
-			cropIntent.putExtra("aspectY", 1);
-			// indicate output X and Y
-			cropIntent.putExtra("outputX", 512);
-			cropIntent.putExtra("outputY", 512);
-			// retrieve data on return
-			cropIntent.putExtra("return-data", true);
-			// start the activity - we handle returning in onActivityResult
-			startActivityForResult(cropIntent, PIC_CROP);
+			Intent intent = new Intent("com.android.camera.action.CROP");
+			intent.setDataAndType(uri, "image/*");
+			intent.putExtra("crop", "true");
+			intent.putExtra("aspectX", 1);
+			intent.putExtra("aspectY", 1);
+			intent.putExtra("outputX", 512);
+			intent.putExtra("outputY", 512);
+			intent.putExtra("return-data", true);
+			startActivityForResult(intent, ACTIVITYRESULT_CROP);
 		}
-		// respond to users whose devices do not support the crop action
-		catch (ActivityNotFoundException anfe) {
-			// display an error message
-			String errorMessage = "Whoops - your device doesn't support the crop action!";
-			Toast toast = Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT);
-			toast.show();
+		catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 	
@@ -452,10 +394,9 @@ public class screen05 extends CustomActionBarActivity {
 		data.put("name", name);
 		data.put("description", description);
 		data.put("type",  type);
-		
-		
+
 		if (resizedImagePath != null)
-			data.put("photo", resizedImagePath);
+			data.put("image", resizedImagePath);
 		
 		(new AsyncTask<Hashtable<String, String>, Void, String[]>() {
 			@Override
@@ -478,8 +419,6 @@ public class screen05 extends CustomActionBarActivity {
 				if (pd!=null)
 					pd.dismiss();
 				if (result[0].equals("success")) {
-					// Respuesta correcta por parte del servidor, entonces seguimos adelante
-					// esta activity no se necesitará más, por tanto la cerramos
 					getCurrentActivity().finish(); 
 					startActivity(new Intent(getApplicationContext(), screen04.class));
 				}
@@ -500,9 +439,6 @@ public class screen05 extends CustomActionBarActivity {
 				}
 			}
 		}).execute(data);
-		
-	}
-		
-		
-	}
 
+	}
+}

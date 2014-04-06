@@ -18,7 +18,7 @@ public class BeanUser {
 			name,
 			country,
 			gender,
-			photo,
+			image,
 			email,
 			phone;
 
@@ -70,12 +70,12 @@ public class BeanUser {
 		this.gender = sex;
 	}
 
-	public String getPhoto() {
-		return photo;
+	public String getImage() {
+		return image;
 	}
 
-	public void setPhoto(String photo) {
-		this.photo = photo;
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 	public String getEmail() {

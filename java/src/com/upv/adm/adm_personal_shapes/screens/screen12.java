@@ -23,8 +23,6 @@ public class screen12 extends CustomActionBarActivity implements OnTouchListener
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState,R.layout.screen12);
-		GlobalContext.setContext(getApplicationContext());
-		SQLite.staticInitialization();
 
 		initControls();
 	}

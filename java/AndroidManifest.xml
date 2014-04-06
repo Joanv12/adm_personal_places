@@ -13,6 +13,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
@@ -28,72 +29,63 @@
         </activity>
         <activity
             android:name="com.upv.adm.adm_personal_shapes.screens.screen02"
-            android:label="@string/title_screen02"
-            android:noHistory="true" >
+            android:label="@string/title_screen02">
         </activity>
         <activity
             android:name="com.upv.adm.adm_personal_shapes.screens.screen03"
             android:label="@string/title_screen03" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name="com.upv.adm.adm_personal_shapes.screens.screen04"
-            android:label="@string/title_screen04"
-            android:noHistory="true" >
+            android:label="@string/title_screen04">
         </activity>
         <activity
             android:name="com.upv.adm.adm_personal_shapes.screens.screen05"
-            android:label="@string/title_screen05"
-            android:noHistory="true" >
+            android:label="@string/title_screen05">
         </activity>
         <activity
             android:name="com.upv.adm.adm_personal_shapes.screens.screen07"
-            android:label="@string/title_screen07"
-            android:noHistory="true" >
+            android:label="@string/title_screen07">
         </activity>
         <activity
             android:name="com.upv.adm.adm_personal_shapes.screens.screen12"
-            android:label="@string/title_screen12"
-            android:noHistory="true" >
+            android:label="@string/title_screen12">
         </activity>
         <activity
             android:name="com.upv.adm.adm_personal_shapes.screens.screen13"
-            android:label="@string/title_screen13"
-            android:noHistory="true" >
+            android:label="@string/title_screen13">
         </activity>
         <activity
             android:name="com.upv.adm.adm_personal_shapes.screens.screen15"
-            android:label="@string/title_screen15"
-            android:noHistory="true" >
+            android:label="@string/title_screen15">
         </activity>
         <activity
             android:name="com.upv.adm.adm_personal_shapes.screens.screen17"
-            android:label="@string/title_screen17"
-            android:noHistory="true" >
+            android:label="@string/title_screen17">
         </activity>
         <activity
             android:name="com.upv.adm.adm_personal_shapes.screens.screen18"
-            android:label="@string/title_screen18"
-            android:noHistory="true" >
+            android:label="@string/title_screen18">
         </activity>
         <activity
             android:name="com.upv.adm.adm_personal_shapes.screens.screen19"
-            android:label="@string/title_screen19"
-            android:noHistory="true" >
+            android:label="@string/title_screen19">
         </activity>
         <activity
             android:name="com.upv.adm.adm_personal_shapes.screens.screen21"
-            android:label="@string/title_screen21"
-            android:noHistory="true" >
+            android:label="@string/title_screen21">
         </activity>
         <activity
             android:name="com.upv.adm.adm_personal_shapes.screens.screen22"
-            android:label="@string/title_screen22"
-            android:noHistory="true" >
+            android:label="@string/title_screen22">
         </activity>
         <activity
             android:name="com.upv.adm.adm_personal_shapes.screens.screen23"
-            android:label="@string/title_screen23"
-            android:noHistory="true" >
+            android:label="@string/title_screen23">
         </activity>
         <activity
             android:name="com.upv.adm.adm_personal_shapes.screens.debug.debug01_general"
@@ -102,15 +94,15 @@
         <activity
             android:name="com.upv.adm.adm_personal_shapes.screens.debug.debug02_map"
             android:label="@string/app_name" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name="com.upv.adm.adm_personal_shapes.screens.debug.debug03_elementsvisibility"
             android:label="@string/app_name" >
         </activity>
-    </application>
+        <activity
+            android:name="com.upv.adm.adm_personal_shapes.screens.debug.debug04_gps"
+            android:label="@string/app_name" >
+        </activity>
+        </application>
 
 </manifest>

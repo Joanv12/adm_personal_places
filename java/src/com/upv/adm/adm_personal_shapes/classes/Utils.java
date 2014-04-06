@@ -11,9 +11,15 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import com.google.zxing.BarcodeFormat;
+
+import android.content.Context;
+import android.content.Intent;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.Environment;
+import android.provider.Settings;
 import android.util.SparseBooleanArray;
 import android.webkit.WebView;
 import android.widget.ListView;
@@ -171,6 +177,19 @@ public class Utils {
 		webview.loadUrl("javascript: initialize_map()");		
 	}
 	
+	public static void fixLastPoint(WebView webview) {
+		webview.loadUrl("javascript: fixLastPoint()");		
+	}
+	
+	public static void deleteLastPoint(WebView webview) {
+		webview.loadUrl("javascript: deleteLastPoint()");		
+	}
+	
+	public static void placeMarker(WebView webview, double lat, double lng) {
+		String url = "javascript: placeMarker(" + lat + ", " + lng + ");";
+		webview.loadUrl(url);
+	}
+	
 	public static ArrayList<String[]> getTypes() {
 		return getArrayListFromXMLData("types.xml");		
 	}
@@ -255,4 +274,35 @@ public class Utils {
 		return result;
 	}
 	
+	public static void GPSTurnOn() {
+		Context context = GlobalContext.getContext();
+		Intent intent = new Intent("android.location.GPS_ENABLED_CHANGE");
+		intent.putExtra("enabled", true);
+		context.sendBroadcast(intent);
+		String provider = Settings.Secure.getString(context.getContentResolver(), Settings.Secure.LOCATION_PROVIDERS_ALLOWED);
+		if (!provider.contains("gps")) { //if gps is disabled
+			final Intent poke = new Intent();
+			poke.setClassName("com.android.settings", "com.android.settings.widget.SettingsAppWidgetProvider"); 
+			poke.addCategory(Intent.CATEGORY_ALTERNATIVE);
+			poke.setData(Uri.parse("3")); 
+			context.sendBroadcast(poke);
+		}
+    }
+
+	public static void GPSTurnOff() {
+		Context context = GlobalContext.getContext();
+	    String provider = Settings.Secure.getString(context.getContentResolver(), Settings.Secure.LOCATION_PROVIDERS_ALLOWED);
+	    if(provider.contains("gps")) {
+	        final Intent poke = new Intent();
+	        poke.setClassName("com.android.settings", "com.android.settings.widget.SettingsAppWidgetProvider");
+	        poke.addCategory(Intent.CATEGORY_ALTERNATIVE);
+	        poke.setData(Uri.parse("3")); 
+	        context.sendBroadcast(poke);
+	    }
+	}
+
+	public static String getAppDir() {
+		String app_directory_name = (String)Utils.getCustomProperties().get("app_directory_name");
+		return new File(Environment.getExternalStorageDirectory(), app_directory_name).getPath();
+	}
 }

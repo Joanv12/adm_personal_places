@@ -28,8 +28,7 @@ public class debug02_map extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.debug02_map);
-		GlobalContext.setContext(getApplicationContext());
-		SQLite.staticInitialization();
+		GlobalContext.init(getApplicationContext());
 
 		String url = "http://www.angeltools.tk/map.php";
 		//String url = "http://google-developers.appspot.com/maps/documentation/javascript/examples/full/marker-simple";
@@ -45,7 +44,7 @@ public class debug02_map extends Activity {
 		button_showlayer.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Utils.addLayerToMap("5", webview_map);
+				Utils.addLayerToMap("6", webview_map);
 			}
 		});
 
@@ -58,7 +57,7 @@ public class debug02_map extends Activity {
 						"Nachos y Tapas a todas horas",
 						"t01",
 						"39.47169,-0.34711",
-						"photoUri1"
+						"imageUri1"
 				);
 				Utils.addBeanPlaceToMap(place, webview_map);
 			}
@@ -74,7 +73,7 @@ public class debug02_map extends Activity {
 						"Plaza en zona estudiantil de Valencia",
 						null,
 						coords,
-						"photoUri2"
+						"imageUri2"
 				);
 				Utils.addBeanPlotToMap(plot, webview_map);
 			}

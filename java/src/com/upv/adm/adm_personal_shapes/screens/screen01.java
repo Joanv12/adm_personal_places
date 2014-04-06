@@ -7,7 +7,6 @@ import com.upv.adm.adm_personal_shapes.R;
 import com.upv.adm.adm_personal_shapes.classes.WebServerProxy;
 import com.upv.adm.adm_personal_shapes.classes.GlobalContext;
 import com.upv.adm.adm_personal_shapes.classes.IActivityGiver;
-import com.upv.adm.adm_personal_shapes.classes.SQLite;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -47,8 +46,7 @@ public class screen01 extends Activity implements IActivityGiver {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.screen01);
-		GlobalContext.setContext(getApplicationContext());
-		SQLite.staticInitialization();
+		GlobalContext.init(getApplicationContext());
 		
 		// guardarmos la screen01 en el contexto porque luego de que el usuario se haya logueado
 		// no nos interesará más volver a a ella, y querremos invocar su método: finish().

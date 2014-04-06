@@ -20,8 +20,7 @@ public class debug01_general extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.debug01_general);
-		GlobalContext.setContext(getApplicationContext());
-		SQLite.staticInitialization();
+		GlobalContext.init(getApplicationContext());
 
 		/*
 		BeanShape place = new BeanShape(null, "Cantina Mariachi Mariachi. Lugar de Tapas y mucho más.", "Un lugar muy bueno para ir a comer todos los días. Es bueno, bonito y barato. Tapas, Vinos y Más esto es una prueba", "t01", "-360.34699738025665283,-360.34699738025665283", null);

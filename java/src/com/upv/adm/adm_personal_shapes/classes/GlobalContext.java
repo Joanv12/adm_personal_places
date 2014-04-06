@@ -1,16 +1,19 @@
 package com.upv.adm.adm_personal_shapes.classes;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.os.Environment;
 
 public class GlobalContext {
 
 	private static Context context = null;
 	public static Hashtable<String, String> preferences = null;
+	private static CustomLocationListener cll;
 	
 	public static String username;
 	public static String password;
@@ -37,9 +40,15 @@ public class GlobalContext {
 		}
 	}
 	
-	public static void setContext(Context context) {
-		if (GlobalContext.context == null)
+	public static void init(Context context) {
+		if (GlobalContext.context == null) {
 			GlobalContext.context = context;
+			SQLite.staticInitialization();
+			cll = new CustomLocationListener();
+			File app_dir = new File(Utils.getAppDir());
+			if (!app_dir.exists())
+				app_dir.mkdir();
+		}
 	}
 
 	public static Context getContext() {
@@ -115,6 +124,10 @@ public class GlobalContext {
 		if (typesData == null)
 			typesData = Utils.getListViewItemsFromXMLData("types.xml");
 		return typesData;
+	}
+	
+	public static CustomLocationListener getCustomLocationListener() {
+		return cll;
 	}
 	
 }

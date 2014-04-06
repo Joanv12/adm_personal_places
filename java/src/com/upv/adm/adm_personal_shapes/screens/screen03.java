@@ -19,15 +19,12 @@ public class screen03 extends CustomActionBarActivity {
 			button_list, 
 			button_map,
 			button_friends, 
-			button_events, 
 			button_search;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState, R.layout.screen03);
-		GlobalContext.setContext(getApplicationContext());
-		SQLite.staticInitialization();
-
+		GlobalContext.init(getApplicationContext());
 		initControls();
 	}
 	private void initControls() {
@@ -37,7 +34,6 @@ public class screen03 extends CustomActionBarActivity {
 		button_list = (Button) findViewById(R.id.button_list);
 		button_map = (Button) findViewById(R.id.button_map);
 		button_friends = (Button) findViewById(R.id.button_friends);
-		button_events = (Button) findViewById(R.id.button_events);
 		button_search = (Button) findViewById(R.id.button_search);
 
 		button_profile.setOnClickListener(new OnClickListener() {
@@ -74,12 +70,6 @@ public class screen03 extends CustomActionBarActivity {
 		button_map.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				startActivity(new Intent(getApplicationContext(), screen07.class));
-			}
-		});
-
-		button_events.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
-				startActivity(new Intent(getApplicationContext(), screen12.class));
 			}
 		});
 

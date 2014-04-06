@@ -39,8 +39,6 @@ public class screen13 extends CustomActionBarActivity implements OnTouchListener
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState, R.layout.screen13);
-		GlobalContext.setContext(getApplicationContext());
-		SQLite.staticInitialization();
 
 		initControls();
 	}

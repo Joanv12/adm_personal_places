@@ -60,7 +60,7 @@ public class WebServerProxy {
 		try {
 
 			Properties props = Utils.getCustomProperties();
-			final String post_url = (String) props.get("post_url");
+			final String post_url = ((String)props.get("server_url")) + "/includes/do.php";
 
 			ArrayList<StringPart> fields = new ArrayList<StringPart>();
 			ArrayList<FilePart> files = new ArrayList<FilePart>();
@@ -74,8 +74,8 @@ public class WebServerProxy {
 			fields.add(new StringPart("phone", data.get("phone")));
 			fields.add(new StringPart("country", data.get("country")));
 			
-			if (data.get("photo") != null)
-				files.add(new FilePart("photo", new File(data.get("photo"))));
+			if (data.get("image") != null)
+				files.add(new FilePart("image", new File(data.get("image"))));
 
 			JSONObject json = post(post_url, fields, files);			
 			
@@ -100,7 +100,7 @@ public class WebServerProxy {
 		try {
 
 			Properties props = Utils.getCustomProperties();
-			final String post_url = (String) props.get("post_url");
+			final String post_url = ((String)props.get("server_url")) + "/includes/do.php";
 
 			ArrayList<StringPart> fields = new ArrayList<StringPart>();
 			
@@ -128,7 +128,7 @@ public class WebServerProxy {
 			String ids_list_str = Utils.ArrayListToStringComma(ids_list);
 			
 			Properties props = Utils.getCustomProperties();
-			final String post_url = (String) props.get("post_url");
+			final String post_url = ((String)props.get("server_url")) + "/includes/do.php";
 
 			ArrayList<StringPart> fields = new ArrayList<StringPart>();
 

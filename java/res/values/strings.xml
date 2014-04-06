@@ -10,14 +10,6 @@
 
     <string name="app_name">Personal Shapes</string>
 
-    <!--
-Tipos de elementos (prefijos):
-- header
-- label
-- button
-- desc (description)
-    -->
-
     <string name="title_screen01">Login</string>
     <string name="title_screen02">Registro</string>
     <string name="title_screen03">Menú principal</string>
@@ -34,9 +26,10 @@ Tipos de elementos (prefijos):
     <string name="title_screen22">Mapa</string>
     <string name="title_screen23">Solicitudes Eventos</string>
 
-    <!-- tipos de elemento: header -->
-    <string name="header_privatefields">* Campos privados</string>
-
+    <string name="header_privatefields">Campos privados:</string>
+    <string name="header_publicfields">Campos públicos:</string>
+    <string name="header_image">Imagen:</string>
+    
     <!-- tipos de elemento: label -->
     <string name="label_user">Usuario:</string>
     <string name="label_pass">Contraseña:</string>
@@ -44,7 +37,7 @@ Tipos de elementos (prefijos):
     <string name="label_name">Nombre:</string>
     <string name="label_country">País:</string>
     <string name="label_gender">Sexo:</string>
-    <string name="label_photo">Foto:</string>
+    <string name="label_image">Image:</string>
     <string name="label_email">Email:</string>
     <string name="label_phone">Teléfono:</string>
 
@@ -53,11 +46,6 @@ Tipos de elementos (prefijos):
 
     <!-- tipos de elemento: desc -->
     <string name="desc_image">Image</string>
-
-    <!--
-arriba organizado y debajo desorganizado (ir subiendo las cosas
-hacia arriba organizadamente)
-    -->
 
     <string name="title">Login form</string>
     <string name="registration">Registration form</string>
@@ -74,8 +62,7 @@ hacia arriba organizadamente)
     <string name="button_save">Guardar</string>
     <string name="button_remove">Eliminar</string>
     <string name="edit_name">Nombre</string>
-    <string name="edit_description">Descripción</string>
-    <string name="edit_photo">Foto</string>
+    <string name="textview_description">Descripción:</string>
     <string name="edittext_coordinates">Coordenadas</string>
     <string name="edit_latitude">Latitud</string>
     <string name="edit_longitude">Longitud</string>
@@ -110,8 +97,15 @@ hacia arriba organizadamente)
     <string name="checkbox_remember">Remember me</string>
 
     <!-- screen02 -->
-
-
+    <string name="textview_username">Usuario:</string>
+    <string name="textview_password">Contraseña:</string>
+    <string name="textview_passwordrepeat">Repetir:</string>
+    <string name="textview_email">Email:</string>
+    <string name="textview_phone">Teléfono:</string>
+    <string name="textview_name">Nombre:</string>
+    <string name="textview_gender">Sexo:</string>
+    <string name="textview_country">País:</string>
+    
     <!-- screen03 -->
     <string name="button_profile">Perfil</string>
     <string name="button_create">Crear</string>
@@ -137,22 +131,25 @@ hacia arriba organizadamente)
 
     <!-- screen05 -->
     <string name="edittext_type">Tipo</string>
-    <string name="type_prompt">Seleccione un tipo</string>
+    <string name="spinner_placetype">Seleccione un tipo</string>
     <string name="button_delete">Eliminar</string>
     <string name="button_map">Mapa</string>
     <string name="button_gps_position">Posición GPS</string>
-    <string name="button_fill_qr">Rellenar desde QR</string>
+    <string name="button_fillqr">Rellenar desde QR</string>
     <string name="button_removelastpoint">Eliminar último punto</string>
     <string name="button_setpoint">Fijar punto</string>
     <string name="edit_category">Categoria:</string>
-    <string name="radiobutton_personalplace">Lugar Personal</string>
+    <string name="textview_shapetype">Tipo de forma:</string>
+    <string name="textview_shapedata">Datos:</string>
+    <string name="textview_placetype">Tipo:</string>
+    <string name="radiobutton_place">Lugar</string>
     <string name="radiobutton_plot">Parcela</string>
-    <string name="edittext_name_places">Nombre</string>
+    <string name="textview_shapename">Nombre:</string>
     <string name="edittext_situation">Situación</string>
     <string name="edittext_selectoption">Seleccione una opción</string>
     <string name="action_settings">Seleccione una opción</string>
-    <string name="button_seemap">Ver mapa</string>
-
+    <string name="button_coordinates">Coordenadas</string>
+    
     <!-- screen21 -->
     <string name="button_use">Usar</string>
 
@@ -220,7 +217,7 @@ hacia arriba organizadamente)
     <string name="personalplaces">Lugares Personales</string>
     <string name="alert_dialog_ok">OK</string>
 
-    <!-- menu_photo -->
+    <!-- menu_image -->
     <string name="intro">Capture a picture to crop!</string>
     <string name="picture">Picture</string>
     <string name="capture">Launch Camera</string>

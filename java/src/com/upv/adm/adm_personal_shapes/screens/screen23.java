@@ -13,10 +13,7 @@ public class screen23 extends CustomActionBarActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-
 		super.onCreate(savedInstanceState, R.layout.screen23);
-		GlobalContext.setContext(getApplicationContext());
-		SQLite.staticInitialization();
 
 		initControls();
 	}
