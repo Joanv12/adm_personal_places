@@ -11,7 +11,8 @@
     <string name="app_name">Personal Shapes</string>
 
     <string name="title_screen01">Login</string>
-    <string name="title_screen02">Registro</string>
+    <string name="title_screen02_register">Registro</string>
+    <string name="title_screen02_profile">Perfil</string>
     <string name="title_screen03">Menú principal</string>
     <string name="title_screen04">Lista de capas</string>
     <string name="title_screen05">Creación de capa</string>
@@ -40,9 +41,6 @@
     <string name="label_image">Image:</string>
     <string name="label_email">Email:</string>
     <string name="label_phone">Teléfono:</string>
-
-    <!-- tipos de elemento: button -->
-    <string name="button_register">Registrarse</string>
 
     <!-- tipos de elemento: desc -->
     <string name="desc_image">Image</string>
@@ -86,6 +84,13 @@
     <string name="label_profile">Perfil</string>
 
     <!-- screen01 -->
+    <string name="textview_login">Login:</string>
+    <string name="button_login">Login</string>
+    <string name="button_clear">Limpiar</string>
+    <string name="button_register">Registro</string>
+    <string name="button_skip">Omitir</string>
+    
+    
     <string name="edit_login">Login (Usuario Existente)</string>
     <string name="edit_register">Registro (Nuevo Usuario)</string>
     <string name="edit_password">Contraseña</string>
@@ -105,9 +110,10 @@
     <string name="textview_name">Nombre:</string>
     <string name="textview_gender">Sexo:</string>
     <string name="textview_country">País:</string>
+    <string name="button_update">Actualizar</string>
     
     <!-- screen03 -->
-    <string name="button_profile">Perfil</string>
+	<string name="button_profile">Perfil</string>
     <string name="button_create">Crear</string>
     <string name="button_list">Lista</string>
     <string name="button_map">Mapa</string>

@@ -89,6 +89,15 @@ public class screen02 extends CustomActionBarActivity {
 		spinner_country = (Spinner) findViewById(R.id.spinner_country);
 		imageview_image = (ImageView) findViewById(R.id.imageview_image);
 		button_register = (Button) findViewById(R.id.button_register);
+		
+		if (!Utils.isUserLoggedIn()) {
+			this.setTitle(Utils.str(R.string.title_screen02_register));
+			button_register.setText(Utils.str(R.string.button_register));
+		}
+		else {
+			this.setTitle(Utils.str(R.string.title_screen02_profile));
+			button_register.setText(Utils.str(R.string.button_update));
+		}
 
 		imageview_image.setOnClickListener(new OnClickListener() {
 			@Override
@@ -272,69 +281,82 @@ public class screen02 extends CustomActionBarActivity {
 		String name = edittext_name.getText().toString();
 		String gender = Utils.getSelectedKey(spinner_gender);
 		String country = Utils.getSelectedKey(spinner_country);
-		
-		// pendiente el chequeo de la repetición de la contraseña
 
-		Hashtable<String, String> data = new Hashtable<String, String>();
-		data.put("username", username);
-		data.put("password", password);
-		data.put("name",  name);
-		data.put("gender", gender);
-		data.put("email", email);
-		data.put("phone", phone);
-		data.put("country", country);
-		
-		if (image_path != null)
-			data.put("image", image_path);
-		
-		(new AsyncTask<Hashtable<String, String>, Void, String[]>() {
-			@Override
-			protected void onPreExecute() {
-				pd = new ProgressDialog(getCurrentActivity());
-				pd.setTitle("Comunicando con el servidor");
-				pd.setMessage("Por favor, espere mientras procesamos su registro...");
-				pd.setCancelable(false);
-				pd.setIndeterminate(true);
-				pd.show();
-			}
-			@Override
-			protected String[] doInBackground(Hashtable<String, String>... data) {
-				String[] result = WebServerProxy.register_user(data[0]);
-				return result;
-			}
-			@Override
-			protected void onPostExecute(String[] result) {
-				if (pd!=null)
-					pd.dismiss();
-				if (result[0].equals("success")) {
-					// Respuesta correcta por parte del servidor, entonces seguimos adelante
-					// abrimos (creación) la siguiente activity (hacerlo antes de finalizar la activity actual)
-					startActivity(new Intent(getApplicationContext(), screen03.class));
-					GlobalContext.username = edittext_username.getText().toString();
-					GlobalContext.password = edittext_password.getText().toString();
-					getCurrentActivity().finish(); // esta activity no se necesitará más, por tanto la cerramos
-					if (GlobalContext.screen01 != null) {
-						GlobalContext.screen01.finish();
-						GlobalContext.screen01 = null;
+		if (!password.equals(passwordrepeat)) {
+			AlertDialog ad = new AlertDialog.Builder(getCurrentActivity()).create();
+			ad.setCancelable(false);  
+			ad.setMessage("No has repetido la contraseña correctamente. Por favor, inténtalo nuevamente.");  
+			ad.setButton(DialogInterface.BUTTON_NEUTRAL, "OK", new DialogInterface.OnClickListener() {  
+			    @Override  
+			    public void onClick(DialogInterface dialog, int which) {  
+			        // whatever                      
+			    }  
+			});  
+			ad.show();
+		}
+		else {
+			Hashtable<String, String> data = new Hashtable<String, String>();
+			data.put("username", username);
+			data.put("password", password);
+			data.put("name",  name);
+			data.put("gender", gender);
+			data.put("email", email);
+			data.put("phone", phone);
+			data.put("country", country);
+			
+			if (image_path != null)
+				data.put("image", image_path);
+			
+			(new AsyncTask<Hashtable<String, String>, Void, String[]>() {
+				@Override
+				protected void onPreExecute() {
+					pd = new ProgressDialog(getCurrentActivity());
+					pd.setTitle("Comunicando con el servidor");
+					pd.setMessage("Por favor, espere mientras procesamos su registro...");
+					pd.setCancelable(false);
+					pd.setIndeterminate(true);
+					pd.show();
+				}
+				@Override
+				protected String[] doInBackground(Hashtable<String, String>... data) {
+					String[] result = WebServerProxy.register_user(data[0]);
+					return result;
+				}
+				@Override
+				protected void onPostExecute(String[] result) {
+					if (pd!=null)
+						pd.dismiss();
+					if (result[0].equals("success")) {
+						GlobalContext.setPreference(GlobalContext.PREF.USERNAME, edittext_username.getText().toString());
+						GlobalContext.setPreference(GlobalContext.PREF.PASSWORD, edittext_password.getText().toString());
+						// Respuesta correcta por parte del servidor, entonces seguimos adelante
+						// abrimos (creación) la siguiente activity (hacerlo antes de finalizar la activity actual)
+						startActivity(new Intent(getApplicationContext(), screen03.class));
+						GlobalContext.username = edittext_username.getText().toString();
+						GlobalContext.password = edittext_password.getText().toString();
+						getCurrentActivity().finish(); // esta activity no se necesitará más, por tanto la cerramos
+						if (GlobalContext.screen01 != null) {
+							GlobalContext.screen01.finish();
+							GlobalContext.screen01 = null;
+						}
+					}
+					else {
+					    AlertDialog ad = new AlertDialog.Builder(getCurrentActivity()).create();  
+					    ad.setCancelable(false);  
+					    ad.setMessage(
+					    		"No ha sido posible procesar su registro. El servidor ha devuelto el siguiente código de error:\n\n" +
+					    		result[1]
+					    );  
+					    ad.setButton(DialogInterface.BUTTON_NEUTRAL, "OK", new DialogInterface.OnClickListener() {  
+					        @Override  
+					        public void onClick(DialogInterface dialog, int which) {  
+					            dialog.dismiss();                      
+					        }  
+					    });  
+					    ad.show();  
 					}
 				}
-				else {
-				    AlertDialog ad = new AlertDialog.Builder(getCurrentActivity()).create();  
-				    ad.setCancelable(false);  
-				    ad.setMessage(
-				    		"No ha sido posible procesar su registro. El servidor ha devuelto el siguiente código de error:\n\n" +
-				    		result[1]
-				    );  
-				    ad.setButton(DialogInterface.BUTTON_NEUTRAL, "OK", new DialogInterface.OnClickListener() {  
-				        @Override  
-				        public void onClick(DialogInterface dialog, int which) {  
-				            dialog.dismiss();                      
-				        }  
-				    });  
-				    ad.show();  
-				}
-			}
-		}).execute(data);
-		
+			}).execute(data);
+		}
 	}
 }

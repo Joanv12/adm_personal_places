@@ -5,16 +5,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-
 import com.upv.adm.adm_personal_shapes.R;
 import com.upv.adm.adm_personal_shapes.classes.CustomActionBarActivity;
 import com.upv.adm.adm_personal_shapes.classes.GlobalContext;
-import com.upv.adm.adm_personal_shapes.classes.SQLite;
+import com.upv.adm.adm_personal_shapes.classes.Utils;
 
 public class screen03 extends CustomActionBarActivity {
 
 	private Button 
-			button_profile, 
+			button_login,
+			button_register,
+			button_profile,
 			button_create, 
 			button_list, 
 			button_map,
@@ -29,6 +30,8 @@ public class screen03 extends CustomActionBarActivity {
 	}
 	private void initControls() {
 		
+		button_login = (Button) findViewById(R.id.button_login);
+		button_register = (Button) findViewById(R.id.button_register);
 		button_profile = (Button) findViewById(R.id.button_profile);
 		button_create = (Button) findViewById(R.id.button_create);
 		button_list = (Button) findViewById(R.id.button_list);
@@ -36,7 +39,23 @@ public class screen03 extends CustomActionBarActivity {
 		button_friends = (Button) findViewById(R.id.button_friends);
 		button_search = (Button) findViewById(R.id.button_search);
 
-		button_profile.setOnClickListener(new OnClickListener() {
+		if (!Utils.isUserLoggedIn()) {
+			button_register.setText(Utils.str(R.string.button_register));
+			button_profile.setVisibility(View.GONE);
+		}
+		else {
+			button_login.setVisibility(View.GONE);
+			button_register.setVisibility(View.GONE);
+		}
+		
+		button_login.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				startActivity(new Intent(getApplicationContext(), screen01.class));
+
+			}
+		});
+
+		button_register.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				startActivity(new Intent(getApplicationContext(), screen02.class));
 

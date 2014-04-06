@@ -305,4 +305,13 @@ public class Utils {
 		String app_directory_name = (String)Utils.getCustomProperties().get("app_directory_name");
 		return new File(Environment.getExternalStorageDirectory(), app_directory_name).getPath();
 	}
+	
+	public static String str(int id) {
+		return GlobalContext.getContext().getResources().getString(id);
+	}
+	
+	public static boolean isUserLoggedIn() {
+		return (GlobalContext.username != null && GlobalContext.password != null);
+	}
+	
 }
