@@ -68,6 +68,8 @@ public class WebServerProxy {
 			fields.add(new StringPart("action", "register_user"));
 			fields.add(new StringPart("username", data.get("username")));
 			fields.add(new StringPart("password", data.get("password")));
+			if (data.containsKey("password_old"))
+				fields.add(new StringPart("password_old", data.get("password_old")));
 			fields.add(new StringPart("name", data.get("name")));
 			fields.add(new StringPart("gender", data.get("gender")));
 			fields.add(new StringPart("email", data.get("email")));
@@ -110,8 +112,27 @@ public class WebServerProxy {
 			
 			JSONObject json = post(post_url, fields, null);			
 			
-			if (json != null && json.has("status"))
-				return json.getString("status").equals("success");
+			if (json != null && json.has("status")) {
+				if (json.getString("status").equals("success")) {
+					JSONObject user_data = json.getJSONObject("data");
+					String name = user_data.getString("name");
+					String gender = user_data.getString("gender");
+					String email = user_data.getString("email");
+					String phone = user_data.getString("phone");
+					String country_iso2 = user_data.getString("country_iso2");
+					String image_uri = user_data.getString("image_uri");
+					
+					GlobalContext.setPreference(GlobalContext.PREF.NAME, name);
+					GlobalContext.setPreference(GlobalContext.PREF.GENDER, gender);
+					GlobalContext.setPreference(GlobalContext.PREF.EMAIL, email);
+					GlobalContext.setPreference(GlobalContext.PREF.PHONE, phone);
+					GlobalContext.setPreference(GlobalContext.PREF.COUNTRY, country_iso2);
+					
+					return true;
+				}
+				else
+					return false;
+			}
 
 		}
 		catch (Exception e) {

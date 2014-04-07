@@ -71,11 +71,14 @@ public class screen02 extends CustomActionBarActivity {
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState, R.layout.screen02);
 		GlobalContext.init(getApplicationContext());
+		super.onCreate(savedInstanceState, R.layout.screen02);
 		initControls();
-		restoreDataIfNecessary(savedInstanceState);
-		GlobalContext.screen02 = this;
+		if (!restoreDataIfNecessary(savedInstanceState)) {
+			if (Utils.isUserLoggedIn()) {
+				fillFields();
+			}
+		}
 	}
 
 	private void initControls() {
@@ -89,6 +92,9 @@ public class screen02 extends CustomActionBarActivity {
 		spinner_country = (Spinner) findViewById(R.id.spinner_country);
 		imageview_image = (ImageView) findViewById(R.id.imageview_image);
 		button_register = (Button) findViewById(R.id.button_register);
+		
+		if (Utils.isUserLoggedIn())
+			edittext_username.setFocusable(false);
 		
 		if (!Utils.isUserLoggedIn()) {
 			this.setTitle(Utils.str(R.string.title_screen02_register));
@@ -123,6 +129,16 @@ public class screen02 extends CustomActionBarActivity {
 
 	}
 	
+	public void fillFields() {
+		edittext_username.setText(GlobalContext.username);
+		edittext_email.setText(GlobalContext.getPreference(GlobalContext.PREF.EMAIL));
+		edittext_phone.setText(GlobalContext.getPreference(GlobalContext.PREF.PHONE));
+
+		edittext_name.setText(GlobalContext.getPreference(GlobalContext.PREF.NAME));
+		Utils.setSelectedKey(spinner_gender, GlobalContext.getPreference(GlobalContext.PREF.GENDER));
+		Utils.setSelectedKey(spinner_country, GlobalContext.getPreference(GlobalContext.PREF.COUNTRY));
+	}
+	
 	@Override
     protected void onSaveInstanceState (Bundle outState) {
         outState.putString("username", edittext_username.getText().toString());
@@ -136,8 +152,8 @@ public class screen02 extends CustomActionBarActivity {
         outState.putString("image_path", image_path);
     }
 	
-	private void restoreDataIfNecessary(Bundle inState) {
-		if(inState != null) {
+	private boolean restoreDataIfNecessary(Bundle inState) {
+		if (inState != null) {
 			String username = inState.getString("username");
 			String password = inState.getString("password");
 			String passwordrepeat = inState.getString("passwordrepeat");
@@ -167,13 +183,17 @@ public class screen02 extends CustomActionBarActivity {
 				Bitmap bitmap = BitmapFactory.decodeFile(image_path);
 				imageview_image.setImageBitmap(bitmap);
 			}
+			return true;
 	    }
 		else {
-			load_data_debug();
+			//load_data_debug();
+			return false;
 		}
 	}
 	
 	private void selectImage() {
+		
+		//--- begin of preparing options
 		ArrayList<String[]> options = new ArrayList<String[]>();
 		options.add(new String[]{"Cámara", "1"});
 		options.add(new String[]{"Galería", "2"});
@@ -186,13 +206,15 @@ public class screen02 extends CustomActionBarActivity {
 		for (int i = 0; i < options.size(); i++) {
 			options_arr[i] = options.get(i)[0];
 			options_ht.put(options.get(i)[0], Integer.valueOf(options.get(i)[1]));
-		}		
+		}
+		//--- begin of preparing options
+		
 		AlertDialog.Builder builder = new AlertDialog.Builder(screen02.this);
 		builder.setTitle("Imagen de perfil");
 		builder.setItems(options_arr, new DialogInterface.OnClickListener() {
 			@Override
-			public void onClick(DialogInterface dialog, int item) {
-				int selected_option = options_ht.get(options_arr[item]);
+			public void onClick(DialogInterface dialog, int position) {
+				int selected_option = options_ht.get(options_arr[position]);
 				Intent intent;
 				switch (selected_option) {
 					case 1:
@@ -274,7 +296,6 @@ public class screen02 extends CustomActionBarActivity {
 	public void registerClick(){
 		String username = edittext_username.getText().toString();
 		String password = edittext_password.getText().toString();
-		@SuppressWarnings("unused")
 		String passwordrepeat = edittext_passwordrepeat.getText().toString();
 		String email = edittext_email.getText().toString();
 		String phone = edittext_phone.getText().toString();
@@ -296,12 +317,49 @@ public class screen02 extends CustomActionBarActivity {
 		}
 		else {
 			Hashtable<String, String> data = new Hashtable<String, String>();
+			
+			// username
+			if (!Utils.checkUsernameFormat(username)) {
+				Utils.messabeBox(getCurrentActivity(), "Usuario no válido");
+				return;
+			}
 			data.put("username", username);
+			
+			// password
+			if (Utils.isUserLoggedIn()) {
+				if (!password.equals("") && !Utils.checkPasswordFormat(password)) {
+					Utils.messabeBox(getCurrentActivity(), "Contraseña no válida");
+					return;
+				}
+				data.put("password_old", GlobalContext.password);
+			}
 			data.put("password", password);
-			data.put("name",  name);
+			
+			// name
+			if (!Utils.checkNameFormat(name)) {
+				Utils.messabeBox(getCurrentActivity(), "Nombre no válido");
+				return;
+			}
+			data.put("name", name);
+			
+			// gender
 			data.put("gender", gender);
+			
+			// email
+			if (!Utils.checkEmailFormat(email)) {
+				Utils.messabeBox(getCurrentActivity(), "Email no válido");
+				return;
+			}
 			data.put("email", email);
+			
+			// phone
+			if (!Utils.checkPhoneFormat(phone)) {
+				Utils.messabeBox(getCurrentActivity(), "Teléfono no válido");
+				return;
+			}
 			data.put("phone", phone);
+			
+			// country
 			data.put("country", country);
 			
 			if (image_path != null)
@@ -327,24 +385,25 @@ public class screen02 extends CustomActionBarActivity {
 					if (pd!=null)
 						pd.dismiss();
 					if (result[0].equals("success")) {
+						// Respuesta correcta por parte del servidor, entonces seguimos adelante
+						// después del registro, las credenciales se recuerdan por defecto
 						GlobalContext.setPreference(GlobalContext.PREF.USERNAME, edittext_username.getText().toString());
 						GlobalContext.setPreference(GlobalContext.PREF.PASSWORD, edittext_password.getText().toString());
-						// Respuesta correcta por parte del servidor, entonces seguimos adelante
-						// abrimos (creación) la siguiente activity (hacerlo antes de finalizar la activity actual)
-						startActivity(new Intent(getApplicationContext(), screen03.class));
-						GlobalContext.username = edittext_username.getText().toString();
-						GlobalContext.password = edittext_password.getText().toString();
-						getCurrentActivity().finish(); // esta activity no se necesitará más, por tanto la cerramos
-						if (GlobalContext.screen01 != null) {
-							GlobalContext.screen01.finish();
-							GlobalContext.screen01 = null;
-						}
+						GlobalContext.setPreference(GlobalContext.PREF.REMEMBER, "1");
+						GlobalContext.setPreference(GlobalContext.PREF.EMAIL, edittext_email.getText().toString());
+						GlobalContext.setPreference(GlobalContext.PREF.PHONE, edittext_phone.getText().toString());
+						GlobalContext.setPreference(GlobalContext.PREF.NAME, edittext_name.getText().toString());
+						GlobalContext.setPreference(GlobalContext.PREF.GENDER, Utils.getSelectedKey(spinner_gender));
+						GlobalContext.setPreference(GlobalContext.PREF.COUNTRY, Utils.getSelectedKey(spinner_country));
+						
+						Utils.startActivity(getCurrentActivity(), screen03.class, true);
 					}
 					else {
+						String operation_type = (Utils.isUserLoggedIn())? "actualización": "registro";
 					    AlertDialog ad = new AlertDialog.Builder(getCurrentActivity()).create();  
 					    ad.setCancelable(false);  
 					    ad.setMessage(
-					    		"No ha sido posible procesar su registro. El servidor ha devuelto el siguiente código de error:\n\n" +
+					    		"No ha sido posible procesar su " + operation_type + ". El servidor ha devuelto el siguiente código de error:\n\n" +
 					    		result[1]
 					    );  
 					    ad.setButton(DialogInterface.BUTTON_NEUTRAL, "OK", new DialogInterface.OnClickListener() {  

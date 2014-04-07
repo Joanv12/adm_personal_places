@@ -58,7 +58,7 @@
                 <Button
                     android:id="@+id/button_fillqr"
                     style="@style/button_type_02"
-                    android:background="@drawable/button_type_01"
+                    android:background="@drawable/button_type_02"
                     android:text="@string/button_fillqr" />
             </LinearLayout>
 
@@ -164,19 +164,19 @@
                 <Button
                     android:id="@+id/button_map"
                     style="@style/button_type_02"
-                    android:background="@drawable/button_type_01"
+                    android:background="@drawable/button_type_02"
                     android:text="@string/button_map" />
 
                 <Button
                     android:id="@+id/button_coordinates"
                     style="@style/button_type_02"
-                    android:background="@drawable/button_type_01"
+                    android:background="@drawable/button_type_02"
                     android:text="@string/button_coordinates" />
 
                 <Button
                     android:id="@+id/button_save"
                     style="@style/button_type_02"
-                    android:background="@drawable/button_type_01"
+                    android:background="@drawable/button_type_02"
                     android:text="@string/button_save" />
             </LinearLayout>
 
@@ -189,25 +189,17 @@
                 <Button
                     android:id="@+id/button_share"
                     style="@style/button_type_02"
-                    android:background="@drawable/button_type_01"
+                    android:background="@drawable/button_type_02"
                     android:text="@string/button_share" />
 
                 <Button
                     android:id="@+id/button_delete"
                     style="@style/button_type_02"
-                    android:background="@drawable/button_type_01"
+                    android:background="@drawable/button_type_02"
                     android:text="@string/button_delete" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
 
-    <ListView
-        android:id="@+id/left_drawer"
-        android:layout_width="200dp"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:background="#111"
-        android:choiceMode="singleChoice"
-        android:paddingLeft="10dp" />
-
+	<include  layout="@layout/layout_leftmenu" android:id="@+id/left_drawer" />
 </android.support.v4.widget.DrawerLayout>

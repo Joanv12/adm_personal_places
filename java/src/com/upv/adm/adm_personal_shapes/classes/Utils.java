@@ -7,17 +7,25 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Properties;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import com.google.zxing.BarcodeFormat;
+import com.upv.adm.adm_personal_shapes.screens.screen01;
 
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Bundle;
 import android.os.Environment;
 import android.provider.Settings;
 import android.util.SparseBooleanArray;
@@ -311,7 +319,79 @@ public class Utils {
 	}
 	
 	public static boolean isUserLoggedIn() {
-		return (GlobalContext.username != null && GlobalContext.password != null);
+		return (!GlobalContext.username.equals("") && !GlobalContext.password.equals(""));
+	}
+	
+	public static void logoutUser() {
+		GlobalContext.username = "";
+		GlobalContext.password = "";
+		GlobalContext.remember = "";
+		GlobalContext.removePreference(GlobalContext.PREF.USERNAME);
+		GlobalContext.removePreference(GlobalContext.PREF.PASSWORD);
+		GlobalContext.removePreference(GlobalContext.PREF.REMEMBER);
+	}
+	
+	public static void startActivity(Activity fromActivity, Class<?> toCls, boolean clearStack) {
+		Intent intent = new Intent(fromActivity, toCls);
+		if (clearStack)
+			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+		else
+			intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+		fromActivity.startActivityForResult(intent, 12345);
+	}
+	
+	public static void startActivity(Activity fromActivity, Class<?> toCls) {
+		startActivity(fromActivity, toCls, false);
+	}
+	
+	public static void confirmExit(final Activity activity) {
+		AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+		builder.setMessage("¿Realmente deseas salir de la aplicación?");
+		builder.setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+	        public void onClick(DialogInterface dialog, int which) {
+	        	activity.setResult(CustomActionBarActivity.ACTIVITYRESULT_FINISH);
+	        	activity.finish();
+	        }
+
+	    });
+		builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+	        public void onClick(DialogInterface dialog, int which) {
+	        }
+	    });
+		builder.show();
+	}
+
+	public static boolean checkRegex(String value, String regex) {
+		Pattern pattern = Pattern.compile(regex);
+		Matcher matcher = pattern.matcher(value);
+		return matcher.matches();
+	}
+	
+	public static boolean checkUsernameFormat(String value) {
+		return checkRegex(value, "^[a-zA-Z][a-zA-Z0-9\\_\\-]{2,19}$");
+	}
+	
+	public static boolean checkPasswordFormat(String value) {
+		return checkRegex(value, "^[a-zA-Z0-9]{4,20}$");
+	}
+	
+	public static boolean checkNameFormat(String value) {
+		return checkRegex(value, "^[^0-9].{0,49}$");
+	}
+	
+	public static boolean checkEmailFormat(String value) {
+		return checkRegex(value, "^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$");
+	}
+	
+	public static boolean checkPhoneFormat(String value) {
+		return checkRegex(value, "^[0-9]{4,20}");
+	}
+	
+	public static void messabeBox(final Activity activity, String message) {
+		AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+		builder.setMessage(message);
+		builder.setNeutralButton("Aceptar", null);
+		builder.show();
 	}
 	
 }

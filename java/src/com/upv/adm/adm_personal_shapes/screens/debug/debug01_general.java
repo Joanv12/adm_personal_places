@@ -22,18 +22,7 @@ public class debug01_general extends Activity {
 		setContentView(R.layout.debug01_general);
 		GlobalContext.init(getApplicationContext());
 
-		/*
-		BeanShape place = new BeanShape(null, "Cantina Mariachi Mariachi. Lugar de Tapas y mucho más.", "Un lugar muy bueno para ir a comer todos los días. Es bueno, bonito y barato. Tapas, Vinos y Más esto es una prueba", "t01", "-360.34699738025665283,-360.34699738025665283", null);
-		Bitmap bitmap = Utils.getQRFromPlace(place);
-		String path = Utils.getTempFilePathFromBitmap(bitmap);
-		*/
-		
-		String imagePath = "/storage/extSdCard/test_qr.jpg";
-		BitmapFactory.Options options = new BitmapFactory.Options();
-		options.inPreferredConfig = Bitmap.Config.ARGB_8888;
-		Bitmap bitmap = BitmapFactory.decodeFile(imagePath, options);
-		
-		BeanShape place = Utils.getPlaceFromQR(bitmap);
+		boolean result = Utils.checkUsernameFormat("angel");
 		
 		System.out.println("Nothing to show.");
 

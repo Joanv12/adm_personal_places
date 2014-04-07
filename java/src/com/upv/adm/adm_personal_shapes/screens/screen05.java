@@ -85,8 +85,8 @@ public class screen05 extends CustomActionBarActivity {
 	@SuppressLint("ResourceAsColor")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState, R.layout.screen05);
 		GlobalContext.init(getApplicationContext());
+		super.onCreate(savedInstanceState, R.layout.screen05);
 		initControls();
 
 		GlobalContext.shape_id = (long) 13;

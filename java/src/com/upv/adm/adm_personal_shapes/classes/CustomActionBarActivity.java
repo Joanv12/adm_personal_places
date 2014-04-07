@@ -1,24 +1,29 @@
 package com.upv.adm.adm_personal_shapes.classes;
 
+import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.List;
+import com.upv.adm.adm_personal_shapes.screens.screen01;
 import com.upv.adm.adm_personal_shapes.screens.screen02;
 import com.upv.adm.adm_personal_shapes.screens.screen03;
 import com.upv.adm.adm_personal_shapes.screens.screen04;
 import com.upv.adm.adm_personal_shapes.screens.screen05;
 import com.upv.adm.adm_personal_shapes.screens.screen07;
-import com.upv.adm.adm_personal_shapes.screens.screen12;
-import com.upv.adm.adm_personal_shapes.screens.screen13;
+import com.upv.adm.adm_personal_shapes.screens.screen18;
 import com.upv.adm.adm_personal_shapes.screens.screen19;
 import com.upv.adm.adm_personal_shapes.R;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
@@ -28,12 +33,11 @@ import android.widget.AdapterView.OnItemClickListener;
 
 public class CustomActionBarActivity extends ActionBarActivity implements IActivityGiver {
 
-	private String[] menuOptions;
+	public static final int ACTIVITYRESULT_FINISH = 11415;
+	
 	private DrawerLayout drawerLayout;
 	private ListView drawerList;
 	private ActionBarDrawerToggle drawerToggle;
-	private CharSequence titleSection;
-	private CharSequence appTitle;
 	
 	@Override
 	public Activity getCurrentActivity() {
@@ -45,94 +49,108 @@ public class CustomActionBarActivity extends ActionBarActivity implements IActiv
 		setContentView(layout);
 		GlobalContext.init(getApplicationContext());
 
-		menuOptions = new String[] {
-				"Inicio",
-				"Perfil",
-				"Crear",
-				"Lista",
-				"Mapa",
-				"Amigos",
-				"Eventos",
-				"Buscador"
-		};
+		//--- begin of preparing options
+		ArrayList<String[]> options = new ArrayList<String[]>();
+		options.add(new String[]{"Inicio", "1"});
+		if (!Utils.isUserLoggedIn()) {
+			options.add(new String[]{"Login", "2"});
+			options.add(new String[]{"Registro", "3"});
+		}
+		options.add(new String[]{"Perfil", "4"});
+		options.add(new String[]{"Crear", "5"});
+		options.add(new String[]{"Lista", "6"});
+		options.add(new String[]{"Mapa", "7"});
+		options.add(new String[]{"Amigos", "8"});
+		options.add(new String[]{"Buscador", "9"});
+		if (Utils.isUserLoggedIn())
+			options.add(new String[]{"Logout", "10"});
+		options.add(new String[]{"Salir", "11"});
+		
+		final String[] options_arr  = new String[options.size()];
+		final Hashtable<String, Integer> options_ht = new Hashtable<String, Integer>();
+		for (int i = 0; i < options.size(); i++) {
+			options_arr[i] = options.get(i)[0];
+			options_ht.put(options.get(i)[0], Integer.valueOf(options.get(i)[1]));
+		}
+		//--- end of preparing options
+		
 		drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		drawerList = (ListView) findViewById(R.id.left_drawer);
 
 		try {
-			drawerList.setAdapter(new ArrayAdapter<String>(getSupportActionBar()
-					.getThemedContext(), android.R.layout.simple_list_item_1,
-					menuOptions));
+			drawerList.setAdapter(
+					new ArrayAdapter<String>(getSupportActionBar()
+					.getThemedContext(),
+					android.R.layout.simple_list_item_1,
+					options_arr)
+			);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		drawerList.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-				switch (position) {
-					case 0:
-						Intent in03 = new Intent(getApplicationContext(), screen03.class);
-						in03.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-						startActivity(in03);
-						break;
+				int selected_option = options_ht.get(options_arr[position]);
+				switch (selected_option) {
 					case 1:
-						Intent in02 = new Intent(getApplicationContext(), screen02.class);
-						startActivity(in02);
+						Utils.startActivity(getCurrentActivity(), screen03.class, true);
 						break;
 					case 2:
-						Intent in05 = new Intent(getApplicationContext(), screen05.class);
-						startActivity(in05);
+						Utils.startActivity(getCurrentActivity(), screen01.class);
 						break;
 					case 3:
-						Intent in04 = new Intent(getApplicationContext(), screen04.class);
-						startActivity(in04);
+						Utils.startActivity(getCurrentActivity(), screen02.class);
 						break;
 					case 4:
-						Intent in07 = new Intent(getApplicationContext(), screen07.class);
-						startActivity(in07);
+						Intent in04 = new Intent(getApplicationContext(), screen02.class);
+						startActivity(in04);
 						break;
 					case 5:
-						Intent in13 = new Intent(getApplicationContext(), screen13.class);
-						startActivity(in13);
+						Intent in07 = new Intent(getApplicationContext(), screen05.class);
+						startActivity(in07);
 						break;
 					case 6:
-						Intent in12 = new Intent(getApplicationContext(), screen12.class);
-						startActivity(in12);
+						Intent in13 = new Intent(getApplicationContext(), screen04.class);
+						startActivity(in13);
 						break;
 					case 7:
-						Intent in19 = new Intent(getApplicationContext(), screen19.class);
-						startActivity(in19);
+						Intent in12 = new Intent(getApplicationContext(), screen07.class);
+						startActivity(in12);
+						break;
+					case 8:
+						Intent in12a = new Intent(getApplicationContext(), screen18.class);
+						startActivity(in12a);
+						break;
+					case 9:
+						Intent in12abc = new Intent(getApplicationContext(), screen19.class);
+						startActivity(in12abc);
+						break;
+					case 10:
+						Utils.logoutUser();
+						Utils.startActivity(getCurrentActivity(), screen01.class, true);
+						break;
+					case 11:
+						Utils.confirmExit(getCurrentActivity());
 						break;
 				}
-
-				drawerList.setItemChecked(position, true);
-
-				titleSection = menuOptions[position];
-				getSupportActionBar().setTitle(titleSection);
-
 				drawerLayout.closeDrawer(drawerList);
 			}
 		});
 
-		titleSection = getTitle();
-		appTitle = getTitle();
-
 		drawerToggle = new ActionBarDrawerToggle(
 				this,
 				drawerLayout,
-				R.drawable.abc_ic_menu_moreoverflow_normal_holo_dark,
+				R.drawable.abc_ic_menu_moreoverflow_normal_holo_light,
 				R.string.drawer_open,
 				R.string.drawer_close) {
 
 			public void onDrawerClosed(View view) {
-				getSupportActionBar().setTitle(titleSection);
 				ActivityCompat.invalidateOptionsMenu(CustomActionBarActivity.this);
 			}
 
 			public void onDrawerOpened(View drawerView) {
-				getSupportActionBar().setTitle(appTitle);
 				ActivityCompat.invalidateOptionsMenu(CustomActionBarActivity.this);
 			}
 		};
@@ -165,21 +183,44 @@ public class CustomActionBarActivity extends ActionBarActivity implements IActiv
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-
 		if (drawerToggle.onOptionsItemSelected(item)) {
 			return true;
 		}
-
 		switch (item.getItemId()) {
-		case R.id.menu_new:
-			Log.i("ActionBar", "New!");
-
-			return true;
-
-		default:
-			return super.onOptionsItemSelected(item);
-
+			case R.id.menu_new:
+				Log.i("ActionBar", "New!");
+				return true;
+			default:
+				return super.onOptionsItemSelected(item);
 		}
-
 	}
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+			ActivityManager mngr = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
+			List<ActivityManager.RunningTaskInfo> taskList = mngr.getRunningTasks(10);
+			if (
+					taskList.get(0).numActivities == 1 &&
+					taskList.get(0).topActivity.getClassName().equals(this.getClass().getName())
+			) {
+				if (this.getClass() == screen03.class || this.getClass() == screen01.class) {
+					Utils.confirmExit(this);
+					return true;
+				}
+				else
+					Utils.startActivity(getCurrentActivity(), screen03.class, true);
+			}
+		}
+		return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // workaround to close all activities
+    	if (resultCode == ACTIVITYRESULT_FINISH)
+    		this.finish();
+    	else
+    		super.onActivityResult(requestCode, resultCode, data);
+    }
 }

@@ -50,8 +50,8 @@ public class screen07 extends CustomActionBarActivity {
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		GlobalContext.init(getApplicationContext());
 		super.onCreate(savedInstanceState, R.layout.screen07);
-
 		initControls();
 		//UtilsUpdateMap(webview_map); 
 	}

@@ -5,14 +5,13 @@ import java.util.Hashtable;
 import org.apache.commons.httpclient.methods.multipart.StringPart;
 import com.upv.adm.adm_personal_shapes.R;
 import com.upv.adm.adm_personal_shapes.classes.CustomActionBarActivity;
+import com.upv.adm.adm_personal_shapes.classes.Utils;
 import com.upv.adm.adm_personal_shapes.classes.WebServerProxy;
 import com.upv.adm.adm_personal_shapes.classes.GlobalContext;
-import com.upv.adm.adm_personal_shapes.classes.IActivityGiver;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
@@ -45,15 +44,12 @@ public class screen01 extends CustomActionBarActivity {
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState, R.layout.screen01);
 		GlobalContext.init(getApplicationContext());
-		initControls();
-		
-		// guardarmos la screen01 en el contexto porque luego de que el usuario se haya logueado
-		// no nos interesará más volver a a ella, y querremos invocar su método: finish().
-		// No es necesario guardar todas las activities en el contexto, sino sólo aquellas
-		// que se puedan necesitar más adelante
-		GlobalContext.screen01 = this;
+		super.onCreate(savedInstanceState, R.layout.screen01);
+		if (Utils.isUserLoggedIn())
+			Utils.startActivity(getCurrentActivity(), screen03.class, true);
+		else
+			initControls();
 	}
 
 	private void initControls() {
@@ -65,24 +61,6 @@ public class screen01 extends CustomActionBarActivity {
 		button_skip = (Button) findViewById(R.id.button_skip);
 		button_register = (Button) findViewById(R.id.button_register);
 		button_clear = (Button) findViewById(R.id.button_clear);
-		
-		edittext_username.addTextChangedListener(new TextWatcher() {
-			public void onTextChanged(CharSequence seq, int start, int before, int count) {
-				if (checkbox_remember.isChecked())
-					GlobalContext.setPreference(GlobalContext.PREF.USERNAME, seq.toString());
-			}
-			public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-			public void afterTextChanged(Editable s) {}
-		});
-		
-		edittext_password.addTextChangedListener(new TextWatcher() {
-			public void onTextChanged(CharSequence seq, int start, int before, int count) {
-				if (checkbox_remember.isChecked())
-					GlobalContext.setPreference(GlobalContext.PREF.PASSWORD, seq.toString());
-			}
-			public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-			public void afterTextChanged(Editable s) {}
-		});
 		
 		checkbox_remember.setOnClickListener(new CheckBox.OnClickListener() {
 			public void onClick(View v) { rememberClick(); }
@@ -101,15 +79,14 @@ public class screen01 extends CustomActionBarActivity {
 			public void onClick(View v) { clearClick(); }
 		});
 
-		String username = GlobalContext.getPreference(GlobalContext.PREF.USERNAME);
-		String password = GlobalContext.getPreference(GlobalContext.PREF.PASSWORD);
-		String remember = GlobalContext.getPreference(GlobalContext.PREF.REMEMBER);
+		String username = GlobalContext.username;
+		String password = GlobalContext.password;
+		String remember = GlobalContext.remember;
 		if (
 				remember != null &&
 				remember.equals("1") &&				
 				username != null &&
 				!username.equals("")
-				
 		) {
 			edittext_username.setText(username);
 			edittext_password.setText(password);
@@ -118,16 +95,7 @@ public class screen01 extends CustomActionBarActivity {
 	}
 	
 	private void rememberClick() {
-		String remember = checkbox_remember.isChecked()? "1": "0";
-		GlobalContext.setPreference(GlobalContext.PREF.REMEMBER, remember);
-		if (remember.equals("1")) {
-			GlobalContext.setPreference(GlobalContext.PREF.USERNAME, edittext_username.getText().toString());
-			GlobalContext.setPreference(GlobalContext.PREF.PASSWORD, edittext_password.getText().toString());
-		}
-		else {
-			GlobalContext.setPreference(GlobalContext.PREF.USERNAME, "");
-			GlobalContext.setPreference(GlobalContext.PREF.PASSWORD, "");
-		}
+		GlobalContext.remember = checkbox_remember.isChecked()? "1": "0";
 	}
 
 	@SuppressWarnings("unchecked")
@@ -160,10 +128,23 @@ public class screen01 extends CustomActionBarActivity {
 					pd.dismiss();
 				if (result) {
 					// Respuesta correcta por parte del servidor, entonces seguimos adelante
+					if (GlobalContext.remember.equals("1")) {
+						GlobalContext.setPreference(GlobalContext.PREF.USERNAME, edittext_username.getText().toString());
+						GlobalContext.setPreference(GlobalContext.PREF.PASSWORD, edittext_password.getText().toString());
+					}
+					else {
+						GlobalContext.setPreference(GlobalContext.PREF.USERNAME, "");
+						GlobalContext.setPreference(GlobalContext.PREF.PASSWORD, "");
+					}
+					GlobalContext.setPreference(GlobalContext.PREF.REMEMBER, GlobalContext.remember);
+
+					// no incluir las siguientes líneas dentro de: "GlobalContext.setPreference" porque
+					// una una cosa es tener los datos disponibles durante la sesión actual
+					// y otra cosa es tenerlos disponibles después de cerrar la sesión
 					GlobalContext.username = edittext_username.getText().toString();
 					GlobalContext.password = edittext_password.getText().toString();
-					startActivity(new Intent(getApplicationContext(), screen03.class)); // abrimos (creación) la siguiente activity
-					getCurrentActivity().finish(); // esta activity no se necesitará más, por tanto la cerramos
+					
+					Utils.startActivity(getCurrentActivity(), screen03.class, true);
 				}
 				else {
 				    AlertDialog ad = new AlertDialog.Builder(getCurrentActivity()).create();  
@@ -183,12 +164,11 @@ public class screen01 extends CustomActionBarActivity {
 	}
 	
 	private void skipClick() {
-		startActivity(new Intent(getApplicationContext(), screen03.class));
-		getCurrentActivity().finish();
+		Utils.startActivity(getCurrentActivity(), screen03.class);
 	}
 
 	private void registerClick() {
-		startActivity(new Intent(getApplicationContext(), screen02.class));
+		Utils.startActivity(getCurrentActivity(), screen02.class);
 	}
 	
 	private void clearClick() {

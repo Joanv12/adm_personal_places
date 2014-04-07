@@ -1,10 +1,10 @@
 <?
 	//sleep(3);
-
 	header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
 	header("Last-Modified: ".gmdate("D, d M Y H:i:s")." GMT");
 	header("Cache-Control: no-cache, must-revalidate");
 	header("Pragma: no-cache");
+	header('Content-Type: text/html; charset=utf-8');
 	require_once("utils.inc.php");
 	require_once("constants.inc.php");
 	
@@ -30,19 +30,29 @@
 			else if (!preg_match(get_password_checker(), $password))
 				$error_reason = ERROR_PASSWORD_FORMAT;
 			else {
-				$sql = "SELECT * FROM `users` WHERE `username` = '$username' AND `password` = '$password'";
+				$sql = "SELECT *, `users`.`name` AS `name` FROM `users` WHERE `username` = '$username' AND `password` = '$password'";
 				$query = mysql_query($sql, $conn);
 				if (mysql_num_rows($query) == 0)
 					$error_reason = ERROR_USERNAME_PASSWORD_INVALID;
 			}
 			$result = array();
-			if (!isset($error_reason))
+			if (!isset($error_reason)) {
+				$record = mysql_fetch_object($query);
 				$result["status"] = STATUS_SUCCESS;
+				$data = array();
+				$data["name"] = $record->name;
+				$data["gender"] = $record->gender;
+				$data["email"] = $record->email;
+				$data["phone"] = $record->phone;
+				$data["country_iso2"] = $record->country_iso2;
+				$data["image_uri"] = $record->image_uri;
+				$result["data"] = $data;
+			}
 			else {
 				$result["status"] = STATUS_ERROR;
 				$result["error_reason"] = $error_reason;
 			}
-			echo json_encode($result);
+			echo raw_json_encode($result);
 			break;
 		
 		case "register_user":
@@ -108,27 +118,33 @@
 						if (mysql_num_rows($query) == 0)
 							$error_reason = ERROR_USERNAME_PASSWORD_INVALID;
 						else {
-							$data = array();
-							if ($password != "")
-								$data["password"] = $password;
-							$data["name"] = $name;
-							$data["gender"] = $gender;
-							$data["email"] = $email;
-							$data["phone"] = $phone;
-							$data["country_iso2"] = $country_iso2;
-							if (isset($_FILES["image"]["name"]) && $_FILES["image"]["name"] != "") {
-								$image_uri = "../images/".$username.".jpg";
-								move_uploaded_file($_FILES["image"]["tmp_name"], $image_uri);
-								$data["image_uri"] = $username.".jpg";
-							}
+							$email_username = get_data("users", "email", $email, "username");
+							$email_exists = ($email_username != NULL && $email_username != $username);
+							if ($email_exists)
+								$error_reason = ERROR_EMAIL_ALREADY_REGISTERED;
 							else {
-								$image_uri = "../images/".$username.".jpg";
-								if (file_exists($image_uri))
-									unlink($image_uri);
-								$data["image_uri"] = "";
+								$data = array();
+								if ($password != "")
+									$data["password"] = $password;
+								$data["name"] = $name;
+								$data["gender"] = $gender;
+								$data["email"] = $email;
+								$data["phone"] = $phone;
+								$data["country_iso2"] = $country_iso2;
+								if (isset($_FILES["image"]["name"]) && $_FILES["image"]["name"] != "") {
+									$image_uri = "../images/".$username.".jpg";
+									move_uploaded_file($_FILES["image"]["tmp_name"], $image_uri);
+									$data["image_uri"] = $username.".jpg";
+								}
+								else {
+									$image_uri = "../images/".$username.".jpg";
+									if (file_exists($image_uri))
+										unlink($image_uri);
+									$data["image_uri"] = "";
+								}
+								$sql = array_to_sql_update("users", $data, "WHERE `username` = '$username' AND `password` = '$password_old'");
+								mysql_query($sql, $conn);
 							}
-							$sql = array_to_sql_update("users", $data, "WHERE `username` = '$username' AND `password` = '$password_old'");
-							mysql_query($sql, $conn);
 						}
 					}
 				}

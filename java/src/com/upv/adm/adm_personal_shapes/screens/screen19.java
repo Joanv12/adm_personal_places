@@ -58,8 +58,8 @@ public class screen19 extends CustomActionBarActivity {
 
 		
 	public void onCreate(Bundle savedInstanceState) {
+		GlobalContext.init(getApplicationContext());
 		super.onCreate(savedInstanceState, R.layout.screen19);
-
 		initControls();
 	}
 	

@@ -12,16 +12,13 @@ import android.os.Environment;
 public class GlobalContext {
 
 	private static Context context = null;
-	public static Hashtable<String, String> preferences = null;
 	private static CustomLocationListener cll;
 	
-	public static String username;
-	public static String password;
+	public static String username = null;
+	public static String password = null;
+	public static String remember = null; // {"0", "1"}
 	
 	public static Long shape_id;
-	
-	public static Activity screen01;
-	public static CustomActionBarActivity screen02;
 	
 	private static CustomListItem[] countriesListviewItems = null;
 	private static CustomListItem[] gendersListviewItems = null;
@@ -33,6 +30,11 @@ public class GlobalContext {
 
 		public static final String USERNAME	= "USERNAME";
 		public static final String PASSWORD	= "PASSWORD";
+		public static final String EMAIL	= "EMAIL";
+		public static final String PHONE	= "PHONE";
+		public static final String NAME		= "NAME";
+		public static final String GENDER	= "GENDER";
+		public static final String COUNTRY	= "COUNTRY";
 		public static final String REMEMBER	= "REMEMBER";
 		
 		public static String[] getPrefs() {
@@ -43,6 +45,9 @@ public class GlobalContext {
 	public static void init(Context context) {
 		if (GlobalContext.context == null) {
 			GlobalContext.context = context;
+			username = GlobalContext.getPreference(GlobalContext.PREF.USERNAME);
+			password = GlobalContext.getPreference(GlobalContext.PREF.PASSWORD);
+			remember = GlobalContext.getPreference(GlobalContext.PREF.REMEMBER);
 			SQLite.staticInitialization();
 			cll = new CustomLocationListener();
 			File app_dir = new File(Utils.getAppDir());
@@ -59,37 +64,33 @@ public class GlobalContext {
 	 * @param key GlobalContext.PREF.{keys}
 	 */
 	public static void setPreference(String key, String value) {
-		if (preferences == null)
-			preferences = getPreferences();
-		preferences.put(key, value);
-		savePreference(key, value);
+		SharedPreferences preferences = context.getSharedPreferences("preferences", Context.MODE_PRIVATE);
+		Editor editor = preferences.edit();
+		editor.putString(key, value);
+		editor.commit();
 	}
 	
 	/**
 	 * @param key GlobalContext.PREF.{keys}
 	 */
 	public static String getPreference(String key) {
-		if (preferences == null)
-			preferences = getPreferences();
-		return preferences.get(key);
+		SharedPreferences preferences = context.getSharedPreferences("preferences", Context.MODE_PRIVATE);
+		return preferences.getString(key, "");
 	}
 
-	private static void savePreference(String key, String value) {
+	/**
+	 * @param key GlobalContext.PREF.{keys}
+	 */
+	public static void removePreference(String key) {
 		SharedPreferences preferences = context.getSharedPreferences("preferences", Context.MODE_PRIVATE);
 		Editor editor = preferences.edit();
-		editor.putString(key, value);
+		editor.remove(key);
 		editor.commit();
 	}
 
-	private static Hashtable<String, String> getPreferences() {
-		Hashtable<String, String> result = new Hashtable<String, String>();
-		SharedPreferences preferences = context.getSharedPreferences("preferences", Context.MODE_PRIVATE);
-		if (preferences != null) {
-			String[] prefs = PREF.getPrefs();
-			for (int i = 0; i < prefs.length; i++)
-				result.put(prefs[i], preferences.getString(prefs[i], ""));
-		}
-		return result;
+	@SuppressWarnings("unchecked")
+	public static Hashtable<String, String> getPreferences() {
+		return (Hashtable<String, String>)context.getSharedPreferences("preferences", Context.MODE_PRIVATE);
 	}
 
 	public static CustomListItem[] getCountriesListviewItems() {
