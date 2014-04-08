@@ -64,7 +64,7 @@
                     style="@style/button_type_02"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:text="Agregar amigos" />
+                    android:text="Buscar amigos" />
             </LinearLayout>
         </LinearLayout>
 
