@@ -32,9 +32,12 @@ public class screen04 extends CustomActionBarActivity {
 	private ListView 
 			listview_places,
 			listview_plots,
+			//listview_layers,
 			listview_typeplaces;
 	
 	protected CustomListItem[] options_places;
+	//protected CustomListItem[] options_layers;
+
 
 	
 	private Button button_types;
@@ -53,8 +56,9 @@ public class screen04 extends CustomActionBarActivity {
 	private void initControls() {
 		
 		
-		
 		options_places = GlobalContext.getTypesData();
+		//options_layers = GlobalContext.getLayersData();
+
 		selections_placetypes = new boolean[options_places.length];
 
 		screen04.this.setProgressBarIndeterminateVisibility(false);
@@ -74,22 +78,27 @@ public class screen04 extends CustomActionBarActivity {
 		spec.setIndicator(getResources().getString(R.string.tab_plots));
 		tabs.addTab(spec);
 
+		//spec = tabs.newTabSpec(getResources().getString(R.string.tab_layers));
+		//spec.setContent(R.id.tab_layers);
+		//spec.setIndicator(getResources().getString(R.string.tab_layers));
+		//tabs.addTab(spec);
+		
 		tabs.setCurrentTab(0);
 
 		listview_places = (ListView) findViewById(R.id.listview_places);
 		listview_plots = (ListView) findViewById(R.id.listview_personalplots);
+		//listview_layers = (ListView) findViewById(R.id.listview_layers);
 
 		list_places = (ArrayList<BeanShape>) SQLite.getPlaces();
 		list_plots = (ArrayList<BeanShape>) SQLite.getPlots();
 		
 		ArrayAdapter<BeanShape> adapter_places = new ArrayAdapter<BeanShape>(getApplicationContext(), android.R.layout.simple_list_item_1, list_places);
 		ArrayAdapter<BeanShape> adapter_plots = new ArrayAdapter<BeanShape>(getApplicationContext(), android.R.layout.simple_list_item_1, list_plots);
-		
+		//ArrayAdapter<CustomListItem> adapter_layers = new ArrayAdapter<CustomListItem>(this, android.R.layout.simple_list_item_1, options_layers);
+
 		listview_places.setAdapter(adapter_places);
 		listview_plots.setAdapter(adapter_plots);
-
-		listview_places.setBackgroundColor(Color.BLACK);
-		listview_plots.setBackgroundColor(Color.BLACK);
+		//listview_layers.setAdapter(adapter_layers);
 
 		listview_places.setOnItemClickListener(new OnItemClickListener() {
 			@Override
@@ -113,6 +122,7 @@ public class screen04 extends CustomActionBarActivity {
 				Intent in = new Intent(getApplicationContext(), screen05.class);startActivity(in);
 			}
 		});
+		
 		
 		button_types.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {

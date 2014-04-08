@@ -80,7 +80,7 @@ public class screen13 extends CustomActionBarActivity implements OnTouchListener
 			}
 			@Override
 			protected void onPostExecute(ArrayList<ArrayList<IListItem>> result) {
-				if (result.size() == 3) {
+				if (result != null && result.size() == 3) {
 					ArrayList<IListItem> friends_from = result.get(0);
 					ArrayList<IListItem> friends_to = result.get(1);
 					ArrayList<IListItem> friends_both = result.get(2);

@@ -46,7 +46,12 @@ public class CustomActionBarActivity extends ActionBarActivity implements IActiv
 	
 	public void onCreate(Bundle savedInstanceState, int layout) {
 		super.onCreate(savedInstanceState);
+		try {
 		setContentView(layout);
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
 		GlobalContext.init(getApplicationContext());
 
 		//--- begin of preparing options
