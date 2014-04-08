@@ -1,9 +1,9 @@
 package com.upv.adm.adm_personal_shapes.classes;
 
 import java.io.File;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.Iterator;
 import java.util.Properties;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpStatus;
@@ -155,29 +155,83 @@ public class WebServerProxy {
 	}
 
 	public static void add_friends(ArrayList<String> ids_list) {
-
 		try {
-
 			String ids_list_str = Utils.ArrayListToStringComma(ids_list);
-			
 			Properties props = Utils.getCustomProperties();
 			final String post_url = ((String)props.get("server_url")) + "/includes/do.php";
-
 			ArrayList<StringPart> fields = new ArrayList<StringPart>();
-
 			fields.add(new StringPart("action", "register_friendship"));
 			fields.add(new StringPart("username", GlobalContext.username));
 			fields.add(new StringPart("password", GlobalContext.password));
 			fields.add(new StringPart("ids_list", ids_list_str));
 			fields.add(new StringPart("is_adding", "1"));
-			
 			post(post_url, fields, null);
-
 		}
 		catch (Exception e) {
 			e.printStackTrace();
 		}
-
+	}
+	
+	public static ArrayList<IListItem> getArrayListFromJSON(JSONObject json) {
+		try {
+			ArrayList<IListItem> result = new ArrayList<IListItem>();
+			@SuppressWarnings("unchecked")
+			Iterator<String> keys = json.keys();
+			while(keys.hasNext()) {
+	            String key = keys.next();
+	            result.add(new CustomListItem(key, json.getString(key)));
+	        }
+			return result;
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public static ArrayList<ArrayList<IListItem>> retrieve_friends_list(Hashtable<String, String> data) {
+		try {
+			Properties props = Utils.getCustomProperties();
+			final String post_url = ((String)props.get("server_url")) + "/includes/do.php";
+			ArrayList<StringPart> fields = new ArrayList<StringPart>();
+			fields.add(new StringPart("action", "retrieve_friends_list"));
+			fields.add(new StringPart("username", data.get("username"), "UTF-8"));
+			fields.add(new StringPart("password", data.get("password"), "UTF-8"));
+			JSONObject json = post(post_url, fields, null);
+			
+			if (json != null && json.has("status")) {
+				String status = json.getString("status");
+				if (status.equals("error")) {
+					return null;
+				}
+				else {
+					ArrayList<IListItem> fromList;
+					ArrayList<IListItem> toList;
+					ArrayList<IListItem> bothList;
+					
+					JSONObject friendship = json.getJSONObject("friendship");
+					JSONObject from = friendship.getJSONObject("from");
+					JSONObject to = friendship.getJSONObject("to");
+					JSONObject both = friendship.getJSONObject("both");
+					
+					fromList = getArrayListFromJSON(from);
+					toList = getArrayListFromJSON(to);
+					bothList = getArrayListFromJSON(both);
+					
+					ArrayList<ArrayList<IListItem>> result = new ArrayList<ArrayList<IListItem>>();
+					result.add(fromList);
+					result.add(toList);
+					result.add(bothList);
+					
+					return result;
+				}
+			}
+			return null;
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }

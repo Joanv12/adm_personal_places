@@ -1,6 +1,6 @@
 package com.upv.adm.adm_personal_shapes.classes;
 
-public class CustomListItem {
+public class CustomListItem implements IListItem {
 
 	private String key;
 	private String text;

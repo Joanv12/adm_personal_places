@@ -159,25 +159,6 @@
 			echo json_encode($result);
 			break;
 
-		case "login_user":
-			$username = isset($_POST["username"])? $_POST["username"]: "";
-			$password = isset($_POST["password"])? $_POST["password"]: "";
-			if (!preg_match(get_username_checker(), $username))
-				$error_reason = ERROR_USERNAME_FORMAT;
-			else if (!preg_match(get_password_checker(), $password))
-				$error_reason = ERROR_PASSWORD_FORMAT;
-			else if (!check_authentication($username, $password))
-				$error_reason = ERROR_USERNAME_PASSWORD_INVALID;
-			$result = array();
-			if (!isset($error_reason))
-				$result["status"] = STATUS_SUCCESS;
-			else {
-				$result["status"] = STATUS_ERROR;
-				$result["error_reason"] = $error_reason;
-			}
-			echo json_encode($result);
-			break;
-		
 		case "register_friendship":
 		
 			$username = isset($_POST["username"])? $_POST["username"]: "";
@@ -224,6 +205,66 @@
 			$sql = "DELETE FROM `$table` WHERE `id` = '$id'";
 			mysql_query($sql, $conn);
 
+			break;
+			
+		case "retrieve_friends_list":
+			$username = isset($_POST["username"])? $_POST["username"]: "";
+			$password = isset($_POST["password"])? $_POST["password"]: "";
+			if (!check_authentication($username, $password))
+				$error_reason = ERROR_USERNAME_PASSWORD_INVALID;
+			else {
+				$user_id = get_data("users", "username", $username, "id");
+				$friends = array();
+				$friends["from"] = array();
+				$friends["to"] = array();
+				$friends["both"] = array();
+				$sql =
+"
+SELECT friendships.*
+     , users_1.name AS user1_name
+     , users_2.name AS user2_name
+FROM
+  friendships
+INNER JOIN users users_1
+ON friendships.user1_id = users_1.id
+INNER JOIN users users_2
+ON friendships.user2_id = users_2.id
+WHERE
+  friendships.user1_id = $user_id
+  OR friendships.user2_id = $user_id
+";
+				$query = mysql_query($sql, $conn);
+				while($record = mysql_fetch_object($query)) {
+					if ($record->state == "3") {
+						if ($record->user1_id == $user_id)
+							$friends["both"][$record->user2_id] = $record->user2_name;
+						else
+							$friends["both"][$record->user1_id] = $record->user1_name;
+					}
+					if ($record->state == "2") {
+						if ($record->user1_id == $user_id)
+							$friends["from"][$record->user2_id] = $record->user2_name;
+						else
+							$friends["to"][$record->user1_id] = $record->user1_name;
+					}
+					if ($record->state == "1") {
+						if ($record->user1_id == $user_id)
+							$friends["to"][$record->user2_id] = $record->user2_name;
+						else
+							$friends["from"][$record->user1_id] = $record->user1_name;
+					}
+					
+				}
+			}
+			if (!isset($error_reason)) {
+				$result["status"] = STATUS_SUCCESS;
+				$result["friendship"] = $friends;
+			}
+			else {
+				$result["status"] = STATUS_ERROR;
+				$result["error_reason"] = $error_reason;
+			}
+			echo raw_json_encode($result);
 			break;
 	}
 ?>

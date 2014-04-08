@@ -1,11 +1,13 @@
 package com.upv.adm.adm_personal_shapes.screens;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
@@ -20,67 +22,81 @@ import com.upv.adm.adm_personal_shapes.R;
 import com.upv.adm.adm_personal_shapes.classes.BeanUser;
 import com.upv.adm.adm_personal_shapes.classes.CustomActionBarActivity;
 import com.upv.adm.adm_personal_shapes.classes.GlobalContext;
+import com.upv.adm.adm_personal_shapes.classes.IListItem;
 import com.upv.adm.adm_personal_shapes.classes.SQLite;
 import com.upv.adm.adm_personal_shapes.classes.Utils;
+import com.upv.adm.adm_personal_shapes.classes.WebServerProxy;
 
 public class screen13 extends CustomActionBarActivity implements OnTouchListener {
 
-	private TextView textview_pendingrequest_part1;
 	private TextView textview_pendingrequest_part2;
 	
-	private ListView listview_friends;
+	private ListView listview_friendslist;
 	
-	private Button 
+	private Button
+			button_seerequests,
 			button_send, 
 			button_seeprofile, 
-			button_delete, 
+			button_remove, 
 			button_searchfriends;
 
 
-	ArrayList<BeanUser> list_friends = new ArrayList<BeanUser>();
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		GlobalContext.init(getApplicationContext());
-		super.onCreate(savedInstanceState, R.layout.screen13);
+		try {
+			super.onCreate(savedInstanceState, R.layout.screen13);
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
 		initControls();
 	}
 	
-	public void initControls(){
+	@SuppressWarnings("unchecked")
+	public void initControls() {
 
-		textview_pendingrequest_part1 = (TextView) findViewById(R.id.edittext_pendingrequest);
+		textview_pendingrequest_part2 = (TextView) findViewById(R.id.edittext_pendingrequest);
 
+		button_seerequests = (Button) findViewById(R.id.button_seerequests);
 		button_send = (Button) findViewById(R.id.button_send);
-		button_delete = (Button) findViewById(R.id.button_profile);
-		button_searchfriends = (Button) findViewById(R.id.button_addfriend);
-		listview_friends = (ListView) findViewById(R.id.listview_requestfriends);
+		button_remove = (Button) findViewById(R.id.button_remove);
+		button_searchfriends = (Button) findViewById(R.id.button_searchfriends);
+		listview_friendslist = (ListView) findViewById(R.id.listview_friendslist);
 
-		// bind listeners
-		textview_pendingrequest_part1.setOnTouchListener(this);
+		GlobalContext.username = "miriam";
+		GlobalContext.password = "valencia";
 
-		ArrayAdapter<BeanUser> adapter_friends = new ArrayAdapter<BeanUser>(getApplicationContext(), android.R.layout.simple_list_item_1, list_friends);
-
-		listview_friends.setAdapter(adapter_friends);
-		listview_friends.setBackgroundColor(Color.BLACK);
-
-		button_searchfriends.setOnClickListener(new OnClickListener() {
+		Hashtable<String, String> data = new Hashtable<String, String>();
+		data.put("username", GlobalContext.username);
+		data.put("password", GlobalContext.password);
+		(new AsyncTask<Hashtable<String, String>, Void, ArrayList<ArrayList<IListItem>>>() {
 			@Override
-			public void onClick(View v) {
-				startActivity(new Intent(getApplicationContext(), screen17.class));
+			protected void onPreExecute() {
 			}
-		});
-		button_send.setOnClickListener(new OnClickListener() {
 			@Override
-			public void onClick(View v) {
-				share_Click();
+			protected ArrayList<ArrayList<IListItem>> doInBackground(Hashtable<String, String>... data) {
+				return WebServerProxy.retrieve_friends_list(data[0]);
 			}
-		});
-		button_delete.setOnClickListener(new OnClickListener() {
 			@Override
-			public void onClick(View v) {
-				
+			protected void onPostExecute(ArrayList<ArrayList<IListItem>> result) {
+				if (result.size() == 3) {
+					ArrayList<IListItem> friends_from = result.get(0);
+					ArrayList<IListItem> friends_to = result.get(1);
+					ArrayList<IListItem> friends_both = result.get(2);
+					
+					try {
+						ArrayAdapter<IListItem> adapter_friends = new ArrayAdapter<IListItem>(getApplicationContext(), android.R.layout.simple_list_item_1, friends_both);
+						listview_friendslist.setAdapter(adapter_friends);
+						listview_friendslist.setBackgroundColor(0xFF7AAAFF);
+					}
+					catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
 			}
-		});
+		}).execute(data);
+		
 	}
 
 	@Override
@@ -97,7 +113,7 @@ public class screen13 extends CustomActionBarActivity implements OnTouchListener
 	
 	public void share_Click(){
 		
-		ArrayList<String> selectedKeys = Utils.getSelectedKeys(listview_friends);
+		ArrayList<String> selectedKeys = Utils.getSelectedKeys(listview_friendslist);
 
 		String[] outputStrArr = new String[selectedKeys.size()];
 
