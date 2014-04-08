@@ -86,9 +86,10 @@ public class screen13 extends CustomActionBarActivity implements OnTouchListener
 					ArrayList<IListItem> friends_both = result.get(2);
 					
 					try {
-						ArrayAdapter<IListItem> adapter_friends = new ArrayAdapter<IListItem>(getApplicationContext(), android.R.layout.simple_list_item_1, friends_both);
+						ArrayAdapter<IListItem> adapter_friends = new ArrayAdapter<IListItem>(getApplicationContext(), android.R.layout.simple_list_item_multiple_choice, friends_both);
 						listview_friendslist.setAdapter(adapter_friends);
 						listview_friendslist.setBackgroundColor(0xFF7AAAFF);
+						listview_friendslist.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 					}
 					catch (Exception e) {
 						e.printStackTrace();
