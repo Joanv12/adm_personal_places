@@ -256,9 +256,11 @@ public class Utils {
 	// Opcionalmente usar junto con: Utils.getTempFilePathFromBitmap(bitmap)
 	public static Bitmap getQRFromPlace(BeanShape place) {
 		String name = place.getName();
-		name = name.substring(0, 40);
+		if (name.length() > 40)
+			name = name.substring(0, 40);
 		String desc = place.getDescription();
-		desc = desc.substring(0, 100);
+		if (desc.length() > 100)
+			desc = desc.substring(0, 100);
 		String type = place.getType();
 		String coords = place.getCoords();
 		String[] coordsArr = coords.split(";");
