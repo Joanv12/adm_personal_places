@@ -25,14 +25,17 @@ import com.upv.adm.adm_personal_shapes.classes.Utils;
 
 public class screen13 extends CustomActionBarActivity implements OnTouchListener {
 
-	private Button 
-			button_share, 
-			button_profile, 
-			button_addfriend;
-
-	private TextView edittext_pendingrequest;
+	private TextView textview_pendingrequest_part1;
+	private TextView textview_pendingrequest_part2;
 	
 	private ListView listview_friends;
+	
+	private Button 
+			button_send, 
+			button_seeprofile, 
+			button_delete, 
+			button_searchfriends;
+
 
 	ArrayList<BeanUser> list_friends = new ArrayList<BeanUser>();
 	
@@ -45,34 +48,34 @@ public class screen13 extends CustomActionBarActivity implements OnTouchListener
 	
 	public void initControls(){
 
-		edittext_pendingrequest = (TextView) findViewById(R.id.edittext_pendingrequest);
+		textview_pendingrequest_part1 = (TextView) findViewById(R.id.edittext_pendingrequest);
 
-		button_share = (Button) findViewById(R.id.button_send);
-		button_profile = (Button) findViewById(R.id.button_profile);
-		button_addfriend = (Button) findViewById(R.id.button_addfriend);
+		button_send = (Button) findViewById(R.id.button_send);
+		button_delete = (Button) findViewById(R.id.button_profile);
+		button_searchfriends = (Button) findViewById(R.id.button_addfriend);
 		listview_friends = (ListView) findViewById(R.id.listview_requestfriends);
 
 		// bind listeners
-		edittext_pendingrequest.setOnTouchListener(this);
+		textview_pendingrequest_part1.setOnTouchListener(this);
 
 		ArrayAdapter<BeanUser> adapter_friends = new ArrayAdapter<BeanUser>(getApplicationContext(), android.R.layout.simple_list_item_1, list_friends);
 
 		listview_friends.setAdapter(adapter_friends);
 		listview_friends.setBackgroundColor(Color.BLACK);
 
-		button_addfriend.setOnClickListener(new OnClickListener() {
+		button_searchfriends.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				startActivity(new Intent(getApplicationContext(), screen17.class));
 			}
 		});
-		button_share.setOnClickListener(new OnClickListener() {
+		button_send.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				share_Click();
 			}
 		});
-		button_profile.setOnClickListener(new OnClickListener() {
+		button_delete.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				

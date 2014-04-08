@@ -157,6 +157,11 @@
     <string name="button_coordinates">Coordenadas</string>
     <string name="button_cancel">Cancelar</string>
     
+    <!-- screen13 -->
+    <string name="textview_pendingrequests">Solicitudes pendientes:</string>
+    <string name="textview_yourfriendslist">Tu lista de amigos:</string>
+    <string name="button_send">Enviar</string>
+    
     <!-- screen21 -->
     <string name="button_use">Usar</string>
 

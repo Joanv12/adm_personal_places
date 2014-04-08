@@ -1030,8 +1030,8 @@ containing a value of this type.
         public static final int activity_chooser_view_content=0x7f050025;
         public static final int always=0x7f05000b;
         public static final int beginning=0x7f050011;
-        public static final int button_acept=0x7f050092;
-        public static final int button_addfriend=0x7f050089;
+        public static final int button_acept=0x7f050090;
+        public static final int button_addfriend=0x7f050094;
         public static final int button_cancel=0x7f050082;
         public static final int button_clear=0x7f050064;
         public static final int button_clearmap=0x7f050044;
@@ -1050,14 +1050,14 @@ containing a value of this type.
         public static final int button_login=0x7f050061;
         public static final int button_map=0x7f050070;
         public static final int button_newevent=0x7f050086;
-        public static final int button_pickDate=0x7f05008e;
-        public static final int button_pickTime=0x7f050090;
+        public static final int button_pickDate=0x7f05008c;
+        public static final int button_pickTime=0x7f05008e;
         public static final int button_profile=0x7f05006d;
         public static final int button_register=0x7f050063;
-        public static final int button_reject=0x7f050093;
+        public static final int button_reject=0x7f050091;
         public static final int button_save=0x7f05007f;
         public static final int button_search=0x7f050072;
-        public static final int button_searchfriends=0x7f05008d;
+        public static final int button_searchfriends=0x7f05008b;
         public static final int button_send=0x7f050052;
         public static final int button_share=0x7f050080;
         public static final int button_showlayer=0x7f050041;
@@ -1080,7 +1080,7 @@ containing a value of this type.
         public static final int dropdown=0x7f05000f;
         public static final int edit_query=0x7f050030;
         public static final int edittext_coordinates=0x7f05009a;
-        public static final int edittext_dateDisplay=0x7f05008f;
+        public static final int edittext_dateDisplay=0x7f05008d;
         public static final int edittext_description=0x7f05004e;
         public static final int edittext_email=0x7f050067;
         public static final int edittext_inputSearch=0x7f050096;
@@ -1088,19 +1088,18 @@ containing a value of this type.
         public static final int edittext_password=0x7f050054;
         public static final int edittext_passwordrepeat=0x7f050066;
         public static final int edittext_pendingrequest=0x7f050083;
-        public static final int edittext_personalplace=0x7f05008c;
+        public static final int edittext_personalplace=0x7f05008a;
         public static final int edittext_phone=0x7f050068;
         public static final int edittext_placename=0x7f05007e;
         public static final int edittext_profile_text=0x7f05006c;
-        public static final int edittext_timeDisplay=0x7f050091;
-        public static final int edittext_title=0x7f05008b;
-        public static final int edittext_user=0x7f05008a;
+        public static final int edittext_timeDisplay=0x7f05008f;
+        public static final int edittext_title=0x7f050089;
+        public static final int edittext_user=0x7f050088;
         public static final int edittext_username=0x7f050053;
         public static final int end=0x7f050013;
         public static final int expand_activities_button=0x7f050026;
         public static final int expanded_menu=0x7f05002c;
         public static final int firstDivider=0x7f050084;
-        public static final int firstDivider2=0x7f050088;
         public static final int group1=0x7f0500a3;
         public static final int home=0x7f050014;
         public static final int homeAsUp=0x7f050005;
@@ -1116,12 +1115,13 @@ containing a value of this type.
         public static final int left_drawer=0x7f050065;
         public static final int listMode=0x7f050001;
         public static final int list_item=0x7f050029;
-        public static final int list_searchfriends=0x7f050095;
+        public static final int list_searchfriends=0x7f050093;
         public static final int listview_events=0x7f050085;
+        public static final int listview_friendslist=0x7f050087;
         public static final int listview_personalplots=0x7f050077;
         public static final int listview_places=0x7f050075;
         public static final int listview_requestevents=0x7f05009e;
-        public static final int listview_requestfriends=0x7f050087;
+        public static final int listview_requestfriends=0x7f050095;
         public static final int listview_search=0x7f050097;
         public static final int listview_shapes=0x7f05003d;
         public static final int mapview_map=0x7f05009d;
@@ -1145,7 +1145,7 @@ containing a value of this type.
         public static final int search_edit_frame=0x7f050034;
         public static final int search_go_btn=0x7f05003a;
         public static final int search_mag_icon=0x7f050035;
-        public static final int search_name=0x7f050094;
+        public static final int search_name=0x7f050092;
         public static final int search_plate=0x7f050036;
         public static final int search_src_text=0x7f050037;
         public static final int search_voice_btn=0x7f05003b;
@@ -1266,9 +1266,9 @@ containing a value of this type.
         public static final int Register=0x7f0a002f;
         /**  menu_generaltopright 
          */
-        public static final int SubMnuOpc1=0x7f0a00b2;
-        public static final int SubMnuOpc2=0x7f0a00b3;
-        public static final int SubMnuOpc3=0x7f0a00b4;
+        public static final int SubMnuOpc1=0x7f0a00b4;
+        public static final int SubMnuOpc2=0x7f0a00b5;
+        public static final int SubMnuOpc3=0x7f0a00b6;
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
          */
         public static final int abc_action_bar_home_description=0x7f0a0001;
@@ -1310,13 +1310,13 @@ containing a value of this type.
          */
         public static final int abc_shareactionprovider_share_with_application=0x7f0a000b;
         public static final int action_settings=0x7f0a0032;
-        public static final int alert_dialog_ok=0x7f0a00ad;
+        public static final int alert_dialog_ok=0x7f0a00af;
         public static final int app_name=0x7f0a000d;
-        public static final int button_acept=0x7f0a00a1;
-        public static final int button_addfriend=0x7f0a008b;
+        public static final int button_acept=0x7f0a00a3;
+        public static final int button_addfriend=0x7f0a008d;
         public static final int button_cancel=0x7f0a0082;
-        public static final int button_changethedate=0x7f0a00a3;
-        public static final int button_changethehour=0x7f0a00a5;
+        public static final int button_changethedate=0x7f0a00a5;
+        public static final int button_changethehour=0x7f0a00a7;
         public static final int button_clear=0x7f0a0050;
         public static final int button_coordinates=0x7f0a0081;
         public static final int button_create=0x7f0a0066;
@@ -1324,41 +1324,41 @@ containing a value of this type.
         public static final int button_edit=0x7f0a0033;
         public static final int button_events=0x7f0a006a;
         public static final int button_fillqr=0x7f0a0075;
-        public static final int button_fixed=0x7f0a0094;
+        public static final int button_fixed=0x7f0a0096;
         public static final int button_friends=0x7f0a0069;
-        public static final int button_gps=0x7f0a0095;
+        public static final int button_gps=0x7f0a0097;
         public static final int button_gps_position=0x7f0a0074;
         public static final int button_list=0x7f0a0067;
         public static final int button_login=0x7f0a004f;
         public static final int button_map=0x7f0a0068;
-        public static final int button_newevent=0x7f0a0093;
-        public static final int button_personalplaces=0x7f0a0089;
+        public static final int button_newevent=0x7f0a0095;
+        public static final int button_personalplaces=0x7f0a008b;
         /**  screen03 
          */
         public static final int button_profile=0x7f0a0065;
         public static final int button_register=0x7f0a0051;
         /**  screen18 
          */
-        public static final int button_reject=0x7f0a008f;
+        public static final int button_reject=0x7f0a0091;
         public static final int button_remove=0x7f0a0036;
         public static final int button_removelastpoint=0x7f0a0076;
         public static final int button_save=0x7f0a0035;
         public static final int button_search=0x7f0a006b;
-        public static final int button_searchfriends=0x7f0a008e;
+        public static final int button_searchfriends=0x7f0a0090;
         /**  screen21 
          */
-        public static final int button_send=0x7f0a0084;
+        public static final int button_send=0x7f0a0085;
         public static final int button_setpoint=0x7f0a0077;
         public static final int button_share=0x7f0a0034;
         public static final int button_skip=0x7f0a0052;
-        public static final int button_socialnetworks=0x7f0a008a;
+        public static final int button_socialnetworks=0x7f0a008c;
         public static final int button_types=0x7f0a0070;
         public static final int button_update=0x7f0a0064;
         /**  screen21 
          */
-        public static final int button_use=0x7f0a0083;
-        public static final int button_viewdata=0x7f0a0091;
-        public static final int capture=0x7f0a00b0;
+        public static final int button_use=0x7f0a0086;
+        public static final int button_viewdata=0x7f0a0093;
+        public static final int capture=0x7f0a00b2;
         public static final int checkbox_remember=0x7f0a005b;
         /**  tipos de elemento: desc 
          */
@@ -1372,57 +1372,57 @@ containing a value of this type.
         public static final int edit_name=0x7f0a0037;
         public static final int edit_new_password=0x7f0a0057;
         public static final int edit_new_user=0x7f0a0056;
-        public static final int edit_numbernotification=0x7f0a009c;
+        public static final int edit_numbernotification=0x7f0a009e;
         public static final int edit_password=0x7f0a0055;
         public static final int edit_register=0x7f0a0054;
         public static final int edit_repeat_new_password=0x7f0a0058;
         /**  screen17 
          */
-        public static final int edittext_addnewfriend=0x7f0a008c;
+        public static final int edittext_addnewfriend=0x7f0a008e;
         public static final int edittext_coordinates=0x7f0a0039;
         /**  screen18 
  screen15 
          */
-        public static final int edittext_creator=0x7f0a0096;
-        public static final int edittext_date=0x7f0a00a2;
+        public static final int edittext_creator=0x7f0a0098;
+        public static final int edittext_date=0x7f0a00a4;
         /**  screen22 
          */
-        public static final int edittext_events=0x7f0a0092;
-        public static final int edittext_friendslist=0x7f0a0087;
-        public static final int edittext_no=0x7f0a009b;
-        public static final int edittext_notification=0x7f0a0098;
-        public static final int edittext_numberno=0x7f0a009f;
-        public static final int edittext_numberpendingrequest=0x7f0a0086;
-        public static final int edittext_numbertotal=0x7f0a009d;
-        public static final int edittext_numberyes=0x7f0a009e;
+        public static final int edittext_events=0x7f0a0094;
+        public static final int edittext_friendslist=0x7f0a0089;
+        public static final int edittext_no=0x7f0a009d;
+        public static final int edittext_notification=0x7f0a009a;
+        public static final int edittext_numberno=0x7f0a00a1;
+        public static final int edittext_numberpendingrequest=0x7f0a0088;
+        public static final int edittext_numbertotal=0x7f0a009f;
+        public static final int edittext_numberyes=0x7f0a00a0;
         /**  screen19 
          */
-        public static final int edittext_pendingrequest=0x7f0a0085;
-        public static final int edittext_personalplace=0x7f0a0097;
-        public static final int edittext_results=0x7f0a008d;
+        public static final int edittext_pendingrequest=0x7f0a0087;
+        public static final int edittext_personalplace=0x7f0a0099;
+        public static final int edittext_results=0x7f0a008f;
         /**  screen19 
          */
-        public static final int edittext_searchplace=0x7f0a0090;
+        public static final int edittext_searchplace=0x7f0a0092;
         public static final int edittext_selectoption=0x7f0a0080;
-        public static final int edittext_shareoptions=0x7f0a0088;
+        public static final int edittext_shareoptions=0x7f0a008a;
         public static final int edittext_situation=0x7f0a007f;
-        public static final int edittext_time=0x7f0a00a4;
-        public static final int edittext_title=0x7f0a00a0;
-        public static final int edittext_total=0x7f0a0099;
+        public static final int edittext_time=0x7f0a00a6;
+        public static final int edittext_title=0x7f0a00a2;
+        public static final int edittext_total=0x7f0a009b;
         /**  screen05 
          */
         public static final int edittext_type=0x7f0a0071;
-        public static final int edittext_yes=0x7f0a009a;
+        public static final int edittext_yes=0x7f0a009c;
         public static final int gallery_button=0x7f0a003c;
         public static final int header_image=0x7f0a0020;
         public static final int header_privatefields=0x7f0a001e;
         public static final int header_publicfields=0x7f0a001f;
-        public static final int help=0x7f0a00b1;
+        public static final int help=0x7f0a00b3;
         public static final int hint_entername=0x7f0a0059;
         public static final int hint_pasword=0x7f0a005a;
         /**  menu_image 
          */
-        public static final int intro=0x7f0a00ae;
+        public static final int intro=0x7f0a00b0;
         public static final int label_back=0x7f0a0043;
         public static final int label_clear=0x7f0a0040;
         public static final int label_coordinates=0x7f0a004a;
@@ -1449,22 +1449,22 @@ containing a value of this type.
         /**  tipos de elemento: label 
          */
         public static final int label_user=0x7f0a0021;
-        public static final int layers=0x7f0a00aa;
+        public static final int layers=0x7f0a00ac;
         /**  menu_screen7 
  menu_screen07 
          */
-        public static final int options=0x7f0a00a9;
-        public static final int personalplaces=0x7f0a00ac;
-        public static final int picture=0x7f0a00af;
-        public static final int plots=0x7f0a00ab;
+        public static final int options=0x7f0a00ab;
+        public static final int personalplaces=0x7f0a00ae;
+        public static final int picture=0x7f0a00b1;
+        public static final int plots=0x7f0a00ad;
         public static final int radiobutton_place=0x7f0a007c;
         public static final int radiobutton_plot=0x7f0a007d;
         public static final int registration=0x7f0a002c;
-        public static final int search_hint=0x7f0a00a8;
-        public static final int search_label=0x7f0a00a7;
+        public static final int search_hint=0x7f0a00aa;
+        public static final int search_label=0x7f0a00a9;
         /**  screen19 
          */
-        public static final int searchname=0x7f0a00a6;
+        public static final int searchname=0x7f0a00a8;
         public static final int spinner_placetype=0x7f0a0072;
         /**  screen04 
          */
@@ -1480,6 +1480,9 @@ containing a value of this type.
         public static final int textview_name=0x7f0a0061;
         public static final int textview_password=0x7f0a005d;
         public static final int textview_passwordrepeat=0x7f0a005e;
+        /**  screen13 
+         */
+        public static final int textview_pendingrequests=0x7f0a0083;
         public static final int textview_phone=0x7f0a0060;
         public static final int textview_placetype=0x7f0a007b;
         public static final int textview_shapedata=0x7f0a007a;
@@ -1488,6 +1491,7 @@ containing a value of this type.
         /**  screen02 
          */
         public static final int textview_username=0x7f0a005c;
+        public static final int textview_yourfriendslist=0x7f0a0084;
         public static final int title=0x7f0a002b;
         public static final int title_loginform=0x7f0a003d;
         public static final int title_registrationform=0x7f0a003e;
