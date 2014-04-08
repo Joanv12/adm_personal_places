@@ -355,14 +355,16 @@ public class screen05 extends CustomActionBarActivity {
 							FileOutputStream fos = new FileOutputStream(qr_temp_file);
 							bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
 							
-							intent = new Intent(Intent.ACTION_SEND);
-							intent.setType("image/jpg");
-							Uri uri = Uri.fromFile(qr_temp_file);
-							intent.putExtra(Intent.EXTRA_STREAM, uri.toString());
-							
-							startActivity(Intent.createChooser(intent, "Share image using"));							
-							
-							System.out.println("hello world");
+							//Uri uri = Uri.fromFile(qr_temp_file);
+
+							intent = new Intent();
+							intent.setAction(Intent.ACTION_SEND);
+							intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(qr_temp_file));
+							intent.setType("image/jpeg");
+							intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+
+							startActivity(Intent.createChooser(intent, "Where?"));
+
 						}
 						catch (Exception e) {
 							e.printStackTrace();
