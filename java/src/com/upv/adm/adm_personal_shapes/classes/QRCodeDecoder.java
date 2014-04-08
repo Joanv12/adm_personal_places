@@ -19,7 +19,9 @@ public class QRCodeDecoder {
             QRCodeReader reader = new QRCodeReader();
             result = reader.decode(binBitmap).getText();
         }
-        catch (Exception e) {}
+        catch (Exception e) {
+        	e.printStackTrace();
+        }
         System.gc();
         return result;
     }
