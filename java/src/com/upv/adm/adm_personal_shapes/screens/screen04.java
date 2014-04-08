@@ -46,8 +46,8 @@ public class screen04 extends CustomActionBarActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		GlobalContext.init(getApplicationContext());
 		super.onCreate(savedInstanceState, R.layout.screen04);
-
 		initControls();
 	}
 	private void initControls() {

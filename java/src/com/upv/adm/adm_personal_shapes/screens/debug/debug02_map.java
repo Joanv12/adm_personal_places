@@ -3,9 +3,7 @@ package com.upv.adm.adm_personal_shapes.screens.debug;
 import com.upv.adm.adm_personal_shapes.R;
 import com.upv.adm.adm_personal_shapes.classes.BeanShape;
 import com.upv.adm.adm_personal_shapes.classes.GlobalContext;
-import com.upv.adm.adm_personal_shapes.classes.SQLite;
 import com.upv.adm.adm_personal_shapes.classes.Utils;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Bundle;
@@ -57,7 +55,7 @@ public class debug02_map extends Activity {
 						"Nachos y Tapas a todas horas",
 						"t01",
 						"39.47169,-0.34711",
-						"imageUri1"
+						true
 				);
 				Utils.addBeanPlaceToMap(place, webview_map);
 			}
@@ -73,7 +71,7 @@ public class debug02_map extends Activity {
 						"Plaza en zona estudiantil de Valencia",
 						null,
 						coords,
-						"imageUri2"
+						true
 				);
 				Utils.addBeanPlotToMap(plot, webview_map);
 			}

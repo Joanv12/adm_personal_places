@@ -22,8 +22,8 @@ public class screen12 extends CustomActionBarActivity implements OnTouchListener
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		GlobalContext.init(getApplicationContext());
 		super.onCreate(savedInstanceState,R.layout.screen12);
-
 		initControls();
 	}
 	

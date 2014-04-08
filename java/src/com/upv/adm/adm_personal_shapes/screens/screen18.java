@@ -32,8 +32,8 @@ public class screen18 extends CustomActionBarActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		GlobalContext.init(getApplicationContext());
 		super.onCreate(savedInstanceState, R.layout.screen18);
-
 		initControls();
 	}
 	

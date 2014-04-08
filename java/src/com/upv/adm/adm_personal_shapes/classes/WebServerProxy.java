@@ -1,6 +1,7 @@
 package com.upv.adm.adm_personal_shapes.classes;
 
 import java.io.File;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Properties;
@@ -28,17 +29,16 @@ public class WebServerProxy {
 	public static final String RESPONSE_ERROR_UNKNOWN = "error_unknown";
 	
 	public static JSONObject post(String url, ArrayList<StringPart> fields, ArrayList<FilePart> files) throws Exception {
-
-		HttpClient httpClient = new HttpClient();
-		PostMethod postMethod = new PostMethod(url);
-		
-		Part[] parts = new Part[fields.size()+((files!=null)?files.size():0)];
-		for (int i = 0; i < fields.size(); i++)
-			parts[i] = fields.get(i);
-		for (int i = 0; files != null && i < files.size(); i++)
-			parts[fields.size() + i] = files.get(i);
-
 		try {
+			HttpClient httpClient = new HttpClient();
+			PostMethod postMethod = new PostMethod(url);
+			
+			Part[] parts = new Part[fields.size()+((files!=null)?files.size():0)];
+			for (int i = 0; i < fields.size(); i++)
+				parts[i] = fields.get(i);
+			for (int i = 0; files != null && i < files.size(); i++)
+				parts[fields.size() + i] = files.get(i);
+
 			postMethod.setRequestEntity(new MultipartRequestEntity(parts, postMethod.getParams()));
 			httpClient.executeMethod(postMethod);
 			if (postMethod.getStatusCode() == HttpStatus.SC_OK) {
@@ -66,13 +66,15 @@ public class WebServerProxy {
 			ArrayList<FilePart> files = new ArrayList<FilePart>();
 
 			fields.add(new StringPart("action", "register_user"));
-			fields.add(new StringPart("username", data.get("username")));
-			fields.add(new StringPart("password", data.get("password")));
-			fields.add(new StringPart("name", data.get("name")));
-			fields.add(new StringPart("gender", data.get("gender")));
-			fields.add(new StringPart("email", data.get("email")));
-			fields.add(new StringPart("phone", data.get("phone")));
-			fields.add(new StringPart("country", data.get("country")));
+			fields.add(new StringPart("username", data.get("username"), "UTF-8"));
+			fields.add(new StringPart("password", data.get("password"), "UTF-8"));
+			if (data.containsKey("password_old"))
+				fields.add(new StringPart("password_old", data.get("password_old"), "UTF-8"));
+			fields.add(new StringPart("name", data.get("name"), "UTF-8"));
+			fields.add(new StringPart("gender", data.get("gender"), "UTF-8"));
+			fields.add(new StringPart("email", data.get("email"), "UTF-8"));
+			fields.add(new StringPart("phone", data.get("phone"), "UTF-8"));
+			fields.add(new StringPart("country", data.get("country"), "UTF-8"));
 			
 			if (data.get("image") != null)
 				files.add(new FilePart("image", new File(data.get("image"))));
@@ -85,8 +87,16 @@ public class WebServerProxy {
 				if (result[0].equals("error")) {
 					result[1] = json.getString("error_reason");
 				}
+				else {
+					if (data.get("image") != null)
+						new File(data.get("image")).renameTo(new File(Utils.getAppDir(), "user_image.jpg"));
+					else {
+						File user_image = new File(Utils.getAppDir(), "user_image.jpg");
+						if (user_image.exists())
+							user_image.delete();
+					}
+				}
 			}
-
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -105,13 +115,36 @@ public class WebServerProxy {
 			ArrayList<StringPart> fields = new ArrayList<StringPart>();
 			
 			fields.add(new StringPart("action", "login_user"));
-			fields.add(new StringPart("username", data.get("username")));
-			fields.add(new StringPart("password", data.get("password")));
+			fields.add(new StringPart("username", data.get("username"), "UTF-8"));
+			fields.add(new StringPart("password", data.get("password"), "UTF-8"));
 			
 			JSONObject json = post(post_url, fields, null);			
 			
-			if (json != null && json.has("status"))
-				return json.getString("status").equals("success");
+			if (json != null && json.has("status")) {
+				if (json.getString("status").equals("success")) {
+					JSONObject user_data = json.getJSONObject("data");
+					String name = user_data.getString("name");
+					String gender = user_data.getString("gender");
+					String email = user_data.getString("email");
+					String phone = user_data.getString("phone");
+					String country_iso2 = user_data.getString("country_iso2");
+					String image_uri = user_data.getString("image_uri");
+					
+					GlobalContext.setPreference(GlobalContext.PREF.NAME, name);
+					GlobalContext.setPreference(GlobalContext.PREF.GENDER, gender);
+					GlobalContext.setPreference(GlobalContext.PREF.EMAIL, email);
+					GlobalContext.setPreference(GlobalContext.PREF.PHONE, phone);
+					GlobalContext.setPreference(GlobalContext.PREF.COUNTRY, country_iso2);
+					
+					String server_url = Utils.getCustomProperty("server_url");
+					if (image_uri != null && !image_uri.equals(""))
+						Utils.downloadFile(server_url+"/images/"+data.get("username")+".jpg", new File(Utils.getAppDir(), "user_image.jpg").getPath());  
+					
+					return true;
+				}
+				else
+					return false;
+			}
 
 		}
 		catch (Exception e) {

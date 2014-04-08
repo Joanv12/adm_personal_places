@@ -155,6 +155,7 @@
     <string name="edittext_selectoption">Seleccione una opción</string>
     <string name="action_settings">Seleccione una opción</string>
     <string name="button_coordinates">Coordenadas</string>
+    <string name="button_cancel">Cancelar</string>
     
     <!-- screen21 -->
     <string name="button_use">Usar</string>

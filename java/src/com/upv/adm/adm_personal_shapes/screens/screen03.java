@@ -24,8 +24,8 @@ public class screen03 extends CustomActionBarActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState, R.layout.screen03);
 		GlobalContext.init(getApplicationContext());
+		super.onCreate(savedInstanceState, R.layout.screen03);
 		initControls();
 	}
 	private void initControls() {
@@ -50,15 +50,25 @@ public class screen03 extends CustomActionBarActivity {
 		
 		button_login.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				startActivity(new Intent(getApplicationContext(), screen01.class));
-
+				Utils.startActivity(getCurrentActivity(), screen01.class);
 			}
 		});
 
 		button_register.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				startActivity(new Intent(getApplicationContext(), screen02.class));
+				Utils.startActivity(getCurrentActivity(), screen02.class);
+			}
+		});
 
+		button_profile.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				Utils.startActivity(getCurrentActivity(), screen02.class);
+			}
+		});
+
+		button_create.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				Utils.startActivity(getCurrentActivity(), screen05.class);
 			}
 		});
 
@@ -68,12 +78,6 @@ public class screen03 extends CustomActionBarActivity {
 			}
 		});
 
-		button_create.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
-				GlobalContext.shape_id = null;
-				startActivity(new Intent(getApplicationContext(), screen05.class));
-			}
-		});
 		button_search.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				startActivity(new Intent(getApplicationContext(), screen19.class));

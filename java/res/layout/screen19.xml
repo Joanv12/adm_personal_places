@@ -44,13 +44,4 @@
         </LinearLayout>
     </LinearLayout>
 
-    <ListView
-        android:id="@+id/left_drawer"
-        android:layout_width="200dp"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:background="#111"
-        android:choiceMode="singleChoice"
-        android:paddingLeft="10dp" />
-
 </android.support.v4.widget.DrawerLayout>

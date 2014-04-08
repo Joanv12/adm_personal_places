@@ -25,10 +25,10 @@ public class screen21 extends CustomActionBarActivity {
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		GlobalContext.init(getApplicationContext());
 		super.onCreate(savedInstanceState, R.layout.screen21);
-
 		initControls();
-		fillFields ();
+		fillFields();
 	}
 	
 	public void initControls() {

@@ -31,10 +31,9 @@ public class screen22 extends CustomActionBarActivity{
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState, R.layout.screen22);
 		GlobalContext.init(getApplicationContext());
+		super.onCreate(savedInstanceState, R.layout.screen22);
 		initControls();
-		initMap();
 		
 		if (isPlace) {
 			button_fix.setVisibility(View.GONE);
@@ -105,10 +104,6 @@ public class screen22 extends CustomActionBarActivity{
 
 	}
 
-	public void initMap() {
-		
-	}
-	
 	@Override
 	protected void onResume() {
 		GlobalContext.getCustomLocationListener().enable();
