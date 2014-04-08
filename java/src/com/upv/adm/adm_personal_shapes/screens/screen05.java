@@ -80,7 +80,6 @@ public class screen05 extends CustomActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		GlobalContext.init(getApplicationContext());
 		super.onCreate(savedInstanceState, R.layout.screen05);
-		GlobalContext.shape_id = (long) 11;
 		initControls();
 		
 		if (GlobalContext.shape_id != null) {

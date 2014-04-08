@@ -52,8 +52,6 @@ public class screen04 extends CustomActionBarActivity {
 	}
 	private void initControls() {
 		
-		
-		
 		options_places = GlobalContext.getTypesData();
 		selections_placetypes = new boolean[options_places.length];
 
@@ -77,19 +75,20 @@ public class screen04 extends CustomActionBarActivity {
 		tabs.setCurrentTab(0);
 
 		listview_places = (ListView) findViewById(R.id.listview_places);
-		listview_plots = (ListView) findViewById(R.id.listview_personalplots);
+		listview_plots = (ListView) findViewById(R.id.listview_plots);
 
 		list_places = (ArrayList<BeanShape>) SQLite.getPlaces();
 		list_plots = (ArrayList<BeanShape>) SQLite.getPlots();
 		
-		ArrayAdapter<BeanShape> adapter_places = new ArrayAdapter<BeanShape>(getApplicationContext(), android.R.layout.simple_list_item_1, list_places);
-		ArrayAdapter<BeanShape> adapter_plots = new ArrayAdapter<BeanShape>(getApplicationContext(), android.R.layout.simple_list_item_1, list_plots);
+		ArrayAdapter<BeanShape> adapter_places = new ArrayAdapter<BeanShape>(getApplicationContext(), R.layout.listitem_type_01, list_places);
+		ArrayAdapter<BeanShape> adapter_plots = new ArrayAdapter<BeanShape>(getApplicationContext(), R.layout.listitem_type_01, list_plots);
 		
 		listview_places.setAdapter(adapter_places);
 		listview_plots.setAdapter(adapter_plots);
 
-		listview_places.setBackgroundColor(Color.BLACK);
-		listview_plots.setBackgroundColor(Color.BLACK);
+		//listview_places.setBackgroundColor(Color.BLACK);
+		//listview_plots.setBackgroundColor(Color.BLACK);
+		
 
 		listview_places.setOnItemClickListener(new OnItemClickListener() {
 			@Override

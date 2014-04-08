@@ -21,6 +21,7 @@ import android.widget.TextView;
 import com.upv.adm.adm_personal_shapes.R;
 import com.upv.adm.adm_personal_shapes.classes.BeanUser;
 import com.upv.adm.adm_personal_shapes.classes.CustomActionBarActivity;
+import com.upv.adm.adm_personal_shapes.classes.CustomListItem;
 import com.upv.adm.adm_personal_shapes.classes.GlobalContext;
 import com.upv.adm.adm_personal_shapes.classes.IListItem;
 import com.upv.adm.adm_personal_shapes.classes.SQLite;
@@ -87,9 +88,9 @@ public class screen13 extends CustomActionBarActivity implements OnTouchListener
 					
 					try {
 						ArrayAdapter<IListItem> adapter_friends = new ArrayAdapter<IListItem>(getApplicationContext(), android.R.layout.simple_list_item_multiple_choice, friends_both);
+						listview_friendslist.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 						listview_friendslist.setAdapter(adapter_friends);
 						listview_friendslist.setBackgroundColor(0xFF7AAAFF);
-						listview_friendslist.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 					}
 					catch (Exception e) {
 						e.printStackTrace();
