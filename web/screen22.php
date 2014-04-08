@@ -76,11 +76,17 @@ $(function(){
 });
 
 function centerMap() {
-	var bounds = new google.maps.LatLngBounds();
-	for (var i = 0; i < markersArray.length; i++)
-		bounds.extend(markersArray[i].position);
-	if (markersArray.length > 0)
-		map.fitBounds(bounds);
+	if (markersArray.length == 1) {
+		map.setZoom(16);
+		map.setCenter(markersArray[0].position);
+	}
+	else {
+		var bounds = new google.maps.LatLngBounds();
+		for (var i = 0; i < markersArray.length; i++)
+			bounds.extend(markersArray[i].position);
+		if (markersArray.length > 0)
+			map.fitBounds(bounds);
+	}
 }
 
 function initMap() {

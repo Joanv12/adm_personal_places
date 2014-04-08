@@ -104,12 +104,10 @@ public class CustomActionBarActivity extends ActionBarActivity implements IActiv
 						Utils.startActivity(getCurrentActivity(), screen02.class);
 						break;
 					case 4:
-						Intent in04 = new Intent(getApplicationContext(), screen02.class);
-						startActivity(in04);
+						Utils.startActivity(getCurrentActivity(), screen02.class);
 						break;
 					case 5:
-						Intent in07 = new Intent(getApplicationContext(), screen05.class);
-						startActivity(in07);
+						Utils.startActivity(getCurrentActivity(), screen05.class);
 						break;
 					case 6:
 						Intent in13 = new Intent(getApplicationContext(), screen04.class);
@@ -218,8 +216,10 @@ public class CustomActionBarActivity extends ActionBarActivity implements IActiv
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         // workaround to close all activities
-    	if (resultCode == ACTIVITYRESULT_FINISH)
+    	if (resultCode == ACTIVITYRESULT_FINISH) {
     		this.finish();
+    		System.exit(0);
+    	}
     	else
     		super.onActivityResult(requestCode, resultCode, data);
     }

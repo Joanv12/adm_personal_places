@@ -22,7 +22,9 @@ public class debug01_general extends Activity {
 		setContentView(R.layout.debug01_general);
 		GlobalContext.init(getApplicationContext());
 
-		boolean result = Utils.checkUsernameFormat("angel");
+		BeanShape shape = new BeanShape(null, "Nueva Parcela", "Esta es la nueva parcela", null, "1,2", true);
+		
+		SQLite.saveShape(shape);
 		
 		System.out.println("Nothing to show.");
 

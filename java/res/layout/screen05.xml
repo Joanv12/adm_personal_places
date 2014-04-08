@@ -155,51 +155,68 @@
 
             <LinearLayout style="@style/header_type_02" />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:orientation="horizontal" >
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
 
-                <Button
-                    android:id="@+id/button_map"
-                    style="@style/button_type_02"
-                    android:background="@drawable/button_type_02"
-                    android:text="@string/button_map" />
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="3" >
 
-                <Button
-                    android:id="@+id/button_coordinates"
-                    style="@style/button_type_02"
-                    android:background="@drawable/button_type_02"
-                    android:text="@string/button_coordinates" />
+                    <Button
+                        android:id="@+id/button_map"
+                        style="@style/button_type_02"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_type_02"
+                        android:text="@string/button_map" />
 
-                <Button
-                    android:id="@+id/button_save"
-                    style="@style/button_type_02"
-                    android:background="@drawable/button_type_02"
-                    android:text="@string/button_save" />
-            </LinearLayout>
+                    <Button
+                        android:id="@+id/button_coordinates"
+                        style="@style/button_type_02"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_type_02"
+                        android:text="@string/button_coordinates" />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:orientation="horizontal" >
+                    <Button
+                        android:id="@+id/button_save"
+                        style="@style/button_type_02"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_type_02"
+                        android:text="@string/button_save" />
+                </TableRow>
 
-                <Button
-                    android:id="@+id/button_share"
-                    style="@style/button_type_02"
-                    android:background="@drawable/button_type_02"
-                    android:text="@string/button_share" />
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
 
-                <Button
-                    android:id="@+id/button_delete"
-                    style="@style/button_type_02"
-                    android:background="@drawable/button_type_02"
-                    android:text="@string/button_delete" />
-            </LinearLayout>
+                    <Button
+                        android:id="@+id/button_share"
+                        style="@style/button_type_02"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_type_02"
+                        android:text="@string/button_share" />
+
+                    <Button
+                        android:id="@+id/button_delete"
+                        style="@style/button_type_02"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_type_02"
+                        android:text="@string/button_delete" />
+
+                    <Button
+                        android:id="@+id/button_cancel"
+                        style="@style/button_type_02"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_type_02"
+                        android:text="@string/button_cancel" />
+                </TableRow>
+            </TableLayout>
         </LinearLayout>
     </ScrollView>
 
-	<include  layout="@layout/layout_leftmenu" android:id="@+id/left_drawer" />
+    <include
+        android:id="@+id/left_drawer"
+        layout="@layout/layout_leftmenu" />
+
 </android.support.v4.widget.DrawerLayout>

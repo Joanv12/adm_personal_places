@@ -18,7 +18,7 @@ public class SQLite {
 
 	private static SQLiteDatabase db = null;
 
-	private static final int DATABASE_VERSION = 74;
+	private static final int DATABASE_VERSION = 75;
 	private static final String DATABASE_NAME = "personal_shapes.db";
 	
 	private static final String TABLE_SHAPES = "shapes";
@@ -30,7 +30,7 @@ public class SQLite {
 	private static final String FIELD_DESCRIPTION = "description";
 	private static final String FIELD_PLACETYPE = "place_type";
 	private static final String FIELD_COORDS = "coords";
-	private static final String FIELD_IMAGE = "image";
+	private static final String FIELD_HASIMAGE = "has_image";
 	private static final String FIELD_VISIBLE = "visible";
 
 	private static final String CREATE_TABLE_VISIBLE_LAYERS =
@@ -45,7 +45,7 @@ public class SQLite {
 			"CREATE TABLE " + TABLE_SHAPES + " (" +
 			FIELD_ID + " INTEGER PRIMARY KEY, " +	FIELD_NAME + " TEXT, " +
 			FIELD_DESCRIPTION + " TEXT, " + FIELD_PLACETYPE + " CHAR(3), " +
-			FIELD_COORDS + " TEXT, " + FIELD_IMAGE + " TEXT, " + FIELD_VISIBLE + " INTEGER)";
+			FIELD_COORDS + " TEXT, " + FIELD_HASIMAGE + " TEXT, " + FIELD_VISIBLE + " INTEGER)";
 
 	public static void staticInitialization() {
 		if (SQLite.db == null) {
@@ -73,12 +73,12 @@ public class SQLite {
 
 	private static void load_data_debug(SQLiteDatabase db) {
 		try {
-			db.execSQL("INSERT INTO shapes VALUES ('1', 'place 01', 'desc place 01', 't01', '1,2', 'image01', NULL)");
-			db.execSQL("INSERT INTO shapes VALUES ('2', 'place 02', 'desc place 02', 't02', '2,3', 'image02', NULL)");
-			db.execSQL("INSERT INTO shapes VALUES ('3', 'place 03', 'desc place 03', 't03', '3,4', 'image03', NULL)");
-			db.execSQL("INSERT INTO shapes VALUES ('4', 'plot 01', 'desc plot 01', NULL, '1,2', 'image01', '1')");
-			db.execSQL("INSERT INTO shapes VALUES ('5', 'plot 02', 'desc plot 02', NULL, '2,3', 'image02', NULL)");
-			db.execSQL("INSERT INTO shapes VALUES ('6', 'plot 03', 'desc plot 03', NULL, '3,4', 'image03', '1')");
+			db.execSQL("INSERT INTO shapes VALUES ('1', 'place 01', 'desc place 01', 't01', '1,2', '1', NULL)");
+			db.execSQL("INSERT INTO shapes VALUES ('2', 'place 02', 'desc place 02', 't02', '2,3', '1', NULL)");
+			db.execSQL("INSERT INTO shapes VALUES ('3', 'place 03', 'desc place 03', 't03', '3,4', NULL, NULL)");
+			db.execSQL("INSERT INTO shapes VALUES ('4', 'plot 01', 'desc plot 01', NULL, '1,2', '1', '1')");
+			db.execSQL("INSERT INTO shapes VALUES ('5', 'plot 02', 'desc plot 02', NULL, '2,3', '1', NULL)");
+			db.execSQL("INSERT INTO shapes VALUES ('6', 'plot 03', 'desc plot 03', NULL, '3,4', NULL, '1')");
 			
 			db.execSQL("INSERT INTO visible_placetypes VALUES ('t02')");
 			db.execSQL("INSERT INTO visible_placetypes VALUES ('t03')");
@@ -97,16 +97,22 @@ public class SQLite {
 		createDatabase(db);
 	}
 	
+	public static void deleteShape(Long id) {
+		db.execSQL("DELETE FROM " + TABLE_SHAPES + " WHERE `id` = " + id);
+	}
+	
 	public static long saveShape(BeanShape shape) {
 		ContentValues values = new ContentValues();
 		values.put(FIELD_NAME, shape.getName());
 		values.put(FIELD_DESCRIPTION, shape.getDescription());
 		values.put(FIELD_PLACETYPE, shape.getType());
 		values.put(FIELD_COORDS, shape.getCoords());
-		values.put(FIELD_IMAGE, shape.getImage());
+		values.put(FIELD_HASIMAGE, shape.hasImage()? "1": "0");
 		Long shape_id = shape.getId();
-		if (shape_id == null)
+		if (shape_id == null) {
 			shape_id = db.insert(TABLE_SHAPES, null, values);
+			shape.setId(shape_id);
+		}
 		else {
 			int result = db.update(TABLE_SHAPES, values, FIELD_ID + "=" + shape.getId(), null);
 			if (result == 0)
@@ -128,7 +134,7 @@ public class SQLite {
 			BeanShape shape = new BeanShape(
 					c.getLong(0), c.getString(1),
 					c.getString(2),	c.getString(3),
-					c.getString(4), c.getString(5)
+					c.getString(4), c.getString(5).equals("1")
 			);
 			shapes.add(shape);
 		}

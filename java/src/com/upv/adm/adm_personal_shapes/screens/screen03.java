@@ -66,18 +66,18 @@ public class screen03 extends CustomActionBarActivity {
 			}
 		});
 
+		button_create.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				Utils.startActivity(getCurrentActivity(), screen05.class);
+			}
+		});
+
 		button_list.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				startActivity(new Intent(getApplicationContext(), screen04.class));
 			}
 		});
 
-		button_create.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
-				GlobalContext.shape_id = null;
-				startActivity(new Intent(getApplicationContext(), screen05.class));
-			}
-		});
 		button_search.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				startActivity(new Intent(getApplicationContext(), screen19.class));

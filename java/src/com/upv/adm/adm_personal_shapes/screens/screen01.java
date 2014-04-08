@@ -100,13 +100,23 @@ public class screen01 extends CustomActionBarActivity {
 
 	@SuppressWarnings("unchecked")
 	private void loginClick() {
+		String username = edittext_username.getText().toString();
+		String password = edittext_password.getText().toString();
 		
-		ArrayList<StringPart> fields = new ArrayList<StringPart>();
-		fields.add(new StringPart("action", "login_user"));
-
 		Hashtable<String, String> data = new Hashtable<String, String>();
-		data.put("username", edittext_username.getText().toString());
-		data.put("password", edittext_password.getText().toString());
+		// username
+		if (!Utils.checkUsernameFormat(username)) {
+			Utils.messageBox(getCurrentActivity(), "Usuario no válido");
+			return;
+		}
+		data.put("username", username);
+		
+		// password
+		if (!Utils.checkPasswordFormat(password)) {
+			Utils.messageBox(getCurrentActivity(), "Contraseña no válida");
+			return;
+		}
+		data.put("password", password);
 		
 		(new AsyncTask<Hashtable<String, String>, Void, Boolean>() {
 			@Override

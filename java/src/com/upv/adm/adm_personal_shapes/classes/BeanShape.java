@@ -7,22 +7,19 @@ public class BeanShape implements IListItem {
 	private String 
 			name,
 			description,
-			type;
+			type,
+			coords;
 
-	private String coords;
+	private Boolean hasImage;
 
-	private String image;
-
-	public BeanShape(Long id, String name, String description, String type, String coords, String image) {
-
+	public BeanShape(Long id, String name, String description, String type, String coords, Boolean hasImage) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.description = description;
 		this.type = type;
 		this.coords = coords;
-		this.image = image;
-
+		this.hasImage = hasImage;
 	}
 
 	public Long getId() {
@@ -65,12 +62,12 @@ public class BeanShape implements IListItem {
 		this.coords = coords;
 	}
 
-	public String getImage() {
-		return image;
+	public Boolean hasImage() {
+		return hasImage;
 	}
 
-	public void setImage(String image) {
-		this.image = image;
+	public void setImage(Boolean hasImage) {
+		this.hasImage = hasImage;
 	}
 	
 	@Override

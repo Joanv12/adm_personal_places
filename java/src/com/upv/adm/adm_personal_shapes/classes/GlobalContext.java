@@ -18,7 +18,7 @@ public class GlobalContext {
 	public static String password = null;
 	public static String remember = null; // {"0", "1"}
 	
-	public static Long shape_id;
+	public static Long shape_id = null;
 	
 	private static CustomListItem[] countriesListviewItems = null;
 	private static CustomListItem[] gendersListviewItems = null;
@@ -85,6 +85,13 @@ public class GlobalContext {
 		SharedPreferences preferences = context.getSharedPreferences("preferences", Context.MODE_PRIVATE);
 		Editor editor = preferences.edit();
 		editor.remove(key);
+		editor.commit();
+	}
+
+	public static void removeAllPreferences() {
+		SharedPreferences preferences = context.getSharedPreferences("preferences", Context.MODE_PRIVATE);
+		Editor editor = preferences.edit();
+		editor.clear();
 		editor.commit();
 	}
 

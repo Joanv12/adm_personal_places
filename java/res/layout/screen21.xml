@@ -20,14 +20,14 @@
                 android:id="@+id/button_use"
                 style="@style/button_type_02"
                 android:layout_weight="1"
-                android:background="@drawable/button_type_01"
+                android:background="@drawable/button_type_02"
                 android:text="@string/button_use" />
 
             <Button
                 android:id="@+id/button_share"
                 style="@style/button_type_02"
                 android:layout_weight="1"
-                android:background="@drawable/button_type_01"
+                android:background="@drawable/button_type_02"
                 android:text="@string/button_share" />
         </LinearLayout>
 

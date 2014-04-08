@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Properties;
 import java.util.regex.Matcher;
@@ -23,10 +25,12 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.MediaStore;
 import android.provider.Settings;
 import android.util.SparseBooleanArray;
 import android.webkit.WebView;
@@ -104,12 +108,9 @@ public class Utils {
 	}
 	
 	public static Properties getCustomProperties() {
-		
 		Properties props = null;
-		
 		Resources resources = GlobalContext.getContext().getResources();
 		AssetManager assetManager = resources.getAssets();
-
 		try {
 			// el archivo: "custom.properties" está ubicado en el directorio: /assets
 		    InputStream inputStream = assetManager.open("custom.properties");
@@ -119,9 +120,10 @@ public class Utils {
 		catch (IOException e) {
 		    e.printStackTrace();
 		}
-		
 		return props;
-		
+	}
+	public static String getCustomProperty(String name) {
+		return (String)getCustomProperties().get(name);
 	}
 	
 	public static String ArrayListToStringComma(ArrayList<String> arrayList) {
@@ -267,12 +269,16 @@ public class Utils {
 
 	public static BeanShape getPlaceFromQR(Bitmap bitmap) {
 		String text = getTextFromQR(bitmap);
+		if (text.equals(""))
+			return null;
 		String[] data = text.split("\\|\\|");
+		if (data.length != 4)
+			return null;
 		String name = data[0];
 		String desc = data[1];
 		String type = data[2];
 		String coords = data[3];
-		return new BeanShape(null, name, desc, type, coords, null);
+		return new BeanShape(null, name, desc, type, coords, false);
 	}
 
 	public static CustomListItem[] ArrayListToCustomListItemArray(ArrayList<IListItem> arrayList) {
@@ -326,9 +332,8 @@ public class Utils {
 		GlobalContext.username = "";
 		GlobalContext.password = "";
 		GlobalContext.remember = "";
-		GlobalContext.removePreference(GlobalContext.PREF.USERNAME);
-		GlobalContext.removePreference(GlobalContext.PREF.PASSWORD);
-		GlobalContext.removePreference(GlobalContext.PREF.REMEMBER);
+		GlobalContext.removeAllPreferences();
+		new File(Utils.getUserImagePath()).delete();
 	}
 	
 	public static void startActivity(Activity fromActivity, Class<?> toCls, boolean clearStack) {
@@ -337,7 +342,7 @@ public class Utils {
 			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 		else
 			intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-		fromActivity.startActivityForResult(intent, 12345);
+		fromActivity.startActivityForResult(intent, 0); // this code doesn't matter
 	}
 	
 	public static void startActivity(Activity fromActivity, Class<?> toCls) {
@@ -387,11 +392,57 @@ public class Utils {
 		return checkRegex(value, "^[0-9]{4,20}");
 	}
 	
-	public static void messabeBox(final Activity activity, String message) {
+	public static void messageBox(final Activity activity, String message) {
 		AlertDialog.Builder builder = new AlertDialog.Builder(activity);
 		builder.setMessage(message);
 		builder.setNeutralButton("Aceptar", null);
 		builder.show();
 	}
 	
+	public static void downloadFile(String fromUrl, String toPath) {
+		try {
+			URL url = new URL(fromUrl);
+			HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+			urlConnection.setRequestMethod("GET");
+			urlConnection.setDoOutput(true);
+			urlConnection.connect();
+			InputStream inputStream = urlConnection.getInputStream();
+			File file = new File(toPath);
+			FileOutputStream fileOutput = new FileOutputStream(file);
+			byte[] buffer = new byte[1024];
+			int bufferLength = 0;
+			while ((bufferLength = inputStream.read(buffer)) > 0)
+				fileOutput.write(buffer, 0, bufferLength);
+			fileOutput.close();
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static String getUserImagePath() {
+		File userimage_path = new File(Utils.getAppDir(), "user_image.jpg");
+		if (userimage_path.exists())
+			return userimage_path.getPath();
+		else
+			return null;
+	}
+	
+	public static String getRealPathFromURI(Uri contentUri) {
+		Context context = GlobalContext.getContext(); 
+		Cursor cursor = null;
+		try { 
+			String[] proj = { MediaStore.Images.Media.DATA };
+			cursor = context.getContentResolver().query(contentUri,  proj, null, null, null);
+			int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+			cursor.moveToFirst();
+			return cursor.getString(column_index);
+		}
+		finally {
+			if (cursor != null) {
+				cursor.close();
+			}
+		}
+	}
+
 }
