@@ -126,6 +126,7 @@
     <!-- screen04 -->
     <string name="tab_places">Lugares</string>
     <string name="tab_plots">Parcelas</string>
+    <string name="tab_layers">Capas</string>
     <string name="button_types">Tipos</string>
 
     <string-array name="layers">

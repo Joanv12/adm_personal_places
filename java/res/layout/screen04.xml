@@ -47,8 +47,10 @@
                             android:id="@+id/listview_places"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:divider="#BBBBBB"
-                            android:dividerHeight="1dp" />
+                            android:divider="#0000CC"
+                            android:dividerHeight="2dp"
+                            android:textColor="#FF0000" >
+                        </ListView>
                     </LinearLayout>
 
                     <LinearLayout
@@ -58,12 +60,16 @@
                         android:orientation="vertical" >
 
                         <ListView
-                            android:id="@+id/listview_plots"
+                            android:id="@+id/listview_personalplots"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:divider="#BBBBBB"
-                            android:dividerHeight="1dp" />
+                            android:layout_height="wrap_content"
+                            android:divider="#0000CC"
+                            android:dividerHeight="2dp"
+                            android:textColor="#FF0000" >
+                        </ListView>
                     </LinearLayout>
+
+                    
                 </FrameLayout>
             </LinearLayout>
         </TabHost>
