@@ -92,7 +92,7 @@ public class screen07 extends CustomActionBarActivity {
 	public void initControls() {
 		
 		options_places = GlobalContext.getTypesData();
-		options_plots = GlobalContext.getTypesData();
+		options_plots = GlobalContext.getPlotsData();
 		options_layers = GlobalContext.getLayersData();
 
 		webview_map = (WebView) findViewById(R.id.webview_map);
@@ -168,15 +168,14 @@ public class screen07 extends CustomActionBarActivity {
 				builder_plots.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int id) {
 						
-						ArrayList<String[]> all_plots = Utils.getTypes();
-						
+						ArrayList<BeanShape> all_plots = SQLite.getPlots();
 			        	ArrayList<String> selected_plots = Utils.getSelectedKeys(list_plots);
 			        	
 			        	for (int i = 0; i < all_plots.size(); i++) { 
-			        		if (selected_plots.contains(all_plots.get(i)[0]))
-			        			SQLite.setPlotVisibility(all_plots.get(i)[0], true);
+			        		if (selected_plots.contains(String.valueOf(all_plots.get(i).getId())))
+			        			SQLite.setPlotVisibility(String.valueOf(all_plots.get(i).getId()), true);
 							else
-			        			SQLite.setPlotVisibility(all_plots.get(i)[0], true);
+			        			SQLite.setPlotVisibility(String.valueOf(all_plots.get(i).getId()), false);
 			           		}
 			           }
 			       });
@@ -194,13 +193,15 @@ public class screen07 extends CustomActionBarActivity {
 			        public void onClick(DialogInterface dialog, int id) {
 						ArrayList<String[]> all_layers = Utils.getLayers(); // a cambiar
 						ArrayList<String> selected_layers = Utils.getSelectedKeys(list_layers);
-							for (int i = 0; i < all_layers.size(); i++) { 
-								if (selected_layers.contains(all_layers.get(i)[0]))
-									SQLite.setLayerVisibility(all_layers.get(i)[0], true);
-								else
-									SQLite.setLayerVisibility(all_layers.get(i)[0], false);
-							}
-						 }
+						for (int i = 0; i < all_layers.size(); i++) { 
+							if (selected_layers.contains(all_layers.get(i)[0]))
+								SQLite.setLayerVisibility(all_layers.get(i)[0], true);
+							else
+								SQLite.setLayerVisibility(all_layers.get(i)[0], false);
+						}
+						displayLayers();
+					}
+			        
 			    });
 				builder_layers.setView(list_layers);
 				dialog_layers = builder_layers.create();
@@ -213,5 +214,23 @@ public class screen07 extends CustomActionBarActivity {
 		}
 	}
 	
-	
+	public void displayPlots() {
+		Utils.clearMap(webview_map);
+		ArrayList<BeanShape> visible_plots = SQLite.getVisiblePlots();
+		for (int i = 0; i < visible_plots.size(); i++) {
+			Utils.addBeanPlotToMap(visible_plots.get(i), webview_map);
+		}
+		
+		System.out.println("hello world");
+	}
+
+	public void displayLayers() {
+		Utils.clearMap(webview_map);
+		ArrayList<String> visible_layers = SQLite.getVisibleLayers();
+		for (int i = 0; i < visible_layers.size(); i++) {
+			Utils.addLayerToMap(visible_layers.get(i), webview_map);
+		}
+		
+		System.out.println("hello world");
+	}
 }

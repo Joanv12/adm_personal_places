@@ -1,4 +1,8 @@
 <layers>
 	<layer value="1">Bebederos</layer>
 	<layer value="2">Valenbisi</layer>
+	<layer value="3">Parcela rústica</layer>
+	<layer value="4">Parcela urbana</layer>
+	<layer value="5">Códigos postales</layer>
+	<layer value="6">Portales</layer>
 </layers>

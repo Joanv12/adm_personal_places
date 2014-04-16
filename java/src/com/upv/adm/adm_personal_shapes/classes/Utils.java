@@ -448,4 +448,8 @@ public class Utils {
 		}
 	}
 
+	public static void initializeMap(WebView webview) {
+		String url = "javascript: initialize_map()";
+		webview.loadUrl(url);
+	}
 }

@@ -28,6 +28,10 @@
         <activity
             android:name="com.upv.adm.adm_personal_shapes.screens.screen01"
             android:label="@string/title_screen01" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name="com.upv.adm.adm_personal_shapes.screens.screen02"
@@ -40,10 +44,6 @@
         <activity
             android:name="com.upv.adm.adm_personal_shapes.screens.screen04"
             android:label="@string/title_screen04">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name="com.upv.adm.adm_personal_shapes.screens.screen05"

@@ -47,8 +47,8 @@
                             android:id="@+id/listview_places"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:divider="#0000CC"
-                            android:dividerHeight="2dp"
+                            android:divider="#AAAAAA"
+                            android:dividerHeight="1dp"
                             android:textColor="#FF0000" >
                         </ListView>
                     </LinearLayout>
@@ -63,8 +63,24 @@
                             android:id="@+id/listview_personalplots"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:divider="#0000CC"
-                            android:dividerHeight="2dp"
+                            android:divider="#AAAAAA"
+                            android:dividerHeight="1dp"
+                            android:textColor="#FF0000" >
+                        </ListView>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/tab_layers"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical" >
+
+                        <ListView
+                            android:id="@+id/listview_layers"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:divider="#AAAAAA"
+                            android:dividerHeight="1dp"
                             android:textColor="#FF0000" >
                         </ListView>
                     </LinearLayout>

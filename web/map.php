@@ -46,12 +46,12 @@ html, body, #map_canvas {
 var map = null;
 var info_window = null;
 var layers_set = {
-	"1": ["col2", "1ECdXQ3g_dmn463XsKpMDRi81yBYiwDc-NRsSTbQK"],
-	"2": ["col2", "1FbAFcAiVM9DNwvW96EiHE7XImwQV5y64IMxP6A4r"],
-	"3": ["col21", "1MKmNw9vmCeOXepyFlElJyrTIwUFpsI4f6CWmpkW4"],
-	"4": ["col21", "1XqwcmK5vVenG9NPL00AmUJu2wf9W2a-pBTY0E_y6"],
-	"5": ["col5", "1G9z6HsHYsjAMTHRNFXqZvlLM0Qae1rxaPBqWEzHB"],
-	"6": ["col6", "1kBqQ2gT32EHESCtq1AHOZmpWmxSe3G4YvSKsczTb"],
+	"1": ["col2", "1ECdXQ3g_dmn463XsKpMDRi81yBYiwDc-NRsSTbQK"], /* fuentes bebedero */
+	"2": ["col2", "1FbAFcAiVM9DNwvW96EiHE7XImwQV5y64IMxP6A4r"], /* valenbisi */
+	"3": ["col21", "1MKmNw9vmCeOXepyFlElJyrTIwUFpsI4f6CWmpkW4"], /* parcela rústica */
+	"4": ["col21", "1XqwcmK5vVenG9NPL00AmUJu2wf9W2a-pBTY0E_y6"], /* parcela urbana */
+	"5": ["col5", "1G9z6HsHYsjAMTHRNFXqZvlLM0Qae1rxaPBqWEzHB"], /* códigos postales */
+	"6": ["col6", "1kBqQ2gT32EHESCtq1AHOZmpWmxSe3G4YvSKsczTb"], /* portales */
 };
 var latLngCenter = new google.maps.LatLng(39.47169, -0.34711);
 
